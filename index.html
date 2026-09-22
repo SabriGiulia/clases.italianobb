@@ -29,8 +29,8 @@
         <span class="flag-icon">🇮🇹</span>
         <span class="logo-text">@clases.italianobb</span>
       </div>
-      <a href="#test-nivel" class="nav-cta-btn">
-        <i class="fa-solid fa-graduation-cap"></i> Test de Nivel
+      <a href="#test-autovalutazione" class="nav-cta-btn">
+        <i class="fa-solid fa-clipboard-check"></i> Test de Autoevaluación
       </a>
     </div>
   </header>
@@ -54,8 +54,8 @@
         <a id="hero-whatsapp-btn" href="https://wa.me/?text=%C2%A1Hola!%20Vengo%20desde%20Instagram%20y%20quiero%20informaci%C3%B3n%20sobre%20las%20clases%20de%20italiano%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-primary">
           <i class="fa-brands fa-whatsapp"></i> Consultar por WhatsApp
         </a>
-        <a href="#cursos" class="btn btn-secondary">
-          <i class="fa-solid fa-compass"></i> Ver Modalidades
+        <a href="#test-autovalutazione" class="btn btn-secondary">
+          <i class="fa-solid fa-list-check"></i> Hacer Test de Nivel A1.1
         </a>
       </div>
 
@@ -70,50 +70,428 @@
           <span class="stat-label">Práctica desde la clase 1</span>
         </div>
         <div class="stat-card">
-          <span class="stat-num">📚 Gratis</span>
-          <span class="stat-label">Material digital incluido</span>
+          <span class="stat-num">📚 Nuovo Espresso</span>
+          <span class="stat-label">Material y método oficial</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Level Quiz Section -->
-  <section id="test-nivel" class="quiz-section">
+  <!-- Official Nuovo Espresso A1.1 Self-Evaluation Test -->
+  <section id="test-autovalutazione" class="quiz-section">
     <div class="container">
       <div class="section-header">
-        <span class="subheading">¿Cuál es tu nivel actual?</span>
-        <h2 class="section-title">Test Rápido de Italiano (1 Minuto) 🧠</h2>
-        <p class="section-desc">Responde 3 preguntas sencillas para saber en qué nivel comenzar y recibir tu recomendación personalizada.</p>
+        <span class="subheading">Nuovo Espresso 1 • Test Ufficiale</span>
+        <h2 class="section-title">Test di Autovalutazione (Livello A1.1) 🇮🇹</h2>
+        <p class="section-desc">
+          ¡Evalúa tus conocimientos de italiano! Marca todas las afirmaciones que consideres verdaderas para ti. 
+          <em>(No es necesaria la perfección: si comprendes o te comunicas en modo general, selecciona la casilla).</em>
+        </p>
       </div>
 
-      <div class="quiz-card" id="quiz-container">
-        <!-- Quiz Stepper -->
-        <div class="quiz-progress-bar">
-          <div class="progress-fill" id="quiz-progress" style="width: 33.3%;"></div>
-        </div>
-
-        <div class="quiz-step-indicator" id="step-indicator">Pregunta 1 de 3</div>
-
-        <!-- Question Container -->
-        <div id="quiz-question-box" class="quiz-question-box">
-          <h3 id="quiz-question-title" class="quiz-q-title">1. ¿Cómo responderías al saludo: "Ciao, come stai?"</h3>
-          <div class="quiz-options" id="quiz-options">
-            <!-- Dynamic Options inserted via JS -->
+      <!-- Test Container Card -->
+      <div class="autotest-card">
+        <!-- Floating Live Score Indicator -->
+        <div class="score-sticky-header">
+          <div class="score-info">
+            <span class="score-label">Puntaje Actual:</span>
+            <span class="score-count" id="live-score-count">0 / 30</span>
           </div>
+          <button id="calculate-results-top-btn" class="btn btn-sm btn-primary">
+            <i class="fa-solid fa-check"></i> Ver mi Resultado
+          </button>
         </div>
 
-        <!-- Result Box (Hidden by default) -->
-        <div id="quiz-result-box" class="quiz-result-box hidden">
-          <div class="result-icon-badge" id="result-badge">🎉</div>
-          <h3 id="result-title" class="result-title">¡Excelente! Tu nivel sugerido es: A1 Principiante</h3>
-          <p id="result-desc" class="result-desc">Tienes una gran base intuitiva para aprender rápido con nuestras clases dinámicas.</p>
-          <div class="result-actions">
-            <a id="result-whatsapp-btn" href="#" target="_blank" class="btn btn-primary btn-glow">
-              <i class="fa-brands fa-whatsapp"></i> Reservar Clase de Prueba para este Nivel
-            </a>
-            <button id="restart-quiz-btn" class="btn btn-outline">
-              <i class="fa-solid fa-rotate-right"></i> Repetir Test
+        <form id="autotest-form">
+          <!-- 1. ASCOLTO -->
+          <div class="test-category">
+            <div class="category-header">
+              <div class="cat-icon"><i class="fa-solid fa-headphones"></i></div>
+              <div>
+                <h3 class="cat-title">1. ASCOLTO (Comprensión Auditiva)</h3>
+                <span class="cat-subtitle">7 afirmaciones</span>
+              </div>
+            </div>
+            
+            <div class="checklist-grid">
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="ascolto">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire delle domande semplici riguardanti la mia persona:</p>
+                  <span class="check-example">«Scusi, Lei come si chiama? / Di dove è?»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="ascolto">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire quando qualcuno si presenta o mi viene presentato:</p>
+                  <span class="check-example">«Sono Sara. / Questo è Luigi, un mio collega.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="ascolto">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire professioni e luoghi di lavoro:</p>
+                  <span class="check-example">«Sono insegnante. Lavoro in una scuola.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="ascolto">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire i numeri.</p>
+                  <span class="check-example">(Precios, teléfonos, cantidades)</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="ascolto">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire frasi riguardanti le ordinazioni in un bar o in un ristorante:</p>
+                  <span class="check-example">«Desidera? Vuole il menù? Desidera qualcos'altro?»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="ascolto">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire dei dialoghi semplici su hobby e attività del tempo libero (se si parla lentamente e chiaramente):</p>
+                  <span class="check-example">«A Lucia piace disegnare. / Nel tempo libero Francesco lavora in giardino.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="ascolto">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire la data:</p>
+                  <span class="check-example">«Oggi è mercoledì. / Quanti ne abbiamo oggi? Oggi è il 17.»</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 2. LETTURA -->
+          <div class="test-category">
+            <div class="category-header">
+              <div class="cat-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+              <div>
+                <h3 class="cat-title">2. LETTURA (Comprensión Lectora)</h3>
+                <span class="cat-subtitle">4 afirmaciones</span>
+              </div>
+            </div>
+
+            <div class="checklist-grid">
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="lettura">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire un testo semplice su professione, provenienza, gusti e preferenze.</p>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="lettura">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire una breve cartolina / mensaje:</p>
+                  <span class="check-example">«Un caro saluto.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="lettura">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire un menù semplice.</p>
+                  <span class="check-example">(Platos, bebidas, postres)</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="lettura">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di capire singole parole o frasi in un annuncio pubblicitario:</p>
+                  <span class="check-example">(Por ejemplo, leer anuncios de restaurantes para elegir el más adecuado)</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 3. PARLATO (INTERAZIONE) -->
+          <div class="test-category">
+            <div class="category-header">
+              <div class="cat-icon"><i class="fa-solid fa-comments"></i></div>
+              <div>
+                <h3 class="cat-title">3. PARLATO - INTERAZIONE (Conversación & Preguntas)</h3>
+                <span class="cat-subtitle">10 afirmaciones</span>
+              </div>
+            </div>
+
+            <div class="checklist-grid">
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="interazione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di salutare e congedarmi:</p>
+                  <span class="check-example">«Ciao! / Buongiorno! / Arrivederci!»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="interazione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di porre semplici domande personali e rispondere:</p>
+                  <span class="check-example">«Dove abiti? / Di dove sei? / Lavoro in un ufficio.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="interazione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di informarmi sulla salute di qualcuno e rispondere:</p>
+                  <span class="check-example">«Come stai? / Bene, grazie.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="interazione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di porre domande su età e professione e rispondere:</p>
+                  <span class="check-example">«Che lavoro fai? / Quanti anni hai? / Faccio il cameriere.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="interazione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di porre domande su hobby, attività del tempo libero, gusti e rispondere:</p>
+                  <span class="check-example">«Che cosa fai nel tempo libero? / Ti piace ballare? / A me piace la musica.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="interazione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di esprimere accordo e disaccordo:</p>
+                  <span class="check-example">«Mi piacciono i film di fantascienza. / Anche a me. / A me invece no.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="interazione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di chiedere e dire l'ora:</p>
+                  <span class="check-example">«Che ora è? / Che ore sono? / È mezzogiorno.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="interazione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di prenotare una stanza d'albergo:</p>
+                  <span class="check-example">«Avete una camera libera?»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="interazione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di ringraziare e rispondere a un ringraziamento:</p>
+                  <span class="check-example">«Grazie! / Prego, si figuri.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="interazione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di chiedere nuovamente, se non ho capito qualcosa:</p>
+                  <span class="check-example">«Come, scusi? / Può ripetere, per favore?»</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 4. PARLATO (PRODUZIONE) -->
+          <div class="test-category">
+            <div class="category-header">
+              <div class="cat-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+              <div>
+                <h3 class="cat-title">4. PARLATO - PRODUZIONE (Hablar & Expresarse)</h3>
+                <span class="cat-subtitle">6 afirmaciones</span>
+              </div>
+            </div>
+
+            <div class="checklist-grid">
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="produzione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di presentarmi e presentare qualcuno:</p>
+                  <span class="check-example">«Ciao, sono Valentina. / Questo è un mio amico.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="produzione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di dare informazioni personali su di me (nome, nazionalità, età, professione):</p>
+                  <span class="check-example">«Mi chiamo Luca, abito a Roma, ho 40 anni e sono avvocato.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="produzione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di richiedere in un bar o ristorante cibi, bevande e il conto:</p>
+                  <span class="check-example">«Vorrei un cappuccino e un cornetto. / Il conto, per favore.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="produzione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di dire come trascorro il fine settimana:</p>
+                  <span class="check-example">«Di solito il sabato vado a cena fuori con gli amici.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="produzione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di parlare di ciò che mi piace e non mi piace:</p>
+                  <span class="check-example">«Mi piace leggere. / Non mi piace guardare la TV.»</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="produzione">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di reclamare in un albergo:</p>
+                  <span class="check-example">«Senta, avrei un problema, l'aria condizionata non funziona.»</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 5. PRODUZIONE SCRITTA -->
+          <div class="test-category">
+            <div class="category-header">
+              <div class="cat-icon"><i class="fa-solid fa-pen-nib"></i></div>
+              <div>
+                <h3 class="cat-title">5. PRODUZIONE SCRITTA (Expresión Escrita)</h3>
+                <span class="cat-subtitle">3 afirmaciones</span>
+              </div>
+            </div>
+
+            <div class="checklist-grid">
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="scritta">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di compilare un modulo con i miei dati personali (indirizzo, nazionalità, professione, età).</p>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="scritta">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di scrivere una breve cartolina o messaggio a un amico:</p>
+                  <span class="check-example">(Descrivendo per esempio l'alloggio delle vacanze)</span>
+                </div>
+              </label>
+
+              <label class="check-item">
+                <input type="checkbox" name="test-item" class="test-check" data-cat="scritta">
+                <div class="check-custom"></div>
+                <div class="check-content">
+                  <p class="check-main">Sono in grado di scrivere un breve testo su di me o su altre persone (nome, città, gusti, preferenze).</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Final Submit Button -->
+          <div class="test-footer-actions">
+            <button type="button" id="calculate-results-btn" class="btn btn-primary btn-glow btn-large">
+              <i class="fa-solid fa-award"></i> Calcular mi Resultado de Nivel
             </button>
+          </div>
+        </form>
+
+        <!-- Dynamic Results Card Modal / Box -->
+        <div id="test-result-box" class="test-result-box hidden">
+          <div class="result-header">
+            <div class="result-badge-icon" id="res-badge-icon">🎯</div>
+            <h3 class="result-headline" id="res-headline">Tu Resultado Oficial</h3>
+            <div class="result-score-tag" id="res-score-tag">0 / 30 Puntos</div>
+          </div>
+
+          <div class="result-body">
+            <div class="recommendation-card" id="res-rec-card">
+              <h4 id="res-level-title">Nivel Sugerido: NUOVO Espresso 1 (Lezione 1)</h4>
+              <p id="res-level-desc">Recomendado para comenzar con una base sólida desde el primer día.</p>
+            </div>
+
+            <!-- Breakdown per category -->
+            <div class="category-breakdown">
+              <span class="breakdown-title">Tu desempeño por área:</span>
+              <div class="breakdown-grid">
+                <div class="breakdown-item">
+                  <span class="b-cat">Ascolto:</span>
+                  <span class="b-val" id="score-ascolto">0 / 7</span>
+                </div>
+                <div class="breakdown-item">
+                  <span class="b-cat">Lettura:</span>
+                  <span class="b-val" id="score-lettura">0 / 4</span>
+                </div>
+                <div class="breakdown-item">
+                  <span class="b-cat">Interazione:</span>
+                  <span class="b-val" id="score-interazione">0 / 10</span>
+                </div>
+                <div class="breakdown-item">
+                  <span class="b-cat">Produzione:</span>
+                  <span class="b-val" id="score-produzione">0 / 6</span>
+                </div>
+                <div class="breakdown-item">
+                  <span class="b-cat">Scritta:</span>
+                  <span class="b-val" id="score-scritta">0 / 3</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-cta-group">
+              <a id="test-whatsapp-cta" href="#" target="_blank" class="btn btn-whatsapp-large btn-glow">
+                <i class="fa-brands fa-whatsapp"></i> Enviar mi resultado y Consultar Clases
+              </a>
+              <button type="button" id="retest-btn" class="btn btn-outline">
+                <i class="fa-solid fa-arrow-rotate-left"></i> Modificar respuestas
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -139,7 +517,7 @@
             <li><i class="fa-solid fa-circle-check"></i> 100% de atención del profesor</li>
             <li><i class="fa-solid fa-circle-check"></i> Horarios flexibles coordinados</li>
             <li><i class="fa-solid fa-circle-check"></i> Enfoque en conversación y fluidez</li>
-            <li><i class="fa-solid fa-circle-check"></i> Material de estudio digital incluido</li>
+            <li><i class="fa-solid fa-circle-check"></i> Material digital Nuovo Espresso incluido</li>
           </ul>
           <a href="https://wa.me/?text=%C2%A1Hola!%20Me%20interesan%20las%20Clases%20Particulares%201%20a%201%20de%20italiano%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-course">Consultar Aranceles</a>
         </div>
@@ -151,8 +529,8 @@
           <h3 class="course-title">Grupos Reducidos</h3>
           <p class="course-desc">Aprende en comunidad con grupos de máximo 4 a 6 personas. Ideal para practicar conversación real.</p>
           <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i> Dinámicas grupales y juegos de rol</li>
-            <li><i class="fa-solid fa-circle-check"></i> Compañeros del mismo nivel</li>
+            <li><i class="fa-solid fa-circle-check"></i> Dinámicas grupales y situaciones reales</li>
+            <li><i class="fa-solid fa-circle-check"></i> Compañeros de tu mismo nivel</li>
             <li><i class="fa-solid fa-circle-check"></i> Tarifa mensual muy accesible</li>
             <li><i class="fa-solid fa-circle-check"></i> Grabaciones de clase disponibles</li>
           </ul>
@@ -168,7 +546,7 @@
           <ul class="feature-list">
             <li><i class="fa-solid fa-circle-check"></i> Vocabulario y documentos clave</li>
             <li><i class="fa-solid fa-circle-check"></i> Simulaciones de trámites y preguntas</li>
-            <li><i class="fa-solid fa-circle-check"></i> Guía rápida de supervivencia en Italia</li>
+            <li><i class="fa-solid fa-circle-check"></i> Guía de supervivencia en Italia</li>
             <li><i class="fa-solid fa-circle-check"></i> Soporte para exámenes oficiales</li>
           </ul>
           <a href="https://wa.me/?text=%C2%A1Hola!%20Quiero%20informaci%C3%B3n%20del%20curso%20para%20Ciudadan%C3%ADa%20y%20Viajes%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-course">Consultar Programa</a>
@@ -203,7 +581,7 @@
               <div class="point-icon"><i class="fa-solid fa-heart"></i></div>
               <div>
                 <h4>Acompañamiento Cercano</h4>
-                <p>Resolución de dudas por WhatsApp entre clases para que nunca te quedes con dudas.</p>
+                <p>Resolución de dudas por WhatsApp entre clases para que nunca te estanques.</p>
               </div>
             </div>
           </div>
@@ -234,7 +612,7 @@
             <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="accordion-body">
-            <p>¡Para nada! La gran mayoría de nuestros alumnos empiezan desde cero absoluto (Nivel A1). Te guiamos paso a paso con paciencia y calidez.</p>
+            <p>¡Para nada! La gran mayoría de nuestros alumnos empiezan desde cero absoluto (Nivel A1.1). Te guiamos paso a paso con paciencia y calidez.</p>
           </div>
         </div>
 
@@ -254,7 +632,7 @@
             <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="accordion-body">
-            <p>No, todo el material de estudio (fichas, audios, ejercicios en PDF y lecturas) está completamente incluido en tu arancel.</p>
+            <p>No, todo el material de estudio (Nuovo Espresso, fichas, audios, ejercicios en PDF y lecturas) está completamente incluido en tu arancel.</p>
           </div>
         </div>
 
