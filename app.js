@@ -671,7 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
 🎯 *Nivel diagnosticado:* ${levelTitle}
 👉 Quisiera coordinar mis clases de italiano 🇮🇹`;
 
-    btnSendWhatsappFinal.href = `https://wa.me/?text=${encodeURIComponent(waText)}`;
+    btnSendWhatsappFinal.href = `https://wa.me/5492914485405?text=${encodeURIComponent(waText)}`;
     screenResults.scrollIntoView({ behavior: 'smooth' });
   }
 
