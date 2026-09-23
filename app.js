@@ -539,7 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
   btnStartTest.addEventListener('click', () => {
     const nameVal = studentNameInput.value.trim();
     if (!nameVal) {
-      alert('Por favor, ingresa tu nombre y apellido para comenzar el diagnóstico.');
+      alert('Por favor, ingresá tu nombre y apellido para comenzar el diagnóstico.');
       studentNameInput.focus();
       return;
     }
@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnNextQ.addEventListener('click', () => {
     if (userAnswers[currentQuestionIndex] === undefined) {
-      if (!confirm('No has seleccionado una opción para esta pregunta. ¿Deseas continuar igualmente o detener el test si no estás seguro?')) {
+      if (!confirm('No seleccionaste una opción para esta pregunta. ¿Querés continuar igual o detener el test si no estás seguro/a?')) {
         return;
       }
     }
@@ -610,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Stop Early Button
   btnStopEarly.addEventListener('click', () => {
-    if (confirm('¿Deseas finalizar el test hasta aquí? Calcularemos tu nivel con las preguntas respondidas.')) {
+    if (confirm('¿Querés finalizar el test hasta acá? Calcularemos tu nivel con las preguntas respondidas.')) {
       finishAndShowResults();
     }
   });
@@ -637,7 +637,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let levelDesc = '';
     let icon = '🎯';
 
-    // Official Diagnostic Scale:
+    // Diagnostic Scale:
     if (totalScore >= 34) {
       icon = '🏆';
       levelTitle = 'Nivel Avanzado (B2 / C1)';
@@ -645,19 +645,19 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (totalScore >= 25) {
       icon = '🌟';
       levelTitle = 'Nivel Intermedio (B1 / B2)';
-      levelDesc = 'Tienes un gran control de tiempos verbales (passato prossimo, imperfetto, condizionale). Estás listo para ganar fluidez y precisión natural.';
+      levelDesc = 'Tenés un gran control de tiempos verbales (passato prossimo, imperfetto, condizionale). Estás listo/a para ganar fluidez y naturalidad al hablar.';
     } else if (totalScore >= 16) {
       icon = '🌱';
       levelTitle = 'Nivel Pre-Intermedio (A2 / A2+)';
-      levelDesc = 'Manejas bien el vocabulario cotidiano y el pasado básico. Con nuestras clases afianzaremos el imperfetto, los pronombres y la soltura al hablar.';
+      levelDesc = 'Manejás bien el vocabulario cotidiano y el pasado básico. Con nuestras clases vamos a afianzar el imperfetto, los pronombres y la soltura.';
     } else if (totalScore >= 8) {
       icon = '🚀';
       levelTitle = 'Nivel Elemental (A1 Consolidado)';
-      levelDesc = 'Conoces nociones básicas del presente y artículos. Tu siguiente paso es dominar el pasado próximo y la conversación en viajes y restaurantes.';
+      levelDesc = 'Conocés nociones básicas del presente y artículos. Tu siguiente paso es dominar el pasado próximo y la conversación en viajes y restaurantes.';
     } else {
       icon = '🇮🇹';
       levelTitle = 'Nivel Inicial (A1 Desde Cero)';
-      levelDesc = '¡El mejor punto para comenzar! Te acompañaremos paso a paso desde tu primera clase para que hables sin miedo con una base sólida.';
+      levelDesc = '¡El mejor punto para comenzar! Te voy a acompañar paso a paso desde tu primera clase para que hables sin miedo y con una base sólida.';
     }
 
     resLevelIcon.textContent = icon;
@@ -667,7 +667,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Build WhatsApp message to send privately to teacher
     const waText = 
 `¡Ciao! Soy ${studentName} y completé el Test de Nivelación en la web.
-📊 *Mi Puntaje:* ${totalScore}/${questionBank.length} puntos (${answeredCount} preguntas intentadas)
+📊 *Mi Puntaje:* ${totalScore}/${questionBank.length} puntos (${answeredCount} preguntas respondidas)
 🎯 *Nivel diagnosticado:* ${levelTitle}
 👉 Quisiera coordinar mis clases de italiano 🇮🇹`;
 
