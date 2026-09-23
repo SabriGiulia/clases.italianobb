@@ -270,23 +270,46 @@ body {
   transform: scale(1.18);
 }
 
-.nav-cta-btn {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--secondary);
-  background: rgba(59, 90, 69, 0.1);
-  padding: 8px 18px;
-  border-radius: var(--border-radius-pill);
-  text-decoration: none;
-  transition: 0.2s;
+.nav-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
-.nav-cta-btn:hover {
+.nav-cta-btn {
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--border-radius-pill);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.nav-btn-schedule {
+  background: rgba(200, 90, 50, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(200, 90, 50, 0.25);
+}
+
+.nav-btn-schedule:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.nav-btn-test {
+  background: rgba(59, 90, 69, 0.1);
+  color: var(--secondary);
+  border: 1px solid rgba(59, 90, 69, 0.25);
+}
+
+.nav-btn-test:hover {
   background: var(--secondary);
-  color: var(--text-light);
+  color: #ffffff;
 }
 
 /* Hero */
@@ -1402,7 +1425,7 @@ body {
   transform: translateX(0);
 }
 
-/* Responsive */
+/* Responsive Design System */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.2rem;
@@ -1438,9 +1461,74 @@ body {
     padding: 30px 20px;
   }
   
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
   .footer-bottom {
     flex-direction: column;
     gap: 12px;
     text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 10px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .nav-container {
+    gap: 8px;
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .logo-circle-wrapper {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-text {
+    font-size: 0.85rem;
+    max-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .nav-cta-btn {
+    font-size: 0.78rem;
+    padding: 6px 10px;
+    gap: 4px;
+    border-radius: 20px;
+  }
+
+  .nav-cta-btn i {
+    font-size: 0.82rem;
+  }
+
+  .leave-review-card {
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 390px) {
+  .logo-text {
+    display: none; /* Show only the circular logo badge on very small screens to give max room to buttons */
+  }
+
+  .nav-cta-btn {
+    padding: 6px 8px;
+    font-size: 0.75rem;
   }
 }
