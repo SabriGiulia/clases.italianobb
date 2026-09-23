@@ -1485,6 +1485,123 @@ body {
   transform: translateX(0);
 }
 
+/* Instagram Feature Banner */
+.instagram-banner-section {
+  padding: 50px 0;
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+}
+
+.instagram-banner-card {
+  background: linear-gradient(135deg, #405de6 0%, #5851db 20%, #833ab4 40%, #c13584 60%, #e1306c 80%, #fd1d1d 100%);
+  border-radius: var(--border-radius-lg);
+  padding: 36px 32px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: 0 16px 36px rgba(193, 53, 132, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.ig-avatar-badge {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+}
+
+.ig-logo-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.ig-live-icon {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: #ffffff;
+  color: #e1306c;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.ig-text-content {
+  flex: 1;
+}
+
+.ig-subheading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.ig-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.ig-desc {
+  font-size: 0.98rem;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ig-action-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-instagram {
+  background: #ffffff;
+  color: #c13584;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 14px 28px;
+  border-radius: var(--border-radius-pill);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.btn-instagram:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: #f8fafc;
+  color: #833ab4;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+.ig-handle-link {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
 /* Community & Future Events Section */
 .community-section {
   padding: 70px 0;
