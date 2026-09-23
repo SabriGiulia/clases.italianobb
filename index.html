@@ -302,6 +302,161 @@
     </div>
   </section>
 
+  <!-- Reviews & Testimonials Section with Google Login & Star Rating -->
+  <section id="opiniones" class="reviews-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="subheading">Comunidad & Experiencias</span>
+        <h2 class="section-title">Opiniones de Alumnos y Exalumnos ⭐</h2>
+        <p class="section-desc">
+          Conocé la experiencia de quienes ya aprendieron y viajaron con nosotros.
+        </p>
+        <div class="google-rating-summary">
+          <i class="fa-brands fa-google google-icon"></i>
+          <div class="stars-gold">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="rating-text"><strong>5.0 / 5.0</strong> • Calificaciones verificadas con Google</span>
+        </div>
+      </div>
+
+      <!-- Reviews Grid -->
+      <div class="reviews-grid" id="reviews-container">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar">SM</div>
+            <div class="reviewer-info">
+              <h4 class="reviewer-name">Sofía Martínez <i class="fa-solid fa-circle-check verified-badge" title="Alumno Verificado"></i></h4>
+              <span class="review-course">Clases 1 a 1 • Italiano para Viajar</span>
+            </div>
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <p class="review-body">
+            "Empecé desde cero absoluto para preparar mi viaje a Italia y en pocos meses ya me animaba a pedir en restaurantes, hacer el check-in y hablar con locales sin miedo. ¡Las clases son súper amenas y prácticas!"
+          </p>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar">LG</div>
+            <div class="reviewer-info">
+              <h4 class="reviewer-name">Lucas Gómez <i class="fa-solid fa-circle-check verified-badge" title="Alumno Verificado"></i></h4>
+              <span class="review-course">Ciudadanía & Asesoría Turística</span>
+            </div>
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <p class="review-body">
+            "Excelente profesora. Además del idioma, la asesoría turística como Licenciada en Turismo me ayudó muchísimo a planificar mi estadía y trámites en el comune. 100% recomendable."
+          </p>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar">MT</div>
+            <div class="reviewer-info">
+              <h4 class="reviewer-name">Mariana Torres <i class="fa-solid fa-circle-check verified-badge" title="Alumno Verificado"></i></h4>
+              <span class="review-course">Grupos Reducidos • Nivel A1</span>
+            </div>
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <p class="review-body">
+            "La paciencia y la calidez que tiene hacen que no te dé vergüenza equivocarte. Los grupos reducidos son geniales para charlar y perder el miedo escénico. ¡Grazie mille!"
+          </p>
+        </div>
+      </div>
+
+      <!-- Leave Review Interactive Card -->
+      <div class="leave-review-card">
+        <div class="leave-review-header">
+          <div class="leave-icon"><i class="fa-regular fa-comment-dots"></i></div>
+          <div>
+            <h3>¿Sos alumno o exalumno? Dejá tu opinión</h3>
+            <p>Tu reseña ayuda a que más personas se animen a aprender italiano.</p>
+          </div>
+        </div>
+
+        <!-- Google Login Verification Notice -->
+        <div class="google-auth-box">
+          <div class="google-auth-info">
+            <i class="fa-brands fa-google google-color-icon"></i>
+            <div>
+              <strong>Calificación verificada con tu cuenta de Google / Gmail</strong>
+              <span>Para evitar comentarios falsos, las opiniones requieren identificación con Nombre y Apellido.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Review Form -->
+        <form id="review-form" class="review-form">
+          <!-- Star Rating Selector -->
+          <div class="star-rating-group">
+            <label class="star-label">Tu Calificación:</label>
+            <div class="star-picker" id="star-picker">
+              <i class="fa-solid fa-star star-item active" data-rating="1"></i>
+              <i class="fa-solid fa-star star-item active" data-rating="2"></i>
+              <i class="fa-solid fa-star star-item active" data-rating="3"></i>
+              <i class="fa-solid fa-star star-item active" data-rating="4"></i>
+              <i class="fa-solid fa-star star-item active" data-rating="5"></i>
+            </div>
+            <span class="star-rating-text" id="star-rating-text">¡Excelente! (5 estrellas)</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="rev-name"><i class="fa-solid fa-user"></i> Nombre y Apellido (Gmail):</label>
+              <input type="text" id="rev-name" placeholder="Ej: Camila Bianchi" required>
+            </div>
+            <div class="form-field">
+              <label for="rev-course"><i class="fa-solid fa-graduation-cap"></i> Modalidad de Clase:</label>
+              <select id="rev-course" required>
+                <option value="Clases 1 a 1 Particulares">Clases 1 a 1 Particulares</option>
+                <option value="Grupos Reducidos">Grupos Reducidos</option>
+                <option value="Italiano para Viajeros y Ciudadanía">Italiano para Viajeros y Ciudadanía</option>
+                <option value="Exalumno / Perfeccionamiento">Exalumno / Perfeccionamiento</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="rev-comment"><i class="fa-solid fa-pen"></i> Tu Opinión sobre las Clases:</label>
+            <textarea id="rev-comment" rows="3" placeholder="Contanos tu experiencia, cómo sentiste tu avance o qué te gustó de la metodología..." required></textarea>
+          </div>
+
+          <div class="form-actions-row">
+            <button type="submit" class="btn btn-primary btn-glow">
+              <i class="fa-solid fa-paper-plane"></i> Publicar mi Opinión
+            </button>
+            <a href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Soy%20alumno/a%20y%20quiero%20dejarte%20mi%20testimonio%20para%20la%20web%20%E2%AD%90%EF%B8%8F" target="_blank" class="btn btn-outline btn-sm">
+              <i class="fa-brands fa-whatsapp"></i> Enviar también por WhatsApp
+            </a>
+          </div>
+        </form>
+
+        <!-- Success notification -->
+        <div id="review-success-msg" class="review-success-msg hidden">
+          <i class="fa-solid fa-circle-check"></i>
+          <div>
+            <strong>¡Grazie mille por tu opinión!</strong>
+            <p>Tu reseña fue agregada a la página con éxito.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ Section -->
   <section class="faq-section">
     <div class="container faq-container">

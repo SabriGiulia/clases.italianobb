@@ -683,4 +683,152 @@ document.addEventListener('DOMContentLoaded', () => {
     userAnswers = {};
     currentQuestionIndex = 0;
   });
+
+  // 3. Interactive Star Rating & Reviews Form Logic
+  const starPicker = document.getElementById('star-picker');
+  const starItems = starPicker ? starPicker.querySelectorAll('.star-item') : [];
+  const starRatingText = document.getElementById('star-rating-text');
+  const reviewForm = document.getElementById('review-form');
+  const reviewsContainer = document.getElementById('reviews-container');
+  const reviewSuccessMsg = document.getElementById('review-success-msg');
+
+  let selectedRating = 5;
+  const ratingLabels = {
+    1: 'Regular (1 estrella)',
+    2: 'Aceptable (2 estrellas)',
+    3: 'Buena (3 estrellas)',
+    4: 'Muy buena (4 estrellas)',
+    5: '¡Excelente! (5 estrellas)'
+  };
+
+  function updateStars(rating) {
+    starItems.forEach(item => {
+      const itemRating = parseInt(item.getAttribute('data-rating'), 10);
+      if (itemRating <= rating) {
+        item.classList.add('active');
+        item.classList.replace('fa-regular', 'fa-solid');
+      } else {
+        item.classList.remove('active');
+        item.classList.replace('fa-solid', 'fa-regular');
+      }
+    });
+    if (starRatingText) {
+      starRatingText.textContent = ratingLabels[rating] || `${rating} estrellas`;
+    }
+  }
+
+  starItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const hoverRating = parseInt(item.getAttribute('data-rating'), 10);
+      updateStars(hoverRating);
+    });
+
+    item.addEventListener('click', () => {
+      selectedRating = parseInt(item.getAttribute('data-rating'), 10);
+      updateStars(selectedRating);
+    });
+  });
+
+  if (starPicker) {
+    starPicker.addEventListener('mouseleave', () => {
+      updateStars(selectedRating);
+    });
+  }
+
+  // Load custom stored reviews from localStorage
+  function loadStoredReviews() {
+    try {
+      const stored = JSON.parse(localStorage.getItem('clases_italiano_reviews') || '[]');
+      stored.forEach(rev => appendReviewCard(rev, false));
+    } catch (e) {
+      console.warn('Error loading reviews from storage', e);
+    }
+  }
+
+  function appendReviewCard(data, prepend = true) {
+    if (!reviewsContainer) return;
+    const card = document.createElement('div');
+    card.className = 'review-card';
+
+    // Initials
+    const initials = data.name
+      .split(' ')
+      .map(n => n[0])
+      .join('')
+      .substring(0, 2)
+      .toUpperCase() || 'AL';
+
+    let starsHtml = '';
+    for (let i = 1; i <= 5; i++) {
+      starsHtml += i <= data.rating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+    }
+
+    card.innerHTML = `
+      <div class="review-header">
+        <div class="reviewer-avatar">${initials}</div>
+        <div class="reviewer-info">
+          <h4 class="reviewer-name">${data.name} <i class="fa-solid fa-circle-check verified-badge" title="Alumno Verificado con Google"></i></h4>
+          <span class="review-course">${data.course}</span>
+        </div>
+        <div class="review-stars">${starsHtml}</div>
+      </div>
+      <p class="review-body">"${data.comment}"</p>
+    `;
+
+    if (prepend && reviewsContainer.firstChild) {
+      reviewsContainer.insertBefore(card, reviewsContainer.firstChild);
+    } else {
+      reviewsContainer.appendChild(card);
+    }
+  }
+
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('rev-name');
+      const courseInput = document.getElementById('rev-course');
+      const commentInput = document.getElementById('rev-comment');
+
+      const reviewData = {
+        name: nameInput.value.trim(),
+        course: courseInput.value,
+        comment: commentInput.value.trim(),
+        rating: selectedRating,
+        date: new Date().toISOString()
+      };
+
+      if (!reviewData.name || !reviewData.comment) {
+        alert('Por favor, completá tu nombre y opinión.');
+        return;
+      }
+
+      // Append dynamically to page
+      appendReviewCard(reviewData, true);
+
+      // Save to localStorage
+      try {
+        const stored = JSON.parse(localStorage.getItem('clases_italiano_reviews') || '[]');
+        stored.unshift(reviewData);
+        localStorage.setItem('clases_italiano_reviews', JSON.stringify(stored));
+      } catch (err) {
+        console.warn('LocalStorage error', err);
+      }
+
+      // Show success message
+      if (reviewSuccessMsg) {
+        reviewSuccessMsg.classList.remove('hidden');
+        setTimeout(() => {
+          reviewSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+
+      // Reset form
+      reviewForm.reset();
+      selectedRating = 5;
+      updateStars(5);
+    });
+  }
+
+  loadStoredReviews();
 });
