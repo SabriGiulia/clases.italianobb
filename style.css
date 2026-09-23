@@ -619,6 +619,16 @@ body {
   color: var(--primary);
 }
 
+@keyframes shakeAnimation {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.shake-highlight {
+  animation: shakeAnimation 0.5s ease;
+}
+
 .stepper-controls {
   display: flex;
   flex-direction: column;

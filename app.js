@@ -595,9 +595,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnNextQ.addEventListener('click', () => {
     if (userAnswers[currentQuestionIndex] === undefined) {
-      if (!confirm('No seleccionaste una opción para esta pregunta. ¿Querés continuar igual o detener el test si no estás seguro/a?')) {
-        return;
-      }
+      alert('⚠️ Por favor, seleccioná una opción para continuar. Si no conocés la respuesta, podés tocar abajo en "No sé más (Finalizar aquí)".');
+      qOptionsBox.classList.add('shake-highlight');
+      setTimeout(() => qOptionsBox.classList.remove('shake-highlight'), 600);
+      return;
     }
 
     if (currentQuestionIndex < questionBank.length - 1) {
