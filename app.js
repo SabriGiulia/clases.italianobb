@@ -850,5 +850,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Community & Events Form Handler
+  const communityForm = document.getElementById('community-form');
+  const communitySuccessMsg = document.getElementById('community-success-msg');
+
+  if (communityForm) {
+    communityForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const name = document.getElementById('com-name')?.value.trim() || '';
+      const contact = document.getElementById('com-contact')?.value.trim() || '';
+      const idea = document.getElementById('com-idea')?.value.trim() || '';
+
+      if (!name || !contact) {
+        alert('Por favor, completá tu nombre y dato de contacto.');
+        return;
+      }
+
+      // Construct formatted WhatsApp message
+      let msg = `¡Ciao! Me sumo a la Comunidad Italiana de @clases.italianobb para enterarme y participar de futuros eventos y encuentros 🇮🇹✨\n\n👤 *Nombre:* ${name}\n📱 *Contacto:* ${contact}`;
+      if (idea) {
+        msg += `\n💡 *Mis ideas/propuestas:* ${idea}`;
+      } else {
+        msg += `\n💡 *Novedades:* ¡Quiero recibir información de futuros talleres y encuentros!`;
+      }
+
+      const waUrl = `https://wa.me/5492914485405?text=${encodeURIComponent(msg)}`;
+
+      // Show success message
+      if (communitySuccessMsg) {
+        communitySuccessMsg.style.display = 'flex';
+        communitySuccessMsg.classList.remove('hidden');
+      }
+
+      // Open WhatsApp in new tab
+      window.open(waUrl, '_blank');
+
+      // Reset form
+      communityForm.reset();
+    });
+  }
+
   loadStoredReviews();
 });
