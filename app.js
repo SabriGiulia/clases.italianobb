@@ -739,7 +739,19 @@ document.addEventListener('DOMContentLoaded', () => {
   function loadStoredReviews() {
     try {
       const stored = JSON.parse(localStorage.getItem('clases_italiano_reviews') || '[]');
-      stored.forEach(rev => appendReviewCard(rev, false));
+      if (stored.length === 0) {
+        if (reviewsContainer) {
+          reviewsContainer.innerHTML = `
+            <div class="empty-reviews-box">
+              <i class="fa-regular fa-star"></i>
+              <p>Todavía no hay opiniones registradas. <strong>¡Sé el primero en compartir tu experiencia de aprendizaje!</strong></p>
+            </div>
+          `;
+        }
+      } else {
+        if (reviewsContainer) reviewsContainer.innerHTML = '';
+        stored.forEach(rev => appendReviewCard(rev, false));
+      }
     } catch (e) {
       console.warn('Error loading reviews from storage', e);
     }
@@ -747,6 +759,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function appendReviewCard(data, prepend = true) {
     if (!reviewsContainer) return;
+
+    // Remove empty reviews box if present
+    const emptyBox = reviewsContainer.querySelector('.empty-reviews-box');
+    if (emptyBox) {
+      reviewsContainer.removeChild(emptyBox);
+    }
+
     const card = document.createElement('div');
     card.className = 'review-card';
 

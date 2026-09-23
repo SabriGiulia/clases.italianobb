@@ -938,6 +938,34 @@ body {
   margin-bottom: 45px;
 }
 
+.empty-reviews-box {
+  grid-column: 1 / -1;
+  text-align: center;
+  background: var(--bg-surface);
+  border: 1.5px dashed var(--border-color);
+  padding: 36px 20px;
+  border-radius: var(--border-radius-md);
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.empty-reviews-box i {
+  font-size: 2rem;
+  color: var(--accent-gold);
+}
+
+.empty-reviews-box p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.empty-reviews-box strong {
+  color: var(--secondary);
+}
+
 .review-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
