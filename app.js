@@ -3,7 +3,16 @@
 // @clases.italianobb
 // ==========================================================
 
+// Ensure page always starts at the top
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+
   // 1. FAQ Accordions
   const accordionItems = document.querySelectorAll('.accordion-item');
   accordionItems.forEach(item => {
