@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horarios y Disponibilidad | @clases.italianobb</title>
+  <meta name="description" content="Consulta los días y horarios disponibles para tus clases de italiano online y reserva tu lugar por WhatsApp con @clases.italianobb.">
+  
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .calendar-page-container {
+      padding: 50px 0 80px 0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .back-home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--secondary);
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+    .back-home-link:hover {
+      color: var(--primary);
+    }
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .day-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--border-radius-md);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .day-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .day-card.unavailable {
+      background: #f8fafc;
+      opacity: 0.75;
+      border-style: dashed;
+    }
+    .day-card.saturday-card {
+      border: 2px solid #eab308;
+      background: #fefce8;
+    }
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .day-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .day-status {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--border-radius-pill);
+      background: #e2e8f0;
+      color: #475569;
+    }
+    .day-status.status-open {
+      background: rgba(37, 211, 102, 0.15);
+      color: #15803d;
+    }
+    .day-status.status-sat {
+      background: #fef08a;
+      color: #854d0e;
+    }
+    .time-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .time-badge {
+      background: var(--bg-main);
+      border: 1.5px solid var(--border-color);
+      color: var(--text-dark);
+      padding: 6px 14px;
+      border-radius: var(--border-radius-pill);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .time-badge:hover, .time-badge.selected {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+    .time-badge.sat-badge:hover, .time-badge.sat-badge.selected {
+      background: #ca8a04;
+      border-color: #ca8a04;
+    }
+    .sat-notice {
+      font-size: 0.82rem;
+      color: #854d0e;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .booking-interactive-box {
+      background: #ffffff;
+      border: 2px solid var(--primary);
+      border-radius: var(--border-radius-lg);
+      padding: 32px 28px;
+      margin-top: 40px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+    .booking-summary-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin: 14px 0 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" style="text-decoration:none;">
+        <div class="logo-circle-wrapper">
+          <img src="logo.jpg" alt="Logo Clases.ItalianoBB" class="header-logo-img">
+        </div>
+        <span class="logo-text">@clases.italianobb</span>
+      </a>
+      <a href="index.html" class="nav-cta-btn">
+        <i class="fa-solid fa-arrow-left"></i> Volver a la Web
+      </a>
+    </div>
+  </header>
+
+  <main class="container calendar-page-container">
+    <a href="index.html" class="back-home-link">
+      <i class="fa-solid fa-arrow-left"></i> Volver a la página principal
+    </a>
+
+    <div class="section-header" style="margin-bottom: 20px;">
+      <span class="subheading">Agenda de Clases</span>
+      <h1 class="section-title">Horarios & Disponibilidad 🇮🇹</h1>
+      <p class="section-desc">
+        Seleccioná tu día y horario preferido para coordinar tu clase particular o grupal por WhatsApp.
+      </p>
+    </div>
+
+    <!-- Schedule Grid -->
+    <div class="schedule-grid">
+      <!-- Lunes -->
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-name"><i class="fa-regular fa-calendar-check" style="color:var(--secondary);"></i> Lunes</span>
+          <span class="day-status status-open">Disponible</span>
+        </div>
+        <div class="time-slots">
+          <span class="time-badge" data-day="Lunes" data-time="09:00 hs"><i class="fa-regular fa-clock"></i> 09:00 hs</span>
+          <span class="time-badge" data-day="Lunes" data-time="10:00 hs"><i class="fa-regular fa-clock"></i> 10:00 hs</span>
+          <span class="time-badge" data-day="Lunes" data-time="11:00 hs"><i class="fa-regular fa-clock"></i> 11:00 hs</span>
+        </div>
+      </div>
+
+      <!-- Martes -->
+      <div class="day-card unavailable">
+        <div class="day-header">
+          <span class="day-name"><i class="fa-regular fa-calendar-xmark"></i> Martes</span>
+          <span class="day-status">Sin disponibilidad</span>
+        </div>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">
+          Día completo de clases y planificación.
+        </p>
+      </div>
+
+      <!-- Miércoles -->
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-name"><i class="fa-regular fa-calendar-check" style="color:var(--secondary);"></i> Miércoles</span>
+          <span class="day-status status-open">Disponible</span>
+        </div>
+        <div class="time-slots">
+          <span class="time-badge" data-day="Miércoles" data-time="11:00 hs"><i class="fa-regular fa-clock"></i> 11:00 hs</span>
+          <span class="time-badge" data-day="Miércoles" data-time="12:00 hs"><i class="fa-regular fa-clock"></i> 12:00 hs</span>
+        </div>
+      </div>
+
+      <!-- Jueves -->
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-name"><i class="fa-regular fa-calendar-check" style="color:var(--secondary);"></i> Jueves</span>
+          <span class="day-status status-open">Mañana y Tarde</span>
+        </div>
+        <div class="time-slots">
+          <span class="time-badge" data-day="Jueves" data-time="09:00 hs"><i class="fa-regular fa-clock"></i> 09:00 hs</span>
+          <span class="time-badge" data-day="Jueves" data-time="11:00 hs"><i class="fa-regular fa-clock"></i> 11:00 hs</span>
+          <span class="time-badge" data-day="Jueves" data-time="12:00 hs"><i class="fa-regular fa-clock"></i> 12:00 hs</span>
+          <span class="time-badge" data-day="Jueves" data-time="15:00 hs"><i class="fa-regular fa-clock"></i> 15:00 hs</span>
+        </div>
+      </div>
+
+      <!-- Viernes -->
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-name"><i class="fa-regular fa-calendar-check" style="color:var(--secondary);"></i> Viernes</span>
+          <span class="day-status status-open">Disponible</span>
+        </div>
+        <div class="time-slots">
+          <span class="time-badge" data-day="Viernes" data-time="10:00 hs"><i class="fa-regular fa-clock"></i> 10:00 hs</span>
+          <span class="time-badge" data-day="Viernes" data-time="12:00 hs"><i class="fa-regular fa-clock"></i> 12:00 hs</span>
+          <span class="time-badge" data-day="Viernes" data-time="14:00 hs"><i class="fa-regular fa-clock"></i> 14:00 hs</span>
+        </div>
+      </div>
+
+      <!-- Sábados (Destacado Amarillo) -->
+      <div class="day-card saturday-card">
+        <div class="day-header">
+          <span class="day-name"><i class="fa-solid fa-star" style="color:#ca8a04;"></i> Sábados</span>
+          <span class="day-status status-sat">Fin de Semana</span>
+        </div>
+        <div class="time-slots">
+          <span class="time-badge sat-badge" data-day="Sábado" data-time="14:00 hs"><i class="fa-regular fa-clock"></i> 14:00 hs</span>
+          <span class="time-badge sat-badge" data-day="Sábado" data-time="15:30 hs"><i class="fa-regular fa-clock"></i> 15:30 hs</span>
+        </div>
+        <div class="sat-notice">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Horario especial de fin de semana (tarifa diferenciada).</span>
+        </div>
+      </div>
+
+      <!-- Domingos -->
+      <div class="day-card unavailable">
+        <div class="day-header">
+          <span class="day-name"><i class="fa-regular fa-calendar-xmark"></i> Domingos</span>
+          <span class="day-status">Cerrado</span>
+        </div>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">
+          Descanso semanal.
+        </p>
+      </div>
+    </div>
+
+    <!-- Interactive Selection & WhatsApp Booking Box -->
+    <div class="booking-interactive-box" id="booking-box">
+      <h3 style="font-size:1.5rem; color:var(--text-dark);">Reservar o Consultar Horario</h3>
+      <p style="color:var(--text-muted);">Tocá un horario en los días de arriba para generar tu mensaje directo.</p>
+      
+      <div class="booking-summary-text" id="booking-summary">
+        👉 Horario seleccionado: Ninguno (Seleccioná uno arriba)
+      </div>
+
+      <div style="max-width:420px; margin:0 auto 20px auto; text-align:left;">
+        <label for="book-name" style="font-size:0.9rem; font-weight:600; display:block; margin-bottom:6px;">Tu Nombre:</label>
+        <input type="text" id="book-name" placeholder="Ej: Martina Gómez" style="width:100%; padding:12px 16px; border-radius:50px; border:1.5px solid var(--border-color); outline:none; font-family:inherit;">
+      </div>
+
+      <a id="whatsapp-book-btn" href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Quisiera%20consultar%20por%20los%20horarios%20disponibles%20de%20clases%20de%20italiano%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-whatsapp-large btn-glow">
+        <i class="fa-brands fa-whatsapp"></i> Enviar Consulta por WhatsApp (+54 9 2914 48-5405)
+      </a>
+    </div>
+  </main>
+
+  <footer class="footer" style="margin-top:40px;">
+    <div class="container footer-content" style="text-align:center;">
+      <p>© 2026 @clases.italianobb • Clases de Italiano Online</p>
+    </div>
+  </footer>
+
+  <script>
+    const timeBadges = document.querySelectorAll('.time-badge');
+    const bookingSummary = document.getElementById('booking-summary');
+    const bookName = document.getElementById('book-name');
+    const whatsappBookBtn = document.getElementById('whatsapp-book-btn');
+
+    let selectedDay = '';
+    let selectedTime = '';
+    const phone = '5492914485405';
+
+    function updateWhatsappLink() {
+      const name = bookName.value.trim() || 'un futuro alumno/a';
+      let message = '';
+      if (selectedDay && selectedTime) {
+        message = `¡Ciao! Soy ${name} y vi en la web que tenés disponibilidad los días *${selectedDay} a las ${selectedTime}*. Quisiera reservar ese horario para mis clases de italiano 🇮🇹`;
+      } else {
+        message = `¡Ciao! Soy ${name} y quisiera consultar por los horarios disponibles para comenzar clases de italiano 🇮🇹`;
+      }
+      whatsappBookBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    }
+
+    timeBadges.forEach(badge => {
+      badge.addEventListener('click', () => {
+        timeBadges.forEach(b => b.classList.remove('selected'));
+        badge.classList.add('selected');
+
+        selectedDay = badge.getAttribute('data-day');
+        selectedTime = badge.getAttribute('data-time');
+
+        bookingSummary.innerHTML = `✅ Horario elegido: <strong style="color:var(--primary);">${selectedDay} a las ${selectedTime}</strong>`;
+        updateWhatsappLink();
+      });
+    });
+
+    bookName.addEventListener('input', updateWhatsappLink);
+  </script>
+</body>
+</html>
