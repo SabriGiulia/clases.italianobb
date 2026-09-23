@@ -1,145 +1,686 @@
 // ==========================================================
-// Interactive Logic: Test di Autovalutazione A1.1 (Nuovo Espresso 1)
+// Interactive Diagnostic & Placement Test Engine
+// @clases.italianobb
 // ==========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. FAQ Accordion Logic
+  // 1. FAQ Accordions
   const accordionItems = document.querySelectorAll('.accordion-item');
-  
   accordionItems.forEach(item => {
     const header = item.querySelector('.accordion-header');
     header.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
       accordionItems.forEach(i => i.classList.remove('active'));
-      if (!isActive) {
-        item.classList.add('active');
-      }
+      if (!isActive) item.classList.add('active');
     });
   });
+  if (accordionItems.length > 0) accordionItems[0].classList.add('active');
 
-  if (accordionItems.length > 0) {
-    accordionItems[0].classList.add('active');
-  }
+  // 2. Comprehensive Question Database (46 Progressive Questions)
+  const questionBank = [
+    // --- STAGE 1: Principiante Inicial ---
+    {
+      id: 1,
+      stage: 'Nivel Inicial A1',
+      context: 'Completa la frase:',
+      question: '1. Voi ______ di Milano?',
+      options: ['a. siete', 'b. siamo', 'c. sono'],
+      correct: 0
+    },
+    {
+      id: 2,
+      stage: 'Nivel Inicial A1',
+      context: 'Completa la frase:',
+      question: '2. Lei ______ la segretaria?',
+      options: ['a. faccio', 'b. fai', 'c. fa'],
+      correct: 2
+    },
+    {
+      id: 3,
+      stage: 'Nivel Inicial A1',
+      context: 'Completa la frase:',
+      question: '3. Arianna ______ in un ufficio.',
+      options: ['a. lavora', 'b. lavoro', 'c. lavori'],
+      correct: 0
+    },
+    {
+      id: 4,
+      stage: 'Nivel Inicial A1',
+      context: 'Completa la frase:',
+      question: '4. Tu quanti anni ______ ?',
+      options: ['a. hai', 'b. ho', 'c. abbiamo'],
+      correct: 0
+    },
+    {
+      id: 5,
+      stage: 'Nivel Inicial A1',
+      context: 'Artículos (un / uno / un’ / una):',
+      question: '5. Vorrei ___ aperitivo, ___ toast e poi ___ aranciata.',
+      options: [
+        'a. uno / un’ / una',
+        'b. un / un / un’',
+        'c. un / un / un’ (toast maschile, aranciata femminile)'
+      ],
+      correct: 1
+    },
+    {
+      id: 6,
+      stage: 'Nivel Inicial A1',
+      context: 'Artículos definidos (i / gli / le):',
+      question: '6. Preferisci ___ (1) tortellini o ___ (2) lasagne? ___ (3) spaghetti o ___ (4) tagliatelle?',
+      options: [
+        'a. i tortellini / le lasagne / gli spaghetti / le tagliatelle',
+        'b. gli tortellini / i lasagne / i spaghetti / le tagliatelle',
+        'c. le tortellini / le lasagne / gli spaghetti / gli tagliatelle'
+      ],
+      correct: 0
+    },
+    {
+      id: 7,
+      stage: 'Nivel Inicial A1',
+      context: 'Verbos en presente (fare / andare / stare):',
+      question: '7. «Voi cosa ___ nel tempo libero?» — «Di solito ___ sport, ___ in palestra. Io invece ___ a casa.»',
+      options: [
+        'a. fate / facciamo / andiamo / sto',
+        'b. fanno / fate / andate / sta',
+        'c. fare / fanno / vanno / fai'
+      ],
+      correct: 0
+    },
+    {
+      id: 8,
+      stage: 'Nivel Inicial A1',
+      context: 'Preposiciones (in / con / al / di):',
+      question: '8. «___ febbraio affitto appartamento situato ___ zona centrale, ___ ogni comfort e vicino ___ mare.»',
+      options: [
+        'a. Nel / a / su / di',
+        'b. In / in / con / al',
+        'c. Di / nel / di / da'
+      ],
+      correct: 1
+    },
 
-  // 2. Self-Evaluation Test Logic
-  const checkboxes = document.querySelectorAll('.test-check');
-  const liveScoreCount = document.getElementById('live-score-count');
-  const calculateBtn = document.getElementById('calculate-results-btn');
-  const calculateTopBtn = document.getElementById('calculate-results-top-btn');
-  const resultBox = document.getElementById('test-result-box');
-  const retestBtn = document.getElementById('retest-btn');
+    // --- STAGE 2: Elemental A1.2 / A2 ---
+    {
+      id: 9,
+      stage: 'Nivel Elemental A1.2',
+      context: 'Partículas y adjetivos (ci / dei / ci sono / belle):',
+      question: '9. «La signora Vanzetta conosce bene Bologna e ___ (1) va spesso. In questa città ___ (2) tante cose da vedere: delle ___ (3) chiese e ___ (4) musei.»',
+      options: [
+        'a. ci / ci sono / belle / dei',
+        'b. in città / c’è / bello / i',
+        'c. Bologna / può vedere / bella / degli'
+      ],
+      correct: 0
+    },
+    {
+      id: 10,
+      stage: 'Nivel Elemental A1.2',
+      context: 'Direcciones en la ciudad:',
+      question: '10. «C’è una libreria qui vicino?» — «Sì, Lei adesso ___ (1) dall’albergo, poi gira ___ (2) e lì, ___ (3) il supermercato e la banca, c’è la libreria.»',
+      options: [
+        'a. gira / avanti / davanti',
+        'b. va / dritto / all’angolo',
+        'c. esce / a destra / fra'
+      ],
+      correct: 2
+    },
+    {
+      id: 11,
+      stage: 'Nivel Elemental A1.2',
+      context: 'Pedir información con cortesía:',
+      question: '11. «Scusi, sa ___ l’hotel Lux?» — «No, ___, non sono di qui.»',
+      options: [
+        'a. se c’è / allora',
+        'b. dov’è / mi dispiace',
+        'c. c’è / si figuri'
+      ],
+      correct: 1
+    },
+    {
+      id: 12,
+      stage: 'Nivel Elemental A2.1',
+      context: 'Passato Prossimo (essere vs avere):',
+      question: '12. «Ieri Carlo e Anna ___ (1) in un museo e poi ___ (2) in un ristorante. La sera Anna ___ (3) al cinema.»',
+      options: [
+        'a. hanno stato / hanno pranzato / sono andati',
+        'b. sono stati / hanno pranzato / è andata',
+        'c. sono state / ho pranzato / è andato'
+      ],
+      correct: 1
+    },
+    {
+      id: 13,
+      stage: 'Nivel Elemental A2.1',
+      context: 'Pronombres directos y partícula "ne":',
+      question: '13. «Prende due etti di mortadella, ma ___ (1) vuole affettata sottile. Vuole del formaggio e ___ (2) prende tre etti. Compra delle olive e ___ (3) vuole nere.»',
+      options: [
+        'a. la / ne / le',
+        'b. lo / lo / la',
+        'c. ne / li / ne'
+      ],
+      correct: 0
+    },
+    {
+      id: 14,
+      stage: 'Nivel Elemental A2.1',
+      context: '¿Cuál es la respuesta correcta?:',
+      question: '14. «Ti alzi presto la mattina?»',
+      options: [
+        'a. Sì, verso le sei.',
+        'b. Sì, dopo pranzo.',
+        'c. Dalle otto alle dieci.'
+      ],
+      correct: 0
+    },
+    {
+      id: 15,
+      stage: 'Nivel Elemental A2.1',
+      context: 'Verbos reflexivos en pasado:',
+      question: '15. «Silvia ___ (1) in fisica e noi ___ (2) in questa città da poco.»',
+      options: [
+        'a. si è laureata / ci siamo trasferiti',
+        'b. è laureato / abbiamo trasferito',
+        'c. ti sei laureata / sono trasferiti'
+      ],
+      correct: 0
+    },
+    {
+      id: 16,
+      stage: 'Nivel Elemental A2.1',
+      context: 'Posesivos con familia (mio / la mia / i miei):',
+      question: '16. «___ (1) sorella è più grande e ___ (2) fratelli sono più piccoli. ___ (3), invece, vivono vicino.»',
+      options: [
+        'a. Mia / i miei / I miei (genitori)',
+        'b. La mia / miei / Miei',
+        'c. Mio / mio / Genitori'
+      ],
+      correct: 0
+    },
 
-  // Result Elements
-  const resBadgeIcon = document.getElementById('res-badge-icon');
-  const resHeadline = document.getElementById('res-headline');
-  const resScoreTag = document.getElementById('res-score-tag');
-  const resLevelTitle = document.getElementById('res-level-title');
-  const resLevelDesc = document.getElementById('res-level-desc');
-  const scoreAscolto = document.getElementById('score-ascolto');
-  const scoreLettura = document.getElementById('score-lettura');
-  const scoreInterazione = document.getElementById('score-interazione');
-  const scoreProduzione = document.getElementById('score-produzione');
-  const scoreScritta = document.getElementById('score-scritta');
-  const testWhatsappCta = document.getElementById('test-whatsapp-cta');
+    // --- STAGE 3: Pre-Intermedio A2.2 ---
+    {
+      id: 17,
+      stage: 'Nivel Pre-Intermedio A2.2',
+      context: 'Compras y ropa:',
+      question: '17. «Che taglia porta?»',
+      options: [
+        'a. La 52.',
+        'b. Un capo classico.',
+        'c. Un paio di pantaloni.'
+      ],
+      correct: 0
+    },
+    {
+      id: 18,
+      stage: 'Nivel Pre-Intermedio A2.2',
+      context: 'Pronombres indirectos y combinados:',
+      question: '18. «Vede dei mocassini che ___ (1) piacciono molto. La moglie vede delle scarpe ___ (2) care che ___ (3) sembrano comode. Il marito ___ (4) prova e le compra.»',
+      options: [
+        'a. li / più / gli / lo',
+        'b. le / troppo / ci / ne',
+        'c. gli / meno / le / le'
+      ],
+      correct: 2
+    },
+    {
+      id: 19,
+      stage: 'Nivel Pre-Intermedio A2.2',
+      context: 'Imperfetto vs Passato Prossimo:',
+      question: '19. «Quando io ___ (1) piccolo, ___ (2) in campagna. Normalmente noi ___ (3) le vacanze al mare, ma una volta ___ (4) in montagna.»',
+      options: [
+        'a. sono stato / sono andato / passavamo / andavamo',
+        'b. ero / vivevo / passavamo / siamo andati',
+        'c. avevo / sono vissuto / abbiamo passato / andavano'
+      ],
+      correct: 1
+    },
+    {
+      id: 20,
+      stage: 'Nivel Pre-Intermedio A2.2',
+      context: 'Comparativos de igualdad:',
+      question: '20. «Marco è alto ______ Carlo.»',
+      options: ['a. quanto (o come)', 'b. come', 'c. meno'],
+      correct: 1
+    },
+    {
+      id: 21,
+      stage: 'Nivel Pre-Intermedio A2.2',
+      context: 'Acuerdo en passato prossimo:',
+      question: '21. «Le vacanze ______ .»',
+      options: ['a. sono finite', 'b. hanno finito', 'c. l’ho finita'],
+      correct: 0
+    },
+    {
+      id: 22,
+      stage: 'Nivel Pre-Intermedio A2.2',
+      context: 'Pronombres relativos con preposición:',
+      question: '22. «È una città ______ siamo già stati.»',
+      options: ['a. in cui', 'b. che', 'c. ci'],
+      correct: 0
+    },
+    {
+      id: 23,
+      stage: 'Nivel Pre-Intermedio A2.2',
+      context: 'Conoscere vs Sapere al passato:',
+      question: '23. «Scusa il ritardo, ma non ______ la strada.»',
+      options: ['a. ho conosciuto', 'b. conoscevo', 'c. ho saputo'],
+      correct: 1
+    },
+    {
+      id: 24,
+      stage: 'Nivel Pre-Intermedio A2.2',
+      context: 'Verbos impersonales de tiempo:',
+      question: '24. «Per arrivare a Firenze ______ tre ore.»',
+      options: ['a. ci vogliono', 'b. ci vuole', 'c. si vuole'],
+      correct: 0
+    },
 
-  // Category totals
-  const totalItems = checkboxes.length; // 30
+    // --- STAGE 4: Intermedio B1.1 ---
+    {
+      id: 25,
+      stage: 'Nivel Intermedio B1.1',
+      context: 'Imperativo con pronombres:',
+      question: '25. «Lo chiamo o gli scrivo?»',
+      options: [
+        'a. Scrivigli una mail!',
+        'b. Gli scrivi!',
+        'c. Chiamala!'
+      ],
+      correct: 0
+    },
+    {
+      id: 26,
+      stage: 'Nivel Intermedio B1.1',
+      context: 'Meglio vs Migliore:',
+      question: '26. «La cosa ______ è andare in vacanza.»',
+      options: ['a. meglio', 'b. migliore', 'c. ottimo'],
+      correct: 1
+    },
+    {
+      id: 27,
+      stage: 'Nivel Intermedio B1.1',
+      context: 'Imperativo formal (forma di cortesia Lei):',
+      question: '27. «Se va al mare, ______ (1) le ore calde e ______ (2) un cappello!»',
+      options: [
+        'a. evita / metti (informale)',
+        'b. eviti / metta (formale)',
+        'c. evito / mette'
+      ],
+      correct: 1
+    },
+    {
+      id: 28,
+      stage: 'Nivel Intermedio B1.1',
+      context: 'Acción continua en pasado:',
+      question: '28. «È entrata mentre ______ il giornale.»',
+      options: ['a. leggevo', 'b. ho letto', 'c. leggendo'],
+      correct: 0
+    },
+    {
+      id: 29,
+      stage: 'Nivel Intermedio B1.1',
+      context: 'Preposiciones temporales:',
+      question: '29. «L’ho conosciuto ______ un viaggio.»',
+      options: ['a. mentre', 'b. durante', 'c. nel'],
+      correct: 1
+    },
+    {
+      id: 30,
+      stage: 'Nivel Intermedio B1.1',
+      context: 'Verbo stare per + infinito pronominale:',
+      question: '30. «Quando sei arrivato, stavo proprio per ______ .»',
+      options: ['a. andandomene', 'b. vada', 'c. andarmene'],
+      correct: 2
+    },
+    {
+      id: 31,
+      stage: 'Nivel Intermedio B1.1',
+      context: 'Congiuntivo presente e opinione:',
+      question: '31. «Penso che oggi non ___ facile trovare lavoro. Bisogna essere flessibili e ci ___ anche fortuna.»',
+      options: [
+        'a. sia / vuole',
+        'b. è / ci vuole',
+        'c. sia / ci vuole'
+      ],
+      correct: 2
+    },
+    {
+      id: 32,
+      stage: 'Nivel Intermedio B1.1',
+      context: 'Uso del congiuntivo vs indicativo:',
+      question: '32. «Secondo me non ___ (1) una buona idea. Lei invece pensa che ___ (2) un’ottima cosa.»',
+      options: [
+        'a. sia / è',
+        'b. è / sia',
+        'c. sia / sia'
+      ],
+      correct: 1
+    },
 
-  // Update live score counter
-  function updateLiveScore() {
-    let checkedCount = 0;
-    checkboxes.forEach(cb => {
-      if (cb.checked) checkedCount++;
-    });
-    liveScoreCount.textContent = `${checkedCount} / ${totalItems}`;
-  }
+    // --- STAGE 5: Intermedio Alto B1.2 / B2 ---
+    {
+      id: 33,
+      stage: 'Nivel Intermedio Alto B1.2',
+      context: 'Trapassato Prossimo:',
+      question: '33. «Non ha voluto niente perché ______ già mangiato prima.»',
+      options: ['a. aveva', 'b. ha', 'c. avendo'],
+      correct: 0
+    },
+    {
+      id: 34,
+      stage: 'Nivel Intermedio Alto B1.2',
+      context: 'Pronome combinato con parlare (parlare di qualcosa):',
+      question: '34. «Non gli hai detto niente?» — «Ma certo che ______ ho parlato.»',
+      options: ['a. glielo', 'b. gliene', 'c. le'],
+      correct: 1
+    },
+    {
+      id: 35,
+      stage: 'Nivel Intermedio Alto B1.2',
+      context: 'Condizionale Passato:',
+      question: '35. «Al suo posto ______ più gentile.»',
+      options: ['a. sarò stata', 'b. ero', 'c. sarei stata'],
+      correct: 2
+    },
+    {
+      id: 36,
+      stage: 'Nivel Intermedio Alto B1.2',
+      context: 'Pronombre posesivo sin sustantivo:',
+      question: '36. «Prestami la tua bicicletta. ______ si è rotta.»',
+      options: ['a. È mia', 'b. La mia', 'c. Mia'],
+      correct: 1
+    },
+    {
+      id: 37,
+      stage: 'Nivel Intermedio Alto B1.2',
+      context: 'Congiuntivo passato:',
+      question: '37. «Non credo che stiano ancora insieme; penso che ______ qualche tempo fa.»',
+      options: ['a. si lascino', 'b. si siano lasciati', 'c. si lascerebbero'],
+      correct: 1
+    },
+    {
+      id: 38,
+      stage: 'Nivel Intermedio Alto B1.2',
+      context: 'Discorso indiretto:',
+      question: '38. «Gianni chiede a Luca se vuole ___ (1) a cena da ___ (2). Luca risponde che ___ (3) dispiace.»',
+      options: [
+        'a. venire / te / mi',
+        'b. andare / lui / gli',
+        'c. volere / me / lo'
+      ],
+      correct: 1
+    },
+    {
+      id: 39,
+      stage: 'Nivel Intermedio Alto B1.2',
+      context: 'Congiuntivo imperfetto dopo "Avevo paura che":',
+      question: '39. «Il treno stava per partire! Avevo paura che tu non ______ in tempo!»',
+      options: ['a. arrivassi', 'b. fossi arrivata', 'c. arrivi'],
+      correct: 0
+    },
+    {
+      id: 40,
+      stage: 'Nivel Intermedio Alto B1.2',
+      context: 'Congiuntivo con superlativo relativo:',
+      question: '40. «Venezia è una delle più belle città che io ______ mai visto.»',
+      options: ['a. ho', 'b. vedessi', 'c. abbia'],
+      correct: 2
+    },
 
-  checkboxes.forEach(cb => {
-    cb.addEventListener('change', updateLiveScore);
+    // --- STAGE 6: Avanzado B2 ---
+    {
+      id: 41,
+      stage: 'Nivel Avanzado B2',
+      context: 'Uso del gerundio "andando":',
+      question: '41. In quale frase si può sostituire la parte sottolineata con "andando"?',
+      options: [
+        'a. Mentre andava a casa, Ada ha incontrato il figlio.',
+        'b. Dopo esser andata a casa, ha incontrato Ada.',
+        'c. Prima di andare a casa, ha incontrato Ada.'
+      ],
+      correct: 0
+    },
+    {
+      id: 42,
+      stage: 'Nivel Avanzado B2',
+      context: 'Periodo ipotetico dell’irrealtà:',
+      question: '42. «Se in passato avessi lavorato di più, ______ .»',
+      options: [
+        'a. oggi avrei meno problemi (misto)',
+        'b. vengo a trovarti',
+        'c. te lo presterei'
+      ],
+      correct: 0
+    },
+    {
+      id: 43,
+      stage: 'Nivel Avanzado B2',
+      context: 'Formas impersonales con congiuntivo:',
+      question: '43. «Dicono che Leonardo da Vinci ___ (1) figlio di un notaio e che ___ (2) la Gioconda al re di Francia.»',
+      options: [
+        'a. sia / venda',
+        'b. fosse / abbia venduto',
+        'c. fu / vendesse'
+      ],
+      correct: 1
+    },
+    {
+      id: 44,
+      stage: 'Nivel Avanzado B2',
+      context: 'Discorso indiretto al passato:',
+      question: '44. «"Dovrei uscire alle 7" -> Lui disse che ______ alle 7.»',
+      options: [
+        'a. dovrebbe uscire',
+        'b. dovesse uscire',
+        'c. sarebbe dovuto uscire'
+      ],
+      correct: 2
+    },
+    {
+      id: 45,
+      stage: 'Nivel Avanzado B2',
+      context: 'Discorso indiretto dell’imperativo:',
+      question: '45. «"Esci subito dalla classe!" -> Lui disse che ______ subito dalla classe.»',
+      options: [
+        'a. esca',
+        'b. uscisse',
+        'c. usciva'
+      ],
+      correct: 1
+    },
+    {
+      id: 46,
+      stage: 'Nivel Avanzado B2',
+      context: 'Discorso indiretto con periodo ipotetico:',
+      question: '46. «"Se avessi mangiato sarei ingrassato" -> Lui disse che ______ .»',
+      options: [
+        'a. se avesse mangiato sarebbe ingrassato',
+        'b. se mangiasse ingrasserebbe',
+        'c. se avesse mangiato ingrasserebbe'
+      ],
+      correct: 0
+    }
+  ];
+
+  // DOM Elements
+  const screenWelcome = document.getElementById('screen-welcome');
+  const screenQuiz = document.getElementById('screen-quiz');
+  const screenResults = document.getElementById('screen-results');
+
+  const studentNameInput = document.getElementById('student-name');
+  const btnStartTest = document.getElementById('btn-start-test');
+
+  const stageBadge = document.getElementById('stage-badge');
+  const currentStepText = document.getElementById('current-step-text');
+  const stepperProgress = document.getElementById('stepper-progress');
+  const qContextText = document.getElementById('q-context-text');
+  const qTitleText = document.getElementById('q-title-text');
+  const qOptionsBox = document.getElementById('q-options-box');
+
+  const btnPrevQ = document.getElementById('btn-prev-q');
+  const btnNextQ = document.getElementById('btn-next-q');
+  const btnStopEarly = document.getElementById('btn-stop-early');
+
+  const resLevelIcon = document.getElementById('res-level-icon');
+  const resGreeting = document.getElementById('res-greeting');
+  const resScoreNumber = document.getElementById('res-score-number');
+  const resLevelName = document.getElementById('res-level-name');
+  const resLevelDescription = document.getElementById('res-level-description');
+  const btnSendWhatsappFinal = document.getElementById('btn-send-whatsapp-final');
+  const btnRestartAll = document.getElementById('btn-restart-all');
+
+  // Test State
+  let currentQuestionIndex = 0;
+  let userAnswers = {}; // { questionIndex: selectedOptionIndex }
+  let studentName = '';
+
+  // Start Test
+  btnStartTest.addEventListener('click', () => {
+    const nameVal = studentNameInput.value.trim();
+    if (!nameVal) {
+      alert('Por favor, ingresa tu nombre y apellido para comenzar el diagnóstico.');
+      studentNameInput.focus();
+      return;
+    }
+    studentName = nameVal;
+    screenWelcome.classList.add('hidden');
+    screenQuiz.classList.remove('hidden');
+    currentQuestionIndex = 0;
+    userAnswers = {};
+    renderQuestion(0);
   });
 
-  // Calculate and display official results
-  function calculateResults() {
-    let total = 0;
-    let scores = {
-      ascolto: 0,
-      lettura: 0,
-      interazione: 0,
-      produzione: 0,
-      scritta: 0
-    };
+  // Render Question
+  function renderQuestion(index) {
+    const q = questionBank[index];
+    stageBadge.textContent = q.stage;
+    currentStepText.textContent = `Pregunta ${index + 1} de ${questionBank.length}`;
+    
+    const percent = Math.round(((index + 1) / questionBank.length) * 100);
+    stepperProgress.style.width = `${percent}%`;
 
-    checkboxes.forEach(cb => {
-      if (cb.checked) {
-        total++;
-        const cat = cb.getAttribute('data-cat');
-        if (scores[cat] !== undefined) {
-          scores[cat]++;
-        }
+    qContextText.textContent = q.context;
+    qTitleText.textContent = q.question;
+
+    qOptionsBox.innerHTML = '';
+    q.options.forEach((opt, optIndex) => {
+      const btn = document.createElement('button');
+      btn.className = 'q-opt-btn';
+      if (userAnswers[index] === optIndex) {
+        btn.classList.add('selected');
+        btn.innerHTML = `<i class="fa-solid fa-circle-dot"></i> <span>${opt}</span>`;
+      } else {
+        btn.innerHTML = `<i class="fa-regular fa-circle"></i> <span>${opt}</span>`;
+      }
+
+      btn.addEventListener('click', () => {
+        userAnswers[index] = optIndex;
+        renderQuestion(index);
+      });
+      qOptionsBox.appendChild(btn);
+    });
+
+    btnPrevQ.disabled = index === 0;
+    btnNextQ.textContent = index === questionBank.length - 1 ? 'Finalizar Test' : 'Siguiente';
+  }
+
+  // Navigation Buttons
+  btnPrevQ.addEventListener('click', () => {
+    if (currentQuestionIndex > 0) {
+      currentQuestionIndex--;
+      renderQuestion(currentQuestionIndex);
+    }
+  });
+
+  btnNextQ.addEventListener('click', () => {
+    if (userAnswers[currentQuestionIndex] === undefined) {
+      if (!confirm('No has seleccionado una opción para esta pregunta. ¿Deseas continuar igualmente o detener el test si no estás seguro?')) {
+        return;
+      }
+    }
+
+    if (currentQuestionIndex < questionBank.length - 1) {
+      currentQuestionIndex++;
+      renderQuestion(currentQuestionIndex);
+    } else {
+      finishAndShowResults();
+    }
+  });
+
+  // Stop Early Button
+  btnStopEarly.addEventListener('click', () => {
+    if (confirm('¿Deseas finalizar el test hasta aquí? Calcularemos tu nivel con las preguntas respondidas.')) {
+      finishAndShowResults();
+    }
+  });
+
+  // Calculate & Display Results
+  function finishAndShowResults() {
+    screenQuiz.classList.add('hidden');
+    screenResults.classList.remove('hidden');
+
+    let totalScore = 0;
+    const answeredCount = Object.keys(userAnswers).length;
+
+    Object.keys(userAnswers).forEach(qIdx => {
+      const idx = parseInt(qIdx, 10);
+      if (userAnswers[idx] === questionBank[idx].correct) {
+        totalScore++;
       }
     });
 
-    // Populate Category Breakdown
-    scoreAscolto.textContent = `${scores.ascolto} / 7`;
-    scoreLettura.textContent = `${scores.lettura} / 4`;
-    scoreInterazione.textContent = `${scores.interazione} / 10`;
-    scoreProduzione.textContent = `${scores.produzione} / 6`;
-    scoreScritta.textContent = `${scores.scritta} / 3`;
-
-    resScoreTag.textContent = `${total} / 30 Punti`;
+    resGreeting.textContent = `¡Diagnóstico Listo, ${studentName}!`;
+    resScoreNumber.textContent = `Puntaje: ${totalScore} de ${questionBank.length} Puntos`;
 
     let levelTitle = '';
     let levelDesc = '';
-    let badge = '🇮🇹';
-    let whatsappText = '';
+    let icon = '🎯';
 
-    // Official Nuovo Espresso 1 Evaluation Scale:
-    // da 1 a 15 punti: puoi usare NUOVO Espresso 1 dalla lezione 1
-    // da 16 a 23 punti: puoi usare NUOVO Espresso 1 dalla lezione 3
-    // da 24 a 30 punti: passa al test di livello A1.2
-    if (total >= 24) {
-      badge = '🌟';
-      levelTitle = 'Nivel A1.2 / Preparado para Nivel Superior';
-      levelDesc = '¡Excelente dominio de las bases de A1.1! Puedes incorporarte a cursos intermedios o avanzar directamente al test de nivel A1.2 de Nuovo Espresso.';
-      whatsappText = `¡Ciao! Completé el Test de Autoevaluación A1.1 de Nuovo Espresso con ${total}/30 puntos (Nivel A1.2). Quisiera consultar por cursos avanzados / intermedios 🇮🇹`;
-    } else if (total >= 16) {
-      badge = '🌱';
-      levelTitle = 'Nivel A1.1 Avanzado (Nuovo Espresso 1 • Lezione 3)';
-      levelDesc = 'Tienes una base sólida en comprensión y frases cotidianas. Te recomendamos empezar a partir de la Lección 3 de Nuovo Espresso 1 para afianzar conversación.';
-      whatsappText = `¡Ciao! Completé el Test de Autoevaluación A1.1 con ${total}/30 puntos (Recomendación: Nuovo Espresso 1 Lezione 3). Quiero información para sumarme a las clases 🇮🇹`;
+    // Official Diagnostic Scale:
+    if (totalScore >= 34) {
+      icon = '🏆';
+      levelTitle = 'Nivel Avanzado (B2 / C1)';
+      levelDesc = '¡Excelente dominio de estructuras complejas, subjuntivo y discurso indirecto! Ideal para clases de perfeccionamiento y conversación avanzada.';
+    } else if (totalScore >= 25) {
+      icon = '🌟';
+      levelTitle = 'Nivel Intermedio (B1 / B2)';
+      levelDesc = 'Tienes un gran control de tiempos verbales (passato prossimo, imperfetto, condizionale). Estás listo para ganar fluidez y precisión natural.';
+    } else if (totalScore >= 16) {
+      icon = '🌱';
+      levelTitle = 'Nivel Pre-Intermedio (A2 / A2+)';
+      levelDesc = 'Manejas bien el vocabulario cotidiano y el pasado básico. Con nuestras clases afianzaremos el imperfetto, los pronombres y la soltura al hablar.';
+    } else if (totalScore >= 8) {
+      icon = '🚀';
+      levelTitle = 'Nivel Elemental (A1 Consolidado)';
+      levelDesc = 'Conoces nociones básicas del presente y artículos. Tu siguiente paso es dominar el pasado próximo y la conversación en viajes y restaurantes.';
     } else {
-      badge = '🚀';
-      levelTitle = 'Nivel A1.1 Inicial (Nuovo Espresso 1 • Lezione 1)';
-      levelDesc = '¡El mejor punto de partida! Nuestro curso desde la Lección 1 de Nuovo Espresso te enseñará a presentarte, pedir en restaurantes y comunicarte sin miedos.';
-      whatsappText = `¡Ciao! Hice el Test de Autoevaluación A1.1 en su web con ${total}/30 puntos (Recomendación: Inicio desde Lezione 1). Me gustaría consultar aranceles y horarios 🇮🇹`;
+      icon = '🇮🇹';
+      levelTitle = 'Nivel Inicial (A1 Desde Cero)';
+      levelDesc = '¡El mejor punto para comenzar! Te acompañaremos paso a paso desde tu primera clase para que hables sin miedo con una base sólida.';
     }
 
-    resBadgeIcon.textContent = badge;
-    resHeadline.textContent = `Resultado: ${total} / 30 Puntos`;
-    resLevelTitle.textContent = levelTitle;
-    resLevelDesc.textContent = levelDesc;
+    resLevelIcon.textContent = icon;
+    resLevelName.textContent = levelTitle;
+    resLevelDescription.textContent = levelDesc;
 
-    // Set WhatsApp link
-    const encodedMessage = encodeURIComponent(whatsappText);
-    testWhatsappCta.href = `https://wa.me/?text=${encodedMessage}`;
+    // Build WhatsApp message to send privately to teacher
+    const waText = 
+`¡Ciao! Soy ${studentName} y completé el Test de Nivelación en la web.
+📊 *Mi Puntaje:* ${totalScore}/${questionBank.length} puntos (${answeredCount} preguntas intentadas)
+🎯 *Nivel diagnosticado:* ${levelTitle}
+👉 Quisiera coordinar mis clases de italiano 🇮🇹`;
 
-    // Show result box with smooth scroll
-    resultBox.classList.remove('hidden');
-    resultBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    btnSendWhatsappFinal.href = `https://wa.me/?text=${encodeURIComponent(waText)}`;
+    screenResults.scrollIntoView({ behavior: 'smooth' });
   }
 
-  if (calculateBtn) {
-    calculateBtn.addEventListener('click', calculateResults);
-  }
-
-  if (calculateTopBtn) {
-    calculateTopBtn.addEventListener('click', calculateResults);
-  }
-
-  if (retestBtn) {
-    retestBtn.addEventListener('click', () => {
-      resultBox.classList.add('hidden');
-      document.getElementById('test-autovalutazione').scrollIntoView({ behavior: 'smooth' });
-    });
-  }
+  // Restart
+  btnRestartAll.addEventListener('click', () => {
+    screenResults.classList.add('hidden');
+    screenWelcome.classList.remove('hidden');
+    studentNameInput.value = '';
+    userAnswers = {};
+    currentQuestionIndex = 0;
+  });
 });
