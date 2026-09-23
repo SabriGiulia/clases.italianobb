@@ -330,6 +330,17 @@ body {
   color: #ffffff;
 }
 
+.nav-btn-community {
+  background: rgba(99, 102, 241, 0.1);
+  color: #4f46e5;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.nav-btn-community:hover {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
 /* Hero */
 .hero {
   padding: 60px 0 50px 0;
