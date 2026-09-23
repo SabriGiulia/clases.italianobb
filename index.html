@@ -152,17 +152,20 @@
 
           <!-- Stepper Navigation Controls -->
           <div class="stepper-controls">
-            <button id="btn-prev-q" class="btn btn-sm btn-outline" disabled>
-              <i class="fa-solid fa-chevron-left"></i> Anterior
-            </button>
+            <div class="stepper-main-btns">
+              <button id="btn-prev-q" class="btn btn-sm btn-outline" disabled>
+                <i class="fa-solid fa-chevron-left"></i> Anterior
+              </button>
+              <button id="btn-next-q" class="btn btn-sm btn-primary">
+                Siguiente <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
             
-            <button id="btn-stop-early" class="btn btn-sm btn-stop" title="Detené el test acá si ya no conocés las respuestas">
-              <i class="fa-solid fa-flag-checkered"></i> No sé más (Finalizar aquí)
-            </button>
-
-            <button id="btn-next-q" class="btn btn-sm btn-primary">
-              Siguiente <i class="fa-solid fa-chevron-right"></i>
-            </button>
+            <div class="stepper-secondary-row">
+              <button id="btn-stop-early" class="btn btn-sm btn-stop" title="Detené el test acá si ya no conocés las respuestas">
+                <i class="fa-solid fa-flag-checkered"></i> No sé más (Finalizar aquí)
+              </button>
+            </div>
           </div>
         </div>
 

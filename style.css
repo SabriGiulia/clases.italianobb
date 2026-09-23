@@ -621,11 +621,32 @@ body {
 
 .stepper-controls {
   display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 10px;
+}
+
+.stepper-main-btns {
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding-top: 10px;
+  gap: 12px;
+}
+
+.stepper-main-btns button {
+  flex: 1;
+  padding: 12px 18px;
+}
+
+.stepper-secondary-row {
+  display: flex;
+  justify-content: center;
+}
+
+.stepper-secondary-row .btn-stop {
+  width: 100%;
+  max-width: 340px;
+  font-size: 0.85rem;
 }
 
 /* Screen 3: Results & WhatsApp Submission */
@@ -1447,13 +1468,13 @@ body {
     font-size: 1.15rem;
   }
 
-  .stepper-controls {
-    flex-direction: column;
-    gap: 12px;
+  .stepper-main-btns {
+    gap: 8px;
   }
 
-  .stepper-controls button {
-    width: 100%;
+  .stepper-main-btns button {
+    padding: 10px 14px;
+    font-size: 0.88rem;
   }
 
   .method-box {
