@@ -442,11 +442,11 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 41,
       stage: 'Nivel Avanzado B2',
       context: 'Uso del gerundio "andando":',
-      question: '41. In quale frase si può sostituire la parte sottolineata con "andando"?',
+      question: '41. In quale frase si può sostituire la parte <u>sottolineata</u> con "andando"?',
       options: [
-        'a. Mentre andava a casa, Ada ha incontrato il figlio.',
-        'b. Dopo esser andata a casa, ha incontrato Ada.',
-        'c. Prima di andare a casa, ha incontrato Ada.'
+        'a. <u>Mentre andava</u> a casa, Ada ha incontrato il figlio.',
+        'b. <u>Dopo esser andata</u> a casa, ha incontrato Ada.',
+        'c. <u>Prima di andare</u> a casa, ha incontrato Ada.'
       ],
       correct: 0
     },
@@ -569,8 +569,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const percent = Math.round(((index + 1) / questionBank.length) * 100);
     stepperProgress.style.width = `${percent}%`;
 
-    qContextText.textContent = q.context;
-    qTitleText.textContent = q.question;
+    qContextText.innerHTML = q.context;
+    qTitleText.innerHTML = q.question;
 
     qOptionsBox.innerHTML = '';
     q.options.forEach((opt, optIndex) => {
