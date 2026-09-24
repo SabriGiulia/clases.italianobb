@@ -946,9 +946,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Community & Events Form Handler
   const communityForm = document.getElementById('community-form');
   const communitySuccessMsg = document.getElementById('community-success-msg');
+  const FIREBASE_SUGGESTIONS_ENDPOINT = 'https://clases-italiano-bb-default-rtdb.firebaseio.com/community_suggestions.json';
 
   if (communityForm) {
-    communityForm.addEventListener('submit', e => {
+    communityForm.addEventListener('submit', async e => {
       e.preventDefault();
 
       const name = document.getElementById('com-name')?.value.trim() || '';
@@ -958,6 +959,24 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!name || !contact) {
         alert('Por favor, completá tu nombre y dato de contacto.');
         return;
+      }
+
+      const suggestionData = {
+        name,
+        contact,
+        idea: idea || 'Interesado/a en novedades y futuros talleres',
+        date: new Date().toISOString()
+      };
+
+      // Save suggestion in Firebase Cloud Database
+      try {
+        await fetch(FIREBASE_SUGGESTIONS_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(suggestionData)
+        });
+      } catch (err) {
+        console.warn('Could not save suggestion to Firebase:', err);
       }
 
       // Construct formatted WhatsApp message
