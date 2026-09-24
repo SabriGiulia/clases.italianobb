@@ -2625,104 +2625,145 @@ input, select, textarea, button {
     font-weight: 700;
   }
 
-  /* FAQ Mobile Styles */
+  /* FAQ Mobile Styles - Preserves Full PC Aesthetic */
   .faq-section {
-    padding: 40px 0;
+    padding: 45px 0;
   }
 
   .faq-wrapper-card {
-    padding: 22px 14px;
-    border-radius: 20px;
+    padding: 24px 16px;
+    border-radius: 22px;
+    background: #ffffff;
+    border: 1.5px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
   }
 
   .accordion {
-    gap: 12px;
+    gap: 14px;
   }
 
   .accordion-item {
-    border-radius: 14px;
+    border-radius: 16px;
+    background: #fcfaf7;
+    border: 1.5px solid #ece4dc;
+  }
+
+  .accordion-item.faq-item-green {
+    border-left: 4.5px solid var(--secondary);
+  }
+
+  .accordion-item.faq-item-terracotta {
+    border-left: 4.5px solid var(--primary);
+  }
+
+  .accordion-item.faq-item-gold {
+    border-left: 4.5px solid #ca8a04;
+  }
+
+  .accordion-item.faq-item-blue {
+    border-left: 4.5px solid #0284c7;
   }
 
   .accordion-header {
-    padding: 14px 12px;
-    gap: 10px;
+    padding: 16px 14px;
+    gap: 12px;
+    align-items: center;
   }
 
   .faq-header-main {
     gap: 12px;
+    min-width: 0;
   }
 
   .faq-card-icon {
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    border-radius: 10px;
-    font-size: 1rem;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 12px;
+    font-size: 1.12rem;
+    box-shadow: 0 2px 8px rgba(70, 45, 30, 0.05);
+  }
+
+  .faq-text-group {
+    gap: 3px;
+    min-width: 0;
   }
 
   .faq-topic-tag {
     font-size: 0.72rem;
     gap: 4px;
+    letter-spacing: 0.6px;
   }
 
   .faq-question-h3 {
-    font-size: 0.94rem;
+    font-size: 0.96rem;
     line-height: 1.35;
+    word-break: break-word;
   }
 
   .faq-chevron-badge {
-    width: 28px;
-    height: 28px;
-    min-width: 28px;
-    font-size: 0.75rem;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    font-size: 0.8rem;
   }
 
   .faq-answer-card {
-    margin: 0 10px 14px 10px;
-    padding: 14px 12px;
-    border-radius: 10px;
+    margin: 0 12px 14px 12px;
+    padding: 14px 14px;
+    border-radius: 12px;
+    background: #faf6f1;
+    border: 1px solid #ede4da;
   }
 
   .faq-answer-card p {
     font-size: 0.92rem;
-    line-height: 1.5;
+    line-height: 1.55;
+    color: #444a54;
   }
 
   .faq-help-box {
     flex-direction: column;
     text-align: center;
-    padding: 20px 14px;
+    padding: 22px 16px;
     gap: 14px;
-    border-radius: 14px;
-    margin-top: 20px;
+    border-radius: 16px;
+    margin-top: 22px;
+    background: #fcf9f6;
+    border: 1.5px dashed var(--border-color);
   }
 
   .faq-help-content {
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
 
   .faq-help-icon {
     margin: 0 auto;
-    width: 42px;
-    height: 42px;
-    min-width: 42px;
-    font-size: 1.3rem;
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    font-size: 1.4rem;
+    border-radius: 12px;
   }
 
   .faq-help-text h4 {
-    font-size: 1rem;
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin-bottom: 4px;
   }
 
   .faq-help-text p {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
   }
 
   .btn-faq-wa {
     width: 100%;
     justify-content: center;
-    padding: 12px 18px;
-    font-size: 0.9rem;
+    padding: 13px 20px;
+    font-size: 0.94rem;
+    font-weight: 700;
   }
 
   /* Conditions / Policy */
