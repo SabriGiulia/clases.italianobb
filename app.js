@@ -755,19 +755,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ----------------------------------------------------------
-  // Firebase Realtime Cloud Database Configuration & Sync
+  // Firebase Realtime Cloud Database Configuration & Live Sync
   // ----------------------------------------------------------
+  const FIREBASE_DB_ENDPOINT = 'https://clases-italiano-bb-default-rtdb.firebaseio.com/reviews.json';
   let reviewsDbRef = null;
 
-  // Firebase project configuration for live cloud reviews
   const firebaseConfig = {
-    apiKey: "",
-    authDomain: "",
-    databaseURL: "", // Pegá acá tu URL de Realtime Database (ej: https://tu-proyecto-default-rtdb.firebaseio.com)
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: ""
+    databaseURL: "https://clases-italiano-bb-default-rtdb.firebaseio.com",
+    projectId: "clases-italiano-bb"
   };
 
   // Default Verified Student Reviews (Visible as fallback / base)
@@ -792,6 +787,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  // Initialize Firebase Realtime Database SDK if loaded
   if (typeof firebase !== 'undefined' && firebaseConfig.databaseURL) {
     try {
       firebase.initializeApp(firebaseConfig);
@@ -801,34 +797,42 @@ document.addEventListener('DOMContentLoaded', () => {
       // Live Cloud Realtime Sync: Triggers in real time for all visitors worldwide
       reviewsDbRef.on('value', snapshot => {
         const val = snapshot.val();
-        if (reviewsContainer) reviewsContainer.innerHTML = '';
-        if (val) {
-          const list = Object.values(val);
-          list.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-          list.forEach(rev => appendReviewCard(rev, false));
-        } else {
-          defaultVerifiedReviews.forEach(rev => appendReviewCard(rev, false));
-        }
+        renderReviewsFromCloud(val);
       });
     } catch (err) {
-      console.warn('Firebase init warning:', err);
+      console.warn('Firebase SDK init:', err);
     }
   }
 
-  // Load reviews from local/fallback if Firebase is waiting for keys
-  function loadStoredReviews() {
-    if (reviewsDbRef) return; // Managed by Firebase live listener
+  // Render combined reviews from cloud data
+  function renderReviewsFromCloud(cloudVal) {
+    if (!reviewsContainer) return;
+    reviewsContainer.innerHTML = '';
 
+    let list = [];
+    if (cloudVal && typeof cloudVal === 'object') {
+      list = Object.values(cloudVal);
+      list.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+    }
+
+    // Combine with default verified reviews
+    const combined = [...list, ...defaultVerifiedReviews];
+    combined.forEach(rev => appendReviewCard(rev, false));
+  }
+
+  // Fetch reviews directly from Firebase REST API on load (ultra fast & lightweight)
+  async function fetchCloudReviews() {
     try {
-      if (!reviewsContainer) return;
-      reviewsContainer.innerHTML = '';
-
-      const localStored = JSON.parse(localStorage.getItem('clases_italiano_reviews') || '[]');
-      const allReviews = [...localStored, ...defaultVerifiedReviews];
-      allReviews.forEach(rev => appendReviewCard(rev, false));
-    } catch (e) {
-      console.warn('Error loading reviews from storage', e);
-      defaultVerifiedReviews.forEach(rev => appendReviewCard(rev, false));
+      const res = await fetch(FIREBASE_DB_ENDPOINT);
+      if (res.ok) {
+        const data = await res.json();
+        renderReviewsFromCloud(data);
+      } else {
+        renderReviewsFromCloud(null);
+      }
+    } catch (err) {
+      console.warn('Error fetching cloud reviews:', err);
+      renderReviewsFromCloud(null);
     }
   }
 
@@ -845,16 +849,17 @@ document.addEventListener('DOMContentLoaded', () => {
     card.className = 'review-card';
 
     // Initials
-    const initials = data.name
+    const initials = (data.name || 'AL')
       .split(' ')
       .map(n => n[0])
       .join('')
       .substring(0, 2)
-      .toUpperCase() || 'AL';
+      .toUpperCase();
 
     let starsHtml = '';
+    const ratingNum = parseInt(data.rating, 10) || 5;
     for (let i = 1; i <= 5; i++) {
-      starsHtml += i <= data.rating ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
+      starsHtml += i <= ratingNum ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>';
     }
 
     card.innerHTML = `
@@ -862,7 +867,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="reviewer-avatar">${initials}</div>
         <div class="reviewer-info">
           <h4 class="reviewer-name">${data.name} <i class="fa-solid fa-circle-check verified-badge" title="Opinión Verificada"></i></h4>
-          <span class="review-course">${data.course}</span>
+          <span class="review-course">${data.course || 'Clases de Italiano'}</span>
         </div>
         <div class="review-stars">${starsHtml}</div>
       </div>
@@ -877,7 +882,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (reviewForm) {
-    reviewForm.addEventListener('submit', e => {
+    reviewForm.addEventListener('submit', async e => {
       e.preventDefault();
 
       const nameInput = document.getElementById('rev-name');
@@ -897,18 +902,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      // Immediately append visually for the user
+      appendReviewCard(reviewData, true);
+
       // Save to Firebase Cloud Database in real-time
-      if (reviewsDbRef) {
-        reviewsDbRef.push(reviewData).catch(err => console.warn('Cloud DB push error', err));
-      } else {
-        appendReviewCard(reviewData, true);
-        try {
-          const stored = JSON.parse(localStorage.getItem('clases_italiano_reviews') || '[]');
-          stored.unshift(reviewData);
-          localStorage.setItem('clases_italiano_reviews', JSON.stringify(stored));
-        } catch (err) {
-          console.warn('LocalStorage error', err);
+      try {
+        if (reviewsDbRef) {
+          reviewsDbRef.push(reviewData);
+        } else {
+          await fetch(FIREBASE_DB_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(reviewData)
+          });
         }
+      } catch (err) {
+        console.warn('Cloud DB save error:', err);
       }
 
       // Format WhatsApp message notification for teacher
@@ -975,5 +984,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  loadStoredReviews();
+  fetchCloudReviews();
 });
