@@ -765,28 +765,6 @@ document.addEventListener('DOMContentLoaded', () => {
     projectId: "clases-italiano-bb"
   };
 
-  // Default Verified Student Reviews (Visible as fallback / base)
-  const defaultVerifiedReviews = [
-    {
-      name: 'Camila Benítez',
-      course: 'Clases Particulares 1 a 1',
-      rating: 5,
-      comment: 'Empecé de cero absoluto con mucha vergüenza de hablar y hoy puedo mantener conversaciones fluidas. La paciencia, la calidez y la dedicación de la profe son incomparables. ¡Súper recomendable!'
-    },
-    {
-      name: 'Ignacio Rossi',
-      course: 'Italiano para Viajeros y Ciudadanía',
-      rating: 5,
-      comment: 'Preparé mi viaje a Italia y el trámite de ciudadanía. Las clases son súper dinámicas, enfocadas en situaciones de la vida cotidiana y cultura. Me sirvió muchísimo en Roma y Florencia.'
-    },
-    {
-      name: 'María Florencia Gómez',
-      course: 'Apoyo Escolar y Exámenes',
-      rating: 5,
-      comment: 'Mi hijo preparó su examen de italiano y aprobó con excelente nota. Las explicaciones son muy claras y el material de estudio que entrega es completísimo.'
-    }
-  ];
-
   // Initialize Firebase Realtime Database SDK if loaded
   if (typeof firebase !== 'undefined' && firebaseConfig.databaseURL) {
     try {
@@ -804,7 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Render combined reviews from cloud data
+  // Render only real student reviews from cloud data
   function renderReviewsFromCloud(cloudVal) {
     if (!reviewsContainer) return;
     reviewsContainer.innerHTML = '';
@@ -815,9 +793,16 @@ document.addEventListener('DOMContentLoaded', () => {
       list.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
     }
 
-    // Combine with default verified reviews
-    const combined = [...list, ...defaultVerifiedReviews];
-    combined.forEach(rev => appendReviewCard(rev, false));
+    if (list.length === 0) {
+      reviewsContainer.innerHTML = `
+        <div class="empty-reviews-box">
+          <i class="fa-regular fa-star"></i>
+          <p>Todavía no hay opiniones publicadas. <strong>¡Sé el primero en compartir tu experiencia de aprendizaje!</strong></p>
+        </div>
+      `;
+    } else {
+      list.forEach(rev => appendReviewCard(rev, false));
+    }
   }
 
   // Fetch reviews directly from Firebase REST API on load (ultra fast & lightweight)
@@ -888,6 +873,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const nameInput = document.getElementById('rev-name');
       const courseInput = document.getElementById('rev-course');
       const commentInput = document.getElementById('rev-comment');
+      const submitBtn = reviewForm.querySelector('button[type="submit"]');
 
       const reviewData = {
         name: nameInput.value.trim(),
@@ -902,44 +888,69 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Immediately append visually for the user
-      appendReviewCard(reviewData, true);
+      // Hide previous success message and show loading state
+      if (reviewSuccessMsg) reviewSuccessMsg.classList.add('hidden');
+      const originalBtnContent = submitBtn ? submitBtn.innerHTML : 'Publicar mi Opinión';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Publicando tu reseña...';
+      }
+
+      let saveSuccess = false;
 
       // Save to Firebase Cloud Database in real-time
       try {
         if (reviewsDbRef) {
-          reviewsDbRef.push(reviewData);
+          await reviewsDbRef.push(reviewData);
+          saveSuccess = true;
         } else {
-          await fetch(FIREBASE_DB_ENDPOINT, {
+          const res = await fetch(FIREBASE_DB_ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(reviewData)
           });
+          if (res.ok) saveSuccess = true;
         }
       } catch (err) {
-        console.warn('Cloud DB save error:', err);
+        console.error('Cloud DB save error:', err);
+        saveSuccess = false;
       }
 
-      // Format WhatsApp message notification for teacher
-      const starsString = '⭐'.repeat(reviewData.rating);
-      const waMsg = `¡Hola! Dejé una nueva reseña en la web de @clases.italianobb 🇮🇹✨\n\n👤 *Nombre:* ${reviewData.name}\n📚 *Modalidad:* ${reviewData.course}\n⭐ *Calificación:* ${starsString} (${reviewData.rating}/5)\n💬 *Comentario:* "${reviewData.comment}"`;
-      const waUrl = `https://wa.me/5492914485405?text=${encodeURIComponent(waMsg)}`;
-
-      // Show success message
-      if (reviewSuccessMsg) {
-        reviewSuccessMsg.classList.remove('hidden');
-        setTimeout(() => {
-          reviewSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 100);
+      // Restore submit button state
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnContent;
       }
 
-      // Open WhatsApp to notify teacher
-      window.open(waUrl, '_blank');
+      if (saveSuccess) {
+        // Append card dynamically for instant feedback if not handled by SDK
+        if (!reviewsDbRef) {
+          appendReviewCard(reviewData, true);
+        }
 
-      // Reset form
-      reviewForm.reset();
-      selectedRating = 5;
-      updateStars(5);
+        // Show success confirmation only after confirmed published
+        if (reviewSuccessMsg) {
+          reviewSuccessMsg.classList.remove('hidden');
+          setTimeout(() => {
+            reviewSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 100);
+        }
+
+        // Format WhatsApp message notification for teacher
+        const starsString = '⭐'.repeat(reviewData.rating);
+        const waMsg = `¡Hola! Dejé una nueva reseña en la web de @clases.italianobb 🇮🇹✨\n\n👤 *Nombre:* ${reviewData.name}\n📚 *Modalidad:* ${reviewData.course}\n⭐ *Calificación:* ${starsString} (${reviewData.rating}/5)\n💬 *Comentario:* "${reviewData.comment}"`;
+        const waUrl = `https://wa.me/5492914485405?text=${encodeURIComponent(waMsg)}`;
+
+        // Open WhatsApp to notify teacher
+        window.open(waUrl, '_blank');
+
+        // Reset form
+        reviewForm.reset();
+        selectedRating = 5;
+        updateStars(5);
+      } else {
+        alert('Hubo un problema de conexión al publicar tu reseña. Por favor verificá tu conexión e intentalo de nuevo.');
+      }
     });
   }
 
