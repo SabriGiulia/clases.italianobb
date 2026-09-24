@@ -611,21 +611,27 @@
       <div class="policy-card-wrapper" style="background:#ffffff; border:1.5px solid var(--border-color); border-radius:var(--border-radius-lg); padding:36px 30px; box-shadow:var(--shadow-sm);">
         <div style="display:flex; flex-direction:column; gap:20px;">
           <!-- Item 1: Reprogramaciones -->
-          <div style="background:#fcf9f6; border-left:4px solid var(--secondary); border-radius:8px; padding:18px 20px;">
+          <div style="background:#fcf9f6; border-left:4px solid var(--secondary); border-radius:12px; padding:20px 18px;">
             <h3 style="font-size:1.15rem; color:var(--text-dark); margin-bottom:8px; display:flex; align-items:center; gap:8px;">
               <i class="fa-regular fa-clock" style="color:var(--secondary);"></i> Reprogramaciones con aviso (mínimo 12 hs):
             </h3>
-            <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:10px;">
+            <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:14px; line-height:1.45;">
               Se solicita evitar mover las clases salvo en casos estrictamente necesarios. De requerirlo, podés elegir entre dos opciones:
             </p>
-            <ul style="list-style:none; padding-left:0; font-size:0.92rem; color:var(--text-dark); display:flex; flex-direction:column; gap:6px;">
-              <li style="display:flex; align-items:center; gap:8px;">
-                <i class="fa-regular fa-calendar-check" style="color:var(--secondary);"></i> <strong>Opción 1:</strong> Recuperar el encuentro completo dentro de la misma semana.
-              </li>
-              <li style="display:flex; align-items:center; gap:8px;">
-                <i class="fa-solid fa-stopwatch" style="color:var(--primary);"></i> <strong>Opción 2:</strong> Sumar 30 minutos adicionales a tus dos clases siguientes.
-              </li>
-            </ul>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="background:#ffffff; border:1.5px solid #e2e8f0; border-radius:10px; padding:12px 14px; display:flex; align-items:flex-start; gap:12px;">
+                <span style="background:var(--secondary); color:#ffffff; font-size:0.78rem; font-weight:700; padding:4px 9px; border-radius:6px; flex-shrink:0; margin-top:2px;">Opción 1</span>
+                <span style="font-size:0.92rem; color:var(--text-dark); line-height:1.45;">
+                  <strong>Recuperar el encuentro completo</strong> dentro de la misma semana.
+                </span>
+              </div>
+              <div style="background:#ffffff; border:1.5px solid #e2e8f0; border-radius:10px; padding:12px 14px; display:flex; align-items:flex-start; gap:12px;">
+                <span style="background:var(--primary); color:#ffffff; font-size:0.78rem; font-weight:700; padding:4px 9px; border-radius:6px; flex-shrink:0; margin-top:2px;">Opción 2</span>
+                <span style="font-size:0.92rem; color:var(--text-dark); line-height:1.45;">
+                  <strong>Sumar 30 minutos adicionales</strong> a tus dos clases siguientes.
+                </span>
+              </div>
+            </div>
           </div>
 
           <!-- Item 2: Feriados -->

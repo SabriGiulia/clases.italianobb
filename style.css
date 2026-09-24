@@ -1372,74 +1372,45 @@ input, select, textarea, button {
 }
 
 /* FAQ */
-.faq-section {
-  padding: 70px 0;
-}
+  .faq-section {
+    padding: 40px 0;
+  }
 
-.faq-container {
-  max-width: 760px;
-}
+  .accordion {
+    gap: 10px;
+  }
 
-.accordion {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+  .accordion-item {
+    border-radius: 14px;
+  }
 
-.accordion-item {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
+  .accordion-header {
+    padding: 16px 16px;
+    font-size: 0.96rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
 
-.accordion-header {
-  width: 100%;
-  padding: 20px 24px;
-  background: none;
-  border: none;
-  text-align: left;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--text-dark);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background-color 0.2s ease;
-}
+  .accordion-body {
+    display: none;
+    padding: 14px 16px 18px 16px;
+    font-size: 0.92rem;
+  }
 
-.accordion-header:hover {
-  background-color: #faf5f0;
-}
+  .accordion-item.active .accordion-body {
+    display: block;
+  }
 
-.accordion-header i {
-  transition: transform 0.3s ease;
-  color: var(--text-muted);
-}
-
-.accordion-item.active .accordion-header i {
-  transform: rotate(180deg);
-  color: var(--primary);
-}
-
-.accordion-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  padding: 0 24px;
-}
-
-.accordion-item.active .accordion-body {
-  padding: 0 24px 20px 24px;
-  max-height: 200px;
+@keyframes fadeInAccordion {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .accordion-body p {
   font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.6;
+  margin: 0;
 }
 
 /* Footer */
@@ -2419,16 +2390,14 @@ input, select, textarea, button {
   }
 
   .accordion-body {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 14px;
-    font-size: 0.9rem;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    display: none;
+    padding: 14px 14px 18px 14px;
+    font-size: 0.92rem;
   }
 
   .accordion-item.active .accordion-body {
-    padding: 0 14px 16px 14px;
-    max-height: 500px;
+    display: block;
+    animation: fadeInAccordion 0.25s ease forwards;
   }
 
   /* Conditions / Policy */
