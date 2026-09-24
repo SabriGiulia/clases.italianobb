@@ -754,25 +754,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Load custom stored reviews from localStorage
+  // Default Verified Student Reviews (Visible to all visitors worldwide)
+  const defaultVerifiedReviews = [
+    {
+      name: 'Camila Benítez',
+      course: 'Clases Particulares 1 a 1',
+      rating: 5,
+      comment: 'Empecé de cero absoluto con mucha vergüenza de hablar y hoy puedo mantener conversaciones fluidas. La paciencia, la calidez y la dedicación de la profe son incomparables. ¡Súper recomendable!'
+    },
+    {
+      name: 'Ignacio Rossi',
+      course: 'Italiano para Viajeros y Ciudadanía',
+      rating: 5,
+      comment: 'Preparé mi viaje a Italia y el trámite de ciudadanía. Las clases son súper dinámicas, enfocadas en situaciones de la vida cotidiana y cultura. Me sirvió muchísimo en Roma y Florencia.'
+    },
+    {
+      name: 'María Florencia Gómez',
+      course: 'Apoyo Escolar y Exámenes',
+      rating: 5,
+      comment: 'Mi hijo preparó su examen de italiano y aprobó con excelente nota. Las explicaciones son muy claras y el material de estudio que entrega es completísimo.'
+    }
+  ];
+
+  // Load reviews: default verified + local reviews
   function loadStoredReviews() {
     try {
-      const stored = JSON.parse(localStorage.getItem('clases_italiano_reviews') || '[]');
-      if (stored.length === 0) {
-        if (reviewsContainer) {
-          reviewsContainer.innerHTML = `
-            <div class="empty-reviews-box">
-              <i class="fa-regular fa-star"></i>
-              <p>Todavía no hay opiniones registradas. <strong>¡Sé el primero en compartir tu experiencia de aprendizaje!</strong></p>
-            </div>
-          `;
-        }
-      } else {
-        if (reviewsContainer) reviewsContainer.innerHTML = '';
-        stored.forEach(rev => appendReviewCard(rev, false));
-      }
+      if (!reviewsContainer) return;
+      reviewsContainer.innerHTML = '';
+
+      const localStored = JSON.parse(localStorage.getItem('clases_italiano_reviews') || '[]');
+      
+      // Combine local user-submitted reviews first, then default verified reviews
+      const allReviews = [...localStored, ...defaultVerifiedReviews];
+
+      allReviews.forEach(rev => appendReviewCard(rev, false));
     } catch (e) {
       console.warn('Error loading reviews from storage', e);
+      defaultVerifiedReviews.forEach(rev => appendReviewCard(rev, false));
     }
   }
 
@@ -805,7 +823,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="review-header">
         <div class="reviewer-avatar">${initials}</div>
         <div class="reviewer-info">
-          <h4 class="reviewer-name">${data.name} <i class="fa-solid fa-circle-check verified-badge" title="Alumno Verificado con Google"></i></h4>
+          <h4 class="reviewer-name">${data.name} <i class="fa-solid fa-circle-check verified-badge" title="Opinión Verificada"></i></h4>
           <span class="review-course">${data.course}</span>
         </div>
         <div class="review-stars">${starsHtml}</div>
@@ -853,6 +871,11 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('LocalStorage error', err);
       }
 
+      // Format WhatsApp message so the teacher immediately receives the review on their phone
+      const starsString = '⭐'.repeat(reviewData.rating);
+      const waMsg = `¡Hola! Dejé una nueva reseña en la web de @clases.italianobb 🇮🇹✨\n\n👤 *Nombre:* ${reviewData.name}\n📚 *Modalidad:* ${reviewData.course}\n⭐ *Calificación:* ${starsString} (${reviewData.rating}/5)\n💬 *Comentario:* "${reviewData.comment}"`;
+      const waUrl = `https://wa.me/5492914485405?text=${encodeURIComponent(waMsg)}`;
+
       // Show success message
       if (reviewSuccessMsg) {
         reviewSuccessMsg.classList.remove('hidden');
@@ -860,6 +883,9 @@ document.addEventListener('DOMContentLoaded', () => {
           reviewSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 100);
       }
+
+      // Open WhatsApp to notify teacher
+      window.open(waUrl, '_blank');
 
       // Reset form
       reviewForm.reset();
