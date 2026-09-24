@@ -214,42 +214,115 @@
     }
 
     /* Itinerary / Program Grid */
-    .itinerary-grid {
+    .weekly-schedule-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
       margin-top: 24px;
     }
-    .itinerary-card {
+    .week-card {
       background: #ffffff;
       border: 1.5px solid var(--border-color);
-      border-radius: 16px;
-      padding: 22px 18px;
+      border-radius: var(--border-radius-lg);
       box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
-    .itinerary-card h4 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
+    .week-card-header {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #ffffff;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .week-card-header h4 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin: 0;
+      color: #ffffff;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .itinerary-card ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.5;
+    .week-days-list {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
     }
-    .itinerary-card ul li {
-      margin-bottom: 8px;
+    .day-row {
       display: flex;
       align-items: flex-start;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #f1f5f9;
+      word-break: normal;
+      overflow-wrap: break-word;
+      hyphens: none;
+    }
+    .day-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .day-pill {
+      min-width: 86px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-align: center;
+      flex-shrink: 0;
+      border: 1px solid #e2e8f0;
+    }
+    .day-pill.extra-day {
+      background: #fef3c7;
+      color: #92400e;
+      border-color: #fde68a;
+    }
+    .day-desc {
+      flex-grow: 1;
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.45;
+    }
+    .day-desc strong {
+      color: #0f172a;
+    }
+    .extra-options-wrapper {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
       gap: 6px;
     }
-    .itinerary-card ul li strong {
-      color: var(--text-dark);
+    .option-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.84rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .option-tag {
+      background: #0284c7;
+      color: #ffffff;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.72rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .weekly-schedule-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Calendar Box */
@@ -502,55 +575,246 @@
       </div>
 
       <!-- Itinerary Program Semana por Semana -->
-      <div class="section-header" style="text-align:center; margin-top:20px;">
+      <div class="section-header" style="text-align:center; margin-top:28px;">
         <span class="subheading" style="color:#0284c7;">Cronograma de Actividades</span>
-        <h3 style="font-size:1.6rem; color:var(--text-dark);">Programa Semana por Semana (2027)</h3>
+        <h3 style="font-size:1.7rem; color:var(--text-dark);">Programa Oficial 2027 (Semana por Semana)</h3>
+        <p class="section-desc" style="max-width:700px; margin:0 auto;">
+          Estructura completa de clases, actividades culturales, excursiones incluidas y salidas opcionales.
+        </p>
       </div>
 
-      <div class="itinerary-grid">
-        <div class="itinerary-card">
-          <h4 style="color:#0284c7;"><i class="fa-solid fa-calendar-week"></i> Semana 1</h4>
-          <ul>
-            <li><strong>Lunes:</strong> Presentación del curso, test inicial, tour de Castelraimondo y aperitivo de bienvenida.</li>
-            <li><strong>Martes:</strong> Lección + Excursión a Gubbio.</li>
-            <li><strong>Miércoles:</strong> Lección de idioma y cultura + Gelato Party con música italiana.</li>
-            <li><strong>Jueves:</strong> Lección (Opcional extra: San Marino, Gradara y Rimini/Riccione).</li>
-            <li><strong>Viernes:</strong> Lección.</li>
-            <li><strong>Sábado/Dom:</strong> Excursión a Florencia (Opcional: Pisa, Siena o 5 Terre).</li>
-          </ul>
+      <div class="weekly-schedule-grid">
+        <!-- Semana 1 -->
+        <div class="week-card">
+          <div class="week-card-header">
+            <h4><i class="fa-solid fa-calendar-week"></i> Semana 1</h4>
+            <span class="week-tag">Bienvenida & Primeros Pasos</span>
+          </div>
+          <div class="week-days-list">
+            <div class="day-row">
+              <span class="day-pill">Lunes</span>
+              <div class="day-desc">
+                <strong>Presentación del curso:</strong> Test de nivelación inicial, recorrido guiado por Castelraimondo y <em>Aperitivo di benvenuto</em>.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Martes</span>
+              <div class="day-desc">
+                Clase de italiano por la mañana + <strong>Excursión incluida a Gubbio</strong>.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Miércoles</span>
+              <div class="day-desc">
+                Clase de lengua y lección de cultura + <strong>Gelato Party</strong> (noche temática de helado y música italiana).
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Jueves</span>
+              <div class="day-desc">
+                Clase de italiano.
+                <div class="extra-options-wrapper">
+                  <div class="option-card">
+                    <span class="option-tag">EXTRA (1 Día)</span>
+                    <span>San Marino, Gradara y Rimini o Riccione</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Viernes</span>
+              <div class="day-desc">
+                Clase de lengua y gramática aplicada.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Sábado</span>
+              <div class="day-desc">
+                <strong>Excursión incluida a Florencia (Firenze):</strong> recorrido por el centro histórico y arte renacentista.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill extra-day">Dom & Lun</span>
+              <div class="day-desc">
+                <strong>Fin de semana (Excursión Extra Opcional):</strong>
+                <div class="extra-options-wrapper">
+                  <div class="option-card">
+                    <span class="option-tag">Opción 1</span>
+                    <span>Pisa y Siena</span>
+                  </div>
+                  <div class="option-card">
+                    <span class="option-tag">Opción 2</span>
+                    <span>5 Terre (Monterosso, Vernazza) y Pisa</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="itinerary-card">
-          <h4 style="color:#0284c7;"><i class="fa-solid fa-calendar-week"></i> Semana 2</h4>
-          <ul>
-            <li><strong>Martes:</strong> Lección itinerante en Pioraco + proyección de película italiana.</li>
-            <li><strong>Miércoles:</strong> Lección + Cena internacional con jurados italianos.</li>
-            <li><strong>Jueves:</strong> Lección (Opcional extra: Asís, Perugia y cena en Agriturismo).</li>
-            <li><strong>Viernes:</strong> Lección + Excursión a Loreto y Porto Recanati.</li>
-            <li><strong>Sábado/Dom:</strong> Excursión a Roma y Ciudad del Vaticano (Opcional: Nápoles, Costa Amalfitana o Pompeya).</li>
-          </ul>
+        <!-- Semana 2 -->
+        <div class="week-card">
+          <div class="week-card-header">
+            <h4><i class="fa-solid fa-calendar-week"></i> Semana 2</h4>
+            <span class="week-tag">Inmersión & Ciudades de Arte</span>
+          </div>
+          <div class="week-days-list">
+            <div class="day-row">
+              <span class="day-pill">Martes</span>
+              <div class="day-desc">
+                <strong>Lección itinerante en Pioraco</strong> + Proyección de película de cine italiano.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Miércoles</span>
+              <div class="day-desc">
+                Clase de italiano + <strong>Cena internacional</strong> con platos típicos y jurados italianos.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Jueves</span>
+              <div class="day-desc">
+                Clase de italiano.
+                <div class="extra-options-wrapper">
+                  <div class="option-card">
+                    <span class="option-tag">EXTRA (1 Día)</span>
+                    <span>Asís (Assisi), Perugia y cena en Agriturismo</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Viernes</span>
+              <div class="day-desc">
+                Clase de lengua + <strong>Excursión incluida a Loreto y Porto Recanati</strong> (costa del mar Adriático).
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Sábado</span>
+              <div class="day-desc">
+                Clase de conversación y preparación cultural.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Domingo</span>
+              <div class="day-desc">
+                <strong>Excursión incluida a Roma y Ciudad del Vaticano:</strong> monumentos icónicos, plazas históricas y Basílica de San Pedro.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill extra-day">Lunes</span>
+              <div class="day-desc">
+                <div class="extra-options-wrapper">
+                  <div class="option-card">
+                    <span class="option-tag">EXTRA (1 Día)</span>
+                    <span>Nápoles, Costa Amalfitana y Amalfi o Pompeya</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="itinerary-card">
-          <h4 style="color:#0284c7;"><i class="fa-solid fa-calendar-week"></i> Semana 3</h4>
-          <ul>
-            <li><strong>Martes:</strong> Lección itinerante en Gagliole + proyección de cine.</li>
-            <li><strong>Miércoles:</strong> Lección de lengua y cultura.</li>
-            <li><strong>Jueves:</strong> Lección (Opcional extra: Norcia, Cascia y Monti Sibillini).</li>
-            <li><strong>Viernes:</strong> Excursión a Civita di Bagnoregio y Orvieto.</li>
-            <li><strong>Sábado/Dom:</strong> Lección (Opcional extra: Venecia, Padua, Verona, Lago de Garda o Dolomitas/Trento/Bolzano).</li>
-          </ul>
+        <!-- Semana 3 -->
+        <div class="week-card">
+          <div class="week-card-header">
+            <h4><i class="fa-solid fa-calendar-week"></i> Semana 3</h4>
+            <span class="week-tag">Pueblos Medievales & Tradición</span>
+          </div>
+          <div class="week-days-list">
+            <div class="day-row">
+              <span class="day-pill">Martes</span>
+              <div class="day-desc">
+                <strong>Lección itinerante en Gagliole</strong> + Proyección de película de cine italiano.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Miércoles</span>
+              <div class="day-desc">
+                Clase de idioma + Lección especial de cultura y tradiciones de Italia.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Jueves</span>
+              <div class="day-desc">
+                Clase de italiano.
+                <div class="extra-options-wrapper">
+                  <div class="option-card">
+                    <span class="option-tag">EXTRA (1 Día)</span>
+                    <span>Norcia o Cascia y el Parque Nacional de los Monti Sibillini</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Viernes</span>
+              <div class="day-desc">
+                <strong>Excursión incluida a Civita di Bagnoregio y Orvieto:</strong> la famosa "ciudad que muere" y el Duomo de Orvieto.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Sábado</span>
+              <div class="day-desc">
+                Clase de consolidación gramatical y vocabulario.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill extra-day">Dom & Lun</span>
+              <div class="day-desc">
+                <strong>Gran Tour de Fin de Semana (Excursión Extra Opcional):</strong>
+                <div class="extra-options-wrapper">
+                  <div class="option-card">
+                    <span class="option-tag">Opción 1</span>
+                    <span>Tour de Venecia, Padua, Verona y Lago de Garda</span>
+                  </div>
+                  <div class="option-card">
+                    <span class="option-tag">Opción 2</span>
+                    <span>Venecia, Verona, Dolomitas, Trento o Bolzano</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="itinerary-card">
-          <h4 style="color:#0284c7;"><i class="fa-solid fa-calendar-week"></i> Semana 4</h4>
-          <ul>
-            <li><strong>Martes:</strong> Lección itinerante en Matelica + cine.</li>
-            <li><strong>Miércoles:</strong> Lección + Excursión a las Grotte di Frasassi.</li>
-            <li><strong>Jueves:</strong> Lección, exámenes orales, gran Cena Final con fiesta musical y Karaoke.</li>
-            <li><strong>Viernes:</strong> Test final y ceremonia de entrega de diplomas oficiales.</li>
-            <li><strong>Sábado:</strong> Salida y despedida.</li>
-          </ul>
+        <!-- Semana 4 -->
+        <div class="week-card">
+          <div class="week-card-header">
+            <h4><i class="fa-solid fa-calendar-week"></i> Semana 4</h4>
+            <span class="week-tag">Cierre, Diplomas & Despedida</span>
+          </div>
+          <div class="week-days-list">
+            <div class="day-row">
+              <span class="day-pill">Martes</span>
+              <div class="day-desc">
+                <strong>Lección itinerante en Matelica</strong> + Proyección de cine italiano.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Miércoles</span>
+              <div class="day-desc">
+                Clase de idioma + <strong>Excursión incluida a las espectaculares Grotte di Frasassi</strong>.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Jueves</span>
+              <div class="day-desc">
+                Clase de repaso y exámenes orales + <strong>Gran Cena Final con Noche Musical y Karaoke</strong>.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill">Viernes</span>
+              <div class="day-desc">
+                <strong>Test final de evaluación:</strong> Ceremonia oficial de entrega de diplomas y certificados.
+              </div>
+            </div>
+            <div class="day-row">
+              <span class="day-pill" style="background:#dcfce7; color:#15803d; border-color:#bbf7d0;">Sábado</span>
+              <div class="day-desc">
+                <strong>Partida y regreso:</strong> Cierre de la experiencia y traslados de regreso.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
