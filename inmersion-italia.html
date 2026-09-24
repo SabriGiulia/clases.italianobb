@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#c85a32">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Full Inmersión en Italia • Curso de Cocina & Cultura | @clases.italianobb</title>
-  <meta name="description" content="Programa de 2 semanas de inmersión en Italia: clases de cocina con chefs, tours culturales, catas de vino y aprendizaje del idioma. De Noviembre 2026 a Marzo 2027.">
+  <title>Programas de Inmersión & Viajes de Estudio en Italia 🇮🇹 | @clases.italianobb</title>
+  <meta name="description" content="Viví Italia en primera persona: Vacanza-Studio (4 semanas) y Cursos de Cocina & Inmersión (2 semanas). Idioma, cultura, alojamiento y excursiones.">
   
   <link rel="icon" type="image/jpeg" href="logo.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,9 +18,9 @@
   
   <style>
     .immersion-hero {
-      background: linear-gradient(rgba(30, 25, 20, 0.75), rgba(30, 25, 20, 0.85)), url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+      background: linear-gradient(rgba(24, 20, 16, 0.8), rgba(24, 20, 16, 0.88)), url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
       color: #ffffff;
-      padding: 70px 0 60px 0;
+      padding: 65px 0 55px 0;
       text-align: center;
       position: relative;
     }
@@ -32,45 +32,95 @@
       color: white;
       padding: 6px 18px;
       border-radius: var(--border-radius-pill);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .immersion-title {
-      font-size: 2.8rem;
+      font-size: clamp(2rem, 5.5vw, 3.1rem);
       font-weight: 800;
       line-height: 1.15;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       color: #ffffff;
     }
     .immersion-slogan {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1.35rem;
+      font-size: clamp(1.1rem, 3.5vw, 1.35rem);
       color: #f6d365;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
-    .immersion-dates-tag {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #ede5de;
-      margin-bottom: 30px;
+    .program-selector-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .tab-btn {
+      padding: 12px 22px;
+      border-radius: var(--border-radius-pill);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .tab-btn-blue {
+      background: #0284c7;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+    }
+    .tab-btn-blue:hover {
+      background: #0369a1;
+      transform: translateY(-2px);
+    }
+    .tab-btn-gold {
+      background: #ca8a04;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(202, 138, 4, 0.4);
+    }
+    .tab-btn-gold:hover {
+      background: #a16207;
+      transform: translateY(-2px);
+    }
+
+    /* Program Section wrapper */
+    .program-block {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .program-block.alt-bg {
+      background: #fdfbf7;
+    }
+    .program-badge-lead {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
     .price-promo-card {
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(246, 211, 101, 0.5);
+      background: #ffffff;
+      border: 2px solid var(--border-color);
       border-radius: var(--border-radius-lg);
-      padding: 24px 30px;
+      padding: 24px 28px;
       display: inline-block;
-      margin-bottom: 24px;
+      margin: 20px 0;
+      box-shadow: var(--shadow-sm);
     }
     .price-old {
       text-decoration: line-through;
-      font-size: 1.3rem;
-      color: #fca5a5;
+      font-size: 1.25rem;
+      color: #9ca3af;
       margin-right: 10px;
     }
     .price-discount {
@@ -83,60 +133,55 @@
     }
     .price-current {
       display: block;
-      font-size: 3.2rem;
+      font-size: 3rem;
       font-weight: 800;
-      color: #ffffff;
       line-height: 1.1;
       margin-top: 6px;
     }
     .price-caption {
       font-size: 0.88rem;
-      color: #e2e8f0;
+      color: var(--text-muted);
     }
-    .immersion-details-section {
-      padding: 60px 0;
-    }
+
     .features-highlights-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-      gap: 24px;
-      margin-bottom: 50px;
+      gap: 22px;
+      margin: 35px 0 45px 0;
     }
     .highlight-card {
       background: #ffffff;
       border: 1.5px solid var(--border-color);
       border-radius: var(--border-radius-md);
-      padding: 30px 24px;
+      padding: 26px 22px;
       box-shadow: var(--shadow-sm);
-      position: relative;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .highlight-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       box-shadow: var(--shadow-md);
     }
     .number-badge {
-      width: 52px;
-      height: 52px;
-      background: var(--primary);
+      width: 48px;
+      height: 48px;
       color: white;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 800;
-      border-radius: 14px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
     .highlight-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.18rem;
       color: var(--text-dark);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .highlight-card p, .highlight-card ul {
-      font-size: 0.93rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.55;
     }
     .highlight-card ul {
       list-style: none;
@@ -149,22 +194,77 @@
       align-items: flex-start;
       gap: 8px;
     }
-    .highlight-card ul li i {
-      color: var(--secondary);
-      margin-top: 4px;
+    .cultural-tours-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
     }
+    .tour-tag {
+      background: #f1f5f9;
+      color: #334155;
+      padding: 5px 12px;
+      border-radius: var(--border-radius-pill);
+      font-size: 0.84rem;
+      font-weight: 600;
+      border: 1px solid #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Itinerary / Program Grid */
+    .itinerary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .itinerary-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      padding: 22px 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .itinerary-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .itinerary-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .itinerary-card ul li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .itinerary-card ul li strong {
+      color: var(--text-dark);
+    }
+
+    /* Calendar Box */
     .dates-calendar-box {
       background: #faf6f1;
       border: 2px solid var(--border-color);
       border-radius: var(--border-radius-lg);
-      padding: 40px 30px;
-      margin-bottom: 50px;
+      padding: 36px 24px;
+      margin: 40px 0;
       text-align: center;
     }
     .dates-table {
       width: 100%;
-      max-width: 700px;
-      margin: 24px auto 0 auto;
+      max-width: 780px;
+      margin: 22px auto 0 auto;
       border-collapse: collapse;
       background: white;
       border-radius: var(--border-radius-md);
@@ -172,17 +272,16 @@
       box-shadow: var(--shadow-sm);
     }
     .dates-table th {
-      background: var(--secondary);
       color: white;
       padding: 12px 16px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
     }
     .dates-table td {
-      padding: 12px 16px;
+      padding: 11px 16px;
       border-bottom: 1px solid var(--border-color);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-dark);
     }
     .dates-table tr:hover {
@@ -190,30 +289,63 @@
     }
     .date-badge-slot {
       display: inline-block;
-      background: rgba(200, 90, 50, 0.1);
-      color: var(--primary);
       padding: 4px 10px;
       border-radius: 20px;
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
-    .cultural-tours-list {
+
+    /* Exclusion list */
+    .not-included-box {
+      background: #fff5f5;
+      border: 1.5px dashed #fca5a5;
+      border-radius: var(--border-radius-md);
+      padding: 20px 22px;
+      margin: 30px auto;
+      max-width: 800px;
+      text-align: left;
+    }
+    .not-included-box h4 {
+      color: #991b1b;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
+      align-items: center;
+      gap: 8px;
     }
-    .tour-tag {
-      background: #f1f5f9;
-      color: #334155;
-      padding: 6px 14px;
-      border-radius: var(--border-radius-pill);
+    .not-included-box ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+      gap: 8px;
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
       font-size: 0.88rem;
-      font-weight: 600;
-      border: 1px solid #cbd5e1;
-      display: inline-flex;
+      color: #7f1d1d;
+    }
+    .not-included-box ul li {
+      display: flex;
       align-items: center;
       gap: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .immersion-hero {
+        padding: 45px 0 35px 0;
+      }
+      .program-block {
+        padding: 40px 0;
+      }
+      .price-current {
+        font-size: 2.5rem;
+      }
+      .dates-calendar-box {
+        padding: 22px 14px;
+      }
+      .dates-table th, .dates-table td {
+        padding: 8px 10px;
+        font-size: 0.82rem;
+      }
     }
   </style>
 </head>
@@ -222,65 +354,338 @@
   <!-- Header -->
   <header class="header">
     <div class="container nav-container">
-      <a href="index.html" class="logo" style="text-decoration:none;">
-        <div class="logo-circle-wrapper">
-          <img src="logo.jpg" alt="Logo Clases.ItalianoBB" class="header-logo-img">
-        </div>
-        <span class="logo-text">@clases.italianobb</span>
-      </a>
-      <div class="nav-actions">
-        <a href="calendario.html" class="nav-cta-btn nav-btn-schedule">
-          <i class="fa-regular fa-calendar-days"></i> <span class="nav-btn-text">Horarios</span>
+      <div class="nav-brand-row">
+        <a href="index.html" class="logo" style="text-decoration:none;">
+          <div class="logo-circle-wrapper">
+            <img src="logo.jpg" alt="Logo Clases.ItalianoBB" class="header-logo-img">
+          </div>
+          <span class="logo-text">@clases.italianobb</span>
         </a>
-        <a href="index.html" class="nav-cta-btn">
-          <i class="fa-solid fa-arrow-left"></i> Inicio
+        <a href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Vengo%20desde%20la%20web%20y%20quiero%20informaci%C3%B3n%20sobre%20los%20viajes%20de%20inmersi%C3%B3n%20a%20Italia%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="nav-quick-wa-btn" title="Escribir por WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i> <span>WhatsApp</span>
         </a>
       </div>
+      <nav class="nav-actions" aria-label="Navegación">
+        <a href="#vacanza-studio" class="nav-cta-btn nav-btn-immersion">
+          <i class="fa-solid fa-graduation-cap"></i> <span>Vacanza-Studio (4 Semanas)</span>
+        </a>
+        <a href="#curso-cocina" class="nav-cta-btn nav-btn-schedule">
+          <i class="fa-solid fa-utensils"></i> <span>Curso de Cocina (2 Semanas)</span>
+        </a>
+        <a href="index.html" class="nav-cta-btn">
+          <i class="fa-solid fa-arrow-left"></i> <span>Volver a la Web</span>
+        </a>
+      </nav>
     </div>
   </header>
 
   <!-- Immersion Hero Section -->
   <section class="immersion-hero">
     <div class="container">
-      <span class="immersion-badge"><i class="fa-solid fa-plane-departure"></i> Experiencia en Italia • 2 Semanas</span>
-      <h1 class="immersion-title">Curso de Cocina & Full Inmersión en Italia 🇮🇹</h1>
-      <p class="immersion-slogan">"Mangia sano, bevi con gusto, vivi meglio"</p>
-      <p class="immersion-dates-tag"><i class="fa-regular fa-calendar"></i> Salidas de Noviembre de 2026 a Marzo de 2027</p>
+      <span class="immersion-badge"><i class="fa-solid fa-plane-departure"></i> Experiencias Presenciales en Italia</span>
+      <h1 class="immersion-title">Inmersión Lingüística & Cultural en Italia 🇮🇹</h1>
+      <p class="immersion-slogan">"Vivi l'Italia con noi: la lingua, i sapori, le tradizioni e i borghi più belli"</p>
+      
+      <p style="max-width:700px; margin:0 auto 24px auto; color:#e2e8f0; font-size:1rem; line-height:1.5;">
+        Elegí tu programa ideal: viví un mes completo de estudio y excursiones por 12 ciudades, o sumergite 2 semanas entre recetas tradicionales, degustaciones y viñedos.
+      </p>
 
-      <!-- Pricing Box -->
-      <div class="price-promo-card">
-        <div>
-          <span class="price-old">2.150 €</span>
-          <span class="price-discount">-30% OFF</span>
-        </div>
-        <span class="price-current">1.490 €</span>
-        <span class="price-caption">Oferta Especial por Persona • Todo el Programa Incluido</span>
-      </div>
-
-      <div style="margin-top: 10px;">
-        <a href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Quiero%20informaci%C3%B3n%20y%20reservar%20mi%20lugar%20para%20el%20Curso%20de%20Cocina%20e%20Inmersi%C3%B3n%20en%20Italia%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-whatsapp-large btn-glow">
-          <i class="fa-brands fa-whatsapp"></i> Consultar Cupos por WhatsApp (+54 9 2914 48-5405)
+      <div class="program-selector-tabs">
+        <a href="#vacanza-studio" class="tab-btn tab-btn-blue">
+          <i class="fa-solid fa-graduation-cap"></i> Vacanza-Studio (4 Semanas • 1.250 €)
+        </a>
+        <a href="#curso-cocina" class="tab-btn tab-btn-gold">
+          <i class="fa-solid fa-utensils"></i> Curso de Cocina & Inmersión (2 Semanas • 1.490 €)
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Detailed Program Highlights -->
-  <main class="immersion-details-section">
+  <!-- =========================================================
+       PROGRAM 1: VACANZA-STUDIO IN ITALIA (4 SEMANAS)
+       ========================================================= -->
+  <section id="vacanza-studio" class="program-block">
     <div class="container">
-      <div class="section-header">
-        <span class="subheading">Programa Completo</span>
-        <h2 class="section-title">¡Aprendé italiano entre sabores y tradiciones!</h2>
-        <p class="section-desc">
-          Una experiencia multisensorial única que combina gastronomía auténtica, aprendizaje del idioma y excursiones culturales por los rincones más bellos de Italia.
+      <div class="section-header" style="text-align:center;">
+        <span class="program-badge-lead" style="background:rgba(2,132,199,0.12); color:#0284c7;">
+          <i class="fa-solid fa-star"></i> Programa Académico & Cultural • 4 Semanas
+        </span>
+        <h2 class="section-title" style="font-size:clamp(1.8rem, 4vw, 2.5rem);">VACANZA-STUDIO IN ITALIA 2027</h2>
+        <p class="section-desc" style="max-width:750px; margin:0 auto;">
+          En <strong>Campus Magnolie (Castelraimondo, Le Marche)</strong>: 4 semanas completas para perfeccionar tu italiano, vivir en un pueblo medieval auténtico y recorrer las ciudades más emblemáticas de la península.
         </p>
+
+        <!-- Pricing Card -->
+        <div class="price-promo-card" style="border-color:#bae6fd; background:#f0f9ff;">
+          <div>
+            <span class="price-old">1.950 €</span>
+            <span class="price-discount">-35% OFF</span>
+          </div>
+          <span class="price-current" style="color:#0369a1;">1.250 €</span>
+          <span class="price-caption">Por Persona • 4 Semanas con Alojamiento, Curso & Excursiones</span>
+        </div>
+
+        <div style="margin-top:10px;">
+          <a href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Quiero%20informaci%C3%B3n%20y%20reservar%20mi%20lugar%20para%20la%20Vacanza-Studio%20in%20Italia%202027%20(4%20Semanas)%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-whatsapp-large btn-glow" style="background:#25d366;">
+            <i class="fa-brands fa-whatsapp"></i> Consultar Cupos Vacanza-Studio por WhatsApp
+          </a>
+        </div>
       </div>
 
-      <!-- Grid of 5 Key Pillars -->
+      <!-- Highlights Grid for Vacanza-Studio -->
+      <div class="features-highlights-grid">
+        <!-- 1. Curso de Idioma y Cultura -->
+        <div class="highlight-card">
+          <div class="number-badge" style="background:#0284c7;">70h</div>
+          <h3>Curso de Lengua y Cultura Italiana</h3>
+          <p>
+            <strong>70 horas</strong> de lengua italiana intensiva y comunicativa con docentes nativos.
+          </p>
+          <ul>
+            <li><i class="fa-solid fa-circle-check" style="color:#0284c7;"></i> <strong>10 horas de cultura:</strong> cine, música italiana, tradiciones e historia.</li>
+            <li><i class="fa-solid fa-circle-check" style="color:#0284c7;"></i> <strong>4 lecciones itinerantes:</strong> práctica viva en pueblos medievales, museos y mercados ciudadanos.</li>
+            <li><i class="fa-solid fa-circle-check" style="color:#0284c7;"></i> Test de nivelación inicial y seguimiento personalizado.</li>
+          </ul>
+        </div>
+
+        <!-- 2. Alojamiento Incluido -->
+        <div class="highlight-card">
+          <div class="number-badge" style="background:#0369a1;"><i class="fa-solid fa-hotel"></i></div>
+          <h3>Alojamiento Cómodo & Conectado</h3>
+          <p>
+            Hospedaje durante las 4 semanas en el pintoresco pueblo de Castelraimondo:
+          </p>
+          <ul>
+            <li><i class="fa-solid fa-circle-check" style="color:#0284c7;"></i> Habitación doble en departamento compartido.</li>
+            <li><i class="fa-solid fa-circle-check" style="color:#0284c7;"></i> Cocina totalmente equipada para preparar comidas con compañeros.</li>
+            <li><i class="fa-solid fa-circle-check" style="color:#0284c7;"></i> Conexión Wi-Fi gratuita y libre acceso.</li>
+          </ul>
+        </div>
+
+        <!-- 3. Eventos y Vida Social -->
+        <div class="highlight-card">
+          <div class="number-badge" style="background:#0284c7;"><i class="fa-solid fa-champagne-glasses"></i></div>
+          <h3>Eventos Sociales & Experiencias</h3>
+          <p>
+            Integración comunitaria y diversión asegurada durante todo el mes:
+          </p>
+          <ul>
+            <li><i class="fa-solid fa-circle-check" style="color:#0284c7;"></i> Aperitivo de bienvenida y tour de Castelraimondo.</li>
+            <li><i class="fa-solid fa-circle-check" style="color:#0284c7;"></i> <strong>Gelato Party:</strong> noche temática con música italiana.</li>
+            <li><i class="fa-solid fa-circle-check" style="color:#0284c7;"></i> Cena internacional con jurados italianos.</li>
+            <li><i class="fa-solid fa-circle-check" style="color:#0284c7;"></i> Noche de Karaoke, almuerzo final y ceremonia oficial de diplomas.</li>
+          </ul>
+        </div>
+
+        <!-- 4. Excursiones incluidas a 12 Ciudades -->
+        <div class="highlight-card" style="grid-column: 1 / -1;">
+          <div class="number-badge" style="background:#0284c7;">12</div>
+          <h3>Excursiones Incluidas en 12 Ciudades Italianas</h3>
+          <p>
+            ¡Recorré lo mejor de Italia central y los rincones más fascinantes con salidas coordinadas ya incluidas en el programa!
+          </p>
+          <div class="cultural-tours-list">
+            <span class="tour-tag">🏛️ Roma</span>
+            <span class="tour-tag">⛪ Ciudad del Vaticano</span>
+            <span class="tour-tag">🎨 Florencia (Firenze)</span>
+            <span class="tour-tag">🏰 Orvieto</span>
+            <span class="tour-tag">🌿 Gubbio</span>
+            <span class="tour-tag">🦇 Grotte di Frasassi</span>
+            <span class="tour-tag">🏖️ Porto Recanati</span>
+            <span class="tour-tag">⛪ Loreto</span>
+            <span class="tour-tag">🏰 Civita di Bagnoregio</span>
+            <span class="tour-tag">🏞️ Pioraco</span>
+            <span class="tour-tag">🏰 Gagliole</span>
+            <span class="tour-tag">🍷 Matelica</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Itinerary Program Semana por Semana -->
+      <div class="section-header" style="text-align:center; margin-top:20px;">
+        <span class="subheading" style="color:#0284c7;">Cronograma de Actividades</span>
+        <h3 style="font-size:1.6rem; color:var(--text-dark);">Programa Semana por Semana (2027)</h3>
+      </div>
+
+      <div class="itinerary-grid">
+        <div class="itinerary-card">
+          <h4 style="color:#0284c7;"><i class="fa-solid fa-calendar-week"></i> Semana 1</h4>
+          <ul>
+            <li><strong>Lunes:</strong> Presentación del curso, test inicial, tour de Castelraimondo y aperitivo de bienvenida.</li>
+            <li><strong>Martes:</strong> Lección + Excursión a Gubbio.</li>
+            <li><strong>Miércoles:</strong> Lección de idioma y cultura + Gelato Party con música italiana.</li>
+            <li><strong>Jueves:</strong> Lección (Opcional extra: San Marino, Gradara y Rimini/Riccione).</li>
+            <li><strong>Viernes:</strong> Lección.</li>
+            <li><strong>Sábado/Dom:</strong> Excursión a Florencia (Opcional: Pisa, Siena o 5 Terre).</li>
+          </ul>
+        </div>
+
+        <div class="itinerary-card">
+          <h4 style="color:#0284c7;"><i class="fa-solid fa-calendar-week"></i> Semana 2</h4>
+          <ul>
+            <li><strong>Martes:</strong> Lección itinerante en Pioraco + proyección de película italiana.</li>
+            <li><strong>Miércoles:</strong> Lección + Cena internacional con jurados italianos.</li>
+            <li><strong>Jueves:</strong> Lección (Opcional extra: Asís, Perugia y cena en Agriturismo).</li>
+            <li><strong>Viernes:</strong> Lección + Excursión a Loreto y Porto Recanati.</li>
+            <li><strong>Sábado/Dom:</strong> Excursión a Roma y Ciudad del Vaticano (Opcional: Nápoles, Costa Amalfitana o Pompeya).</li>
+          </ul>
+        </div>
+
+        <div class="itinerary-card">
+          <h4 style="color:#0284c7;"><i class="fa-solid fa-calendar-week"></i> Semana 3</h4>
+          <ul>
+            <li><strong>Martes:</strong> Lección itinerante en Gagliole + proyección de cine.</li>
+            <li><strong>Miércoles:</strong> Lección de lengua y cultura.</li>
+            <li><strong>Jueves:</strong> Lección (Opcional extra: Norcia, Cascia y Monti Sibillini).</li>
+            <li><strong>Viernes:</strong> Excursión a Civita di Bagnoregio y Orvieto.</li>
+            <li><strong>Sábado/Dom:</strong> Lección (Opcional extra: Venecia, Padua, Verona, Lago de Garda o Dolomitas/Trento/Bolzano).</li>
+          </ul>
+        </div>
+
+        <div class="itinerary-card">
+          <h4 style="color:#0284c7;"><i class="fa-solid fa-calendar-week"></i> Semana 4</h4>
+          <ul>
+            <li><strong>Martes:</strong> Lección itinerante en Matelica + cine.</li>
+            <li><strong>Miércoles:</strong> Lección + Excursión a las Grotte di Frasassi.</li>
+            <li><strong>Jueves:</strong> Lección, exámenes orales, gran Cena Final con fiesta musical y Karaoke.</li>
+            <li><strong>Viernes:</strong> Test final y ceremonia de entrega de diplomas oficiales.</li>
+            <li><strong>Sábado:</strong> Salida y despedida.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Gran Tours Extra (Opcionales) -->
+      <div style="background:#ffffff; border:1.5px solid var(--border-color); border-radius:var(--border-radius-md); padding:24px 22px; margin-top:24px;">
+        <h4 style="font-size:1.15rem; color:var(--text-dark); margin-bottom:8px;">
+          <i class="fa-solid fa-map-location-dot" style="color:#0284c7;"></i> Gran Tours Opcionales a más de 30 Ciudades
+        </h4>
+        <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:12px;">
+          Para quienes quieran sumar viajes de fin de semana durante su estadía (en hoteles 3 o 4 estrellas con desayuno):
+        </p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap:14px; font-size:0.88rem; color:#475569;">
+          <div>
+            <strong>📍 Lombardía & Emilia-Romaña (2 noches / 2 días):</strong> Tirano, Trenino del Bernina (Suiza) o Lugano, Milán, Módena (Museo Ferrari, producción de Parmigiano) y Bologna.
+          </div>
+          <div>
+            <strong>📍 Puglia & Basilicata (2 noches / 2 días):</strong> Polignano a Mare, Alberobello, Matera, Bari, Trani y San Giovanni Rotondo (Padre Pío).
+          </div>
+        </div>
+      </div>
+
+      <!-- Calendar Table 2027 -->
+      <div class="dates-calendar-box">
+        <span class="subheading" style="color:#0284c7;">Fechas 2027 Confirmadas</span>
+        <h3 style="font-size:1.65rem; color:var(--text-dark); margin-bottom:6px;">Calendario Vacanza-Studio 2027</h3>
+        <p style="color:var(--text-muted);">Inicios mensuales de 4 semanas de duración:</p>
+
+        <table class="dates-table">
+          <thead>
+            <tr style="background:#0284c7;">
+              <th>Mes</th>
+              <th>Período (4 Semanas)</th>
+              <th>Mes</th>
+              <th>Período (4 Semanas)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Enero</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">04/01 – 29/01</span></td>
+              <td><strong>Julio</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">05/07 – 30/07</span></td>
+            </tr>
+            <tr>
+              <td><strong>Febrero</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">01/02 – 26/02</span></td>
+              <td><strong>Agosto</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">02/08 – 27/08</span></td>
+            </tr>
+            <tr>
+              <td><strong>Marzo</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">01/03 – 12/03</span></td>
+              <td><strong>Septiembre</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">30/08 – 24/09</span></td>
+            </tr>
+            <tr>
+              <td><strong>Abril</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">05/04 – 30/04</span></td>
+              <td><strong>Octubre</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">27/09 – 22/10</span></td>
+            </tr>
+            <tr>
+              <td><strong>Mayo</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">03/05 – 28/05</span></td>
+              <td><strong>Noviembre</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">01/11 – 26/11</span></td>
+            </tr>
+            <tr>
+              <td><strong>Junio</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">31/05 – 25/06</span></td>
+              <td><strong>Diciembre</strong></td>
+              <td><span class="date-badge-slot" style="background:#e0f2fe; color:#0369a1;">29/11 – 19/12</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Not included transparency -->
+        <div class="not-included-box">
+          <h4><i class="fa-solid fa-circle-info"></i> La tarifa del programa no incluye:</h4>
+          <ul>
+            <li><i class="fa-solid fa-xmark"></i> Comidas no especificadas en el programa</li>
+            <li><i class="fa-solid fa-xmark"></i> Libros y entradas a museos / Frasassi</li>
+            <li><i class="fa-solid fa-xmark"></i> Tasa de inscripción y material didáctico</li>
+            <li><i class="fa-solid fa-xmark"></i> Gastos de calefacción en meses de invierno</li>
+            <li><i class="fa-solid fa-xmark"></i> Traslados hacia/desde aeropuertos</li>
+            <li><i class="fa-solid fa-xmark"></i> Excursiones extra opcionales</li>
+            <li><i class="fa-solid fa-xmark"></i> Uso de lavandería</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <a href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Quiero%20consultar%20por%20las%20fechas%202027%20de%20la%20Vacanza-Studio%20in%20Italia%20(4%20semanas)%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-primary btn-large btn-glow" style="background:linear-gradient(135deg, #0284c7, #0369a1);">
+            <i class="fa-brands fa-whatsapp"></i> Reservar Cupo Vacanza-Studio por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PROGRAM 2: CURSO DE COCINA & FULL INMERSIÓN (2 SEMANAS)
+       ========================================================= -->
+  <section id="curso-cocina" class="program-block alt-bg">
+    <div class="container">
+      <div class="section-header" style="text-align:center;">
+        <span class="program-badge-lead" style="background:rgba(202,138,4,0.15); color:#ca8a04;">
+          <i class="fa-solid fa-utensils"></i> Programa Gastronómico & Cultural • 2 Semanas
+        </span>
+        <h2 class="section-title" style="font-size:clamp(1.8rem, 4vw, 2.5rem);">Curso de Cocina & Full Inmersión en Italia</h2>
+        <p class="section-desc" style="max-width:750px; margin:0 auto;">
+          Aprendé italiano entre sabores y tradiciones: 2 semanas de cocina con chefs, degustaciones regionales, viñedos, pueblos medievales y práctica del idioma culinario.
+        </p>
+
+        <!-- Pricing Card -->
+        <div class="price-promo-card" style="border-color:#fde047; background:#fffdf5;">
+          <div>
+            <span class="price-old">2.150 €</span>
+            <span class="price-discount">-30% OFF</span>
+          </div>
+          <span class="price-current" style="color:#b45309;">1.490 €</span>
+          <span class="price-caption">Por Persona • 2 Semanas con Clases de Cocina, Catas & Excursiones</span>
+        </div>
+
+        <div style="margin-top:10px;">
+          <a href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Quiero%20informaci%C3%B3n%20y%20reservar%20mi%20lugar%20para%20el%20Curso%20de%20Cocina%20e%20Inmersi%C3%B3n%20en%20Italia%20(2%20semanas)%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-whatsapp-large btn-glow" style="background:#25d366;">
+            <i class="fa-brands fa-whatsapp"></i> Consultar Cupos Curso de Cocina por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Highlights Grid for Cooking Immersion -->
       <div class="features-highlights-grid">
         <!-- 1. Clases de Cocina -->
         <div class="highlight-card">
-          <div class="number-badge">7</div>
+          <div class="number-badge" style="background:#ca8a04;">7</div>
           <h3>Lecciones de Cocina & Enogastronomía</h3>
           <p>
             ¡Descubrí los secretos de la auténtica cocina italiana y de <em>Le Marche</em> con 7 lecciones prácticas dictadas por chefs y cocineros expertos!
@@ -292,34 +697,34 @@
 
         <!-- 2. Degustaciones -->
         <div class="highlight-card">
-          <div class="number-badge">5</div>
+          <div class="number-badge" style="background:#b45309;">5</div>
           <h3>Degustaciones de Productos Locales</h3>
           <p>Un viaje por los sabores más genuinos y tradicionales:</p>
           <ul>
-            <li><i class="fa-solid fa-check"></i> <strong>Polenta:</strong> típica del norte de Italia.</li>
-            <li><i class="fa-solid fa-check"></i> <strong>Vincisgrassi Maceratesi:</strong> especialidad de Macerata (Le Marche).</li>
-            <li><i class="fa-solid fa-check"></i> <strong>Mozzarella de búfala:</strong> excelencia de Campania.</li>
-            <li><i class="fa-solid fa-check"></i> <strong>Amatriciana:</strong> plato símbolo de Amatrice (Lacio).</li>
-            <li><i class="fa-solid fa-check"></i> <strong>Tiramisú de Pina:</strong> especialidad familiar Casoni.</li>
+            <li><i class="fa-solid fa-check" style="color:#ca8a04;"></i> <strong>Polenta:</strong> típica del norte de Italia.</li>
+            <li><i class="fa-solid fa-check" style="color:#ca8a04;"></i> <strong>Vincisgrassi Maceratesi:</strong> especialidad de Macerata (Le Marche).</li>
+            <li><i class="fa-solid fa-check" style="color:#ca8a04;"></i> <strong>Mozzarella de búfala:</strong> excelencia de Campania.</li>
+            <li><i class="fa-solid fa-check" style="color:#ca8a04;"></i> <strong>Amatriciana:</strong> plato símbolo de Amatrice (Lacio).</li>
+            <li><i class="fa-solid fa-check" style="color:#ca8a04;"></i> <strong>Tiramisú de Pina:</strong> especialidad familiar Casoni.</li>
           </ul>
         </div>
 
         <!-- 3. Tours Enogastronómicos -->
         <div class="highlight-card">
-          <div class="number-badge">4</div>
+          <div class="number-badge" style="background:#ca8a04;">4</div>
           <h3>Tours Enogastronómicos de Excelencia</h3>
           <p>Visitas guiadas a productores locales de primer nivel:</p>
           <ul>
-            <li><i class="fa-solid fa-wine-glass"></i> Bodegas locales con cata de vinos.</li>
-            <li><i class="fa-solid fa-bottle-droplet"></i> Almazara para descubrir el aceite de oliva virgen extra.</li>
-            <li><i class="fa-solid fa-flask"></i> Vinagrería tradicional para conocer el vinagre balsámico.</li>
-            <li><i class="fa-solid fa-cheese"></i> Quesería (caseificio) en Módena: producción y cata de <em>Parmigiano Reggiano</em>.</li>
+            <li><i class="fa-solid fa-wine-glass" style="color:#ca8a04;"></i> Bodegas locales con cata de vinos.</li>
+            <li><i class="fa-solid fa-bottle-droplet" style="color:#ca8a04;"></i> Almazara para descubrir el aceite de oliva virgen extra.</li>
+            <li><i class="fa-solid fa-flask" style="color:#ca8a04;"></i> Vinagrería tradicional para conocer el vinagre balsámico.</li>
+            <li><i class="fa-solid fa-cheese" style="color:#ca8a04;"></i> Quesería en Módena: producción y cata de <em>Parmigiano Reggiano</em>.</li>
           </ul>
         </div>
 
         <!-- 4. Tours Culturales -->
         <div class="highlight-card">
-          <div class="number-badge">4</div>
+          <div class="number-badge" style="background:#b45309;">4</div>
           <h3>Tours Culturales para Descubrir Italia</h3>
           <p>
             ¡No solo sabor, sino también belleza! Exploraremos pueblos históricos y paisajes emblemáticos:
@@ -335,7 +740,7 @@
           </div>
         </div>
 
-        <!-- 5. Italiano a través de la comida -->
+        <!-- 5. Italiano gastronómico -->
         <div class="highlight-card" style="grid-column: 1 / -1;">
           <div class="number-badge" style="background:var(--secondary);">3</div>
           <h3>¡Aprendé italiano a través de la comida!</h3>
@@ -346,15 +751,15 @@
         </div>
       </div>
 
-      <!-- Departure Dates Calendar Table -->
+      <!-- Departure Dates Calendar Table for Cooking Course -->
       <div class="dates-calendar-box">
-        <span class="subheading">Fechas de Salida Confirmadas</span>
-        <h2 style="font-size:1.8rem; color:var(--text-dark); margin-bottom:8px;">Calendario de Salidas (2026 - 2027)</h2>
+        <span class="subheading" style="color:#ca8a04;">Salidas Confirmadas 2026 - 2027</span>
+        <h3 style="font-size:1.65rem; color:var(--text-dark); margin-bottom:6px;">Calendario Curso de Cocina (2 Semanas)</h3>
         <p style="color:var(--text-muted);">Elegí tu fecha preferida de 2 semanas de duración:</p>
 
         <table class="dates-table">
           <thead>
-            <tr>
+            <tr style="background:#ca8a04;">
               <th>Mes</th>
               <th>Año</th>
               <th>Fechas del Programa (2 Semanas)</th>
@@ -364,39 +769,39 @@
             <tr>
               <td><strong>Noviembre</strong></td>
               <td>2026</td>
-              <td><span class="date-badge-slot">02/11 al 13/11</span> &nbsp; <span class="date-badge-slot">16/11 al 27/11</span></td>
+              <td><span class="date-badge-slot" style="background:#fefce8; color:#a16207;">02/11 al 13/11</span> &nbsp; <span class="date-badge-slot" style="background:#fefce8; color:#a16207;">16/11 al 27/11</span></td>
             </tr>
             <tr>
               <td><strong>Diciembre</strong></td>
               <td>2026</td>
-              <td><span class="date-badge-slot">07/12 al 18/12</span></td>
+              <td><span class="date-badge-slot" style="background:#fefce8; color:#a16207;">07/12 al 18/12</span></td>
             </tr>
             <tr>
               <td><strong>Enero</strong></td>
               <td>2027</td>
-              <td><span class="date-badge-slot">04/01 al 15/01</span> &nbsp; <span class="date-badge-slot">18/01 al 29/01</span></td>
+              <td><span class="date-badge-slot" style="background:#fefce8; color:#a16207;">04/01 al 15/01</span> &nbsp; <span class="date-badge-slot" style="background:#fefce8; color:#a16207;">18/01 al 29/01</span></td>
             </tr>
             <tr>
               <td><strong>Febrero</strong></td>
               <td>2027</td>
-              <td><span class="date-badge-slot">01/02 al 12/02</span> &nbsp; <span class="date-badge-slot">15/02 al 26/02</span></td>
+              <td><span class="date-badge-slot" style="background:#fefce8; color:#a16207;">01/02 al 12/02</span> &nbsp; <span class="date-badge-slot" style="background:#fefce8; color:#a16207;">15/02 al 26/02</span></td>
             </tr>
             <tr>
               <td><strong>Marzo</strong></td>
               <td>2027</td>
-              <td><span class="date-badge-slot">01/03 al 12/03</span> &nbsp; <span class="date-badge-slot">15/03 al 26/03</span></td>
+              <td><span class="date-badge-slot" style="background:#fefce8; color:#a16207;">01/03 al 12/03</span> &nbsp; <span class="date-badge-slot" style="background:#fefce8; color:#a16207;">15/03 al 26/03</span></td>
             </tr>
           </tbody>
         </table>
 
-        <div style="margin-top: 30px;">
-          <a href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Quisiera%20consultar%20por%20las%20fechas%20y%20cupos%20del%20Viaje%20de%20Inmersi%C3%B3n%20en%20Italia%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-primary btn-large btn-glow">
-            <i class="fa-brands fa-whatsapp"></i> Reservar o Consultar Fecha por WhatsApp
+        <div style="margin-top: 24px;">
+          <a href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Quisiera%20consultar%20por%20las%20fechas%20del%20Curso%20de%20Cocina%20en%20Italia%20(2%20semanas)%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-primary btn-large btn-glow" style="background:linear-gradient(135deg, #ca8a04, #a16207);">
+            <i class="fa-brands fa-whatsapp"></i> Reservar o Consultar Curso de Cocina por WhatsApp
           </a>
         </div>
       </div>
     </div>
-  </main>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -413,7 +818,7 @@
   </footer>
 
   <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/5492914485405?text=%C2%A1Ciao!%20Quiero%20informaci%C3%B3n%20sobre%20el%20viaje%20de%20Inmersi%C3%B3n%20a%20Italia%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="floating-whatsapp" title="Escribime por WhatsApp">
+  <a href="https://wa.me/5492914485405?text=%C2%A1Ciao!%20Quiero%20informaci%C3%B3n%20sobre%20los%20viajes%20de%20inmersi%C3%B3n%20a%20Italia%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="floating-whatsapp" title="Escribime por WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
     <span class="whatsapp-tooltip">¡Consultá tu viaje! 🇮🇹</span>
   </a>
