@@ -754,7 +754,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Default Verified Student Reviews (Visible to all visitors worldwide)
+  // ----------------------------------------------------------
+  // Firebase Realtime Cloud Database Configuration & Sync
+  // ----------------------------------------------------------
+  let reviewsDbRef = null;
+
+  // Firebase project configuration for live cloud reviews
+  const firebaseConfig = {
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "", // Pegá acá tu URL de Realtime Database (ej: https://tu-proyecto-default-rtdb.firebaseio.com)
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
+  };
+
+  // Default Verified Student Reviews (Visible as fallback / base)
   const defaultVerifiedReviews = [
     {
       name: 'Camila Benítez',
@@ -776,17 +792,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  // Load reviews: default verified + local reviews
+  if (typeof firebase !== 'undefined' && firebaseConfig.databaseURL) {
+    try {
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+      reviewsDbRef = database.ref('reviews');
+
+      // Live Cloud Realtime Sync: Triggers in real time for all visitors worldwide
+      reviewsDbRef.on('value', snapshot => {
+        const val = snapshot.val();
+        if (reviewsContainer) reviewsContainer.innerHTML = '';
+        if (val) {
+          const list = Object.values(val);
+          list.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+          list.forEach(rev => appendReviewCard(rev, false));
+        } else {
+          defaultVerifiedReviews.forEach(rev => appendReviewCard(rev, false));
+        }
+      });
+    } catch (err) {
+      console.warn('Firebase init warning:', err);
+    }
+  }
+
+  // Load reviews from local/fallback if Firebase is waiting for keys
   function loadStoredReviews() {
+    if (reviewsDbRef) return; // Managed by Firebase live listener
+
     try {
       if (!reviewsContainer) return;
       reviewsContainer.innerHTML = '';
 
       const localStored = JSON.parse(localStorage.getItem('clases_italiano_reviews') || '[]');
-      
-      // Combine local user-submitted reviews first, then default verified reviews
       const allReviews = [...localStored, ...defaultVerifiedReviews];
-
       allReviews.forEach(rev => appendReviewCard(rev, false));
     } catch (e) {
       console.warn('Error loading reviews from storage', e);
@@ -859,19 +897,21 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Append dynamically to page
-      appendReviewCard(reviewData, true);
-
-      // Save to localStorage
-      try {
-        const stored = JSON.parse(localStorage.getItem('clases_italiano_reviews') || '[]');
-        stored.unshift(reviewData);
-        localStorage.setItem('clases_italiano_reviews', JSON.stringify(stored));
-      } catch (err) {
-        console.warn('LocalStorage error', err);
+      // Save to Firebase Cloud Database in real-time
+      if (reviewsDbRef) {
+        reviewsDbRef.push(reviewData).catch(err => console.warn('Cloud DB push error', err));
+      } else {
+        appendReviewCard(reviewData, true);
+        try {
+          const stored = JSON.parse(localStorage.getItem('clases_italiano_reviews') || '[]');
+          stored.unshift(reviewData);
+          localStorage.setItem('clases_italiano_reviews', JSON.stringify(stored));
+        } catch (err) {
+          console.warn('LocalStorage error', err);
+        }
       }
 
-      // Format WhatsApp message so the teacher immediately receives the review on their phone
+      // Format WhatsApp message notification for teacher
       const starsString = '⭐'.repeat(reviewData.rating);
       const waMsg = `¡Hola! Dejé una nueva reseña en la web de @clases.italianobb 🇮🇹✨\n\n👤 *Nombre:* ${reviewData.name}\n📚 *Modalidad:* ${reviewData.course}\n⭐ *Calificación:* ${starsString} (${reviewData.rating}/5)\n💬 *Comentario:* "${reviewData.comment}"`;
       const waUrl = `https://wa.me/5492914485405?text=${encodeURIComponent(waMsg)}`;
