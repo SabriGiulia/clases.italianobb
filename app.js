@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isActive) item.classList.add('active');
     });
   });
-  if (accordionItems.length > 0) accordionItems[0].classList.add('active');
 
   // 2. Comprehensive Question Database (46 Progressive Questions)
   const questionBank = [
