@@ -3507,80 +3507,240 @@ input, select, textarea, button {
     padding: 12px 18px;
   }
 
-  /* Regime 1 a 1 Mobile */
+  /* Container mobile framing */
+  .container {
+    padding: 0 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Course Specs Box on Mobile (index.html) */
+  .course-specs-box {
+    background: #fdfaf7;
+    border: 1.5px solid #ece4dc;
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin: 12px 0 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .spec-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+    font-size: 0.84rem;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #ede5de;
+    line-height: 1.4;
+  }
+
+  .spec-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .spec-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .spec-value {
+    color: var(--text-dark);
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .spec-tag {
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 4px;
+    display: inline-block;
+  }
+
+  .card-frequency-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+    margin: 8px 0 12px 0 !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Regime 1 a 1 Mobile (calendario.html) */
   .regime-section-box {
-    padding: 24px 16px;
-    border-radius: 20px;
-    margin-bottom: 26px;
+    padding: 22px 14px;
+    border-radius: 18px;
+    margin-bottom: 24px;
   }
 
   .regime-title {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
+    line-height: 1.25;
   }
 
   .regime-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .duration-category-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 12px 14px;
+    gap: 6px;
+    border-radius: 12px;
+    margin-top: 20px;
+  }
+
+  .duration-category-title {
+    font-size: 1.05rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .duration-badge-pill {
+    font-size: 0.72rem;
+    padding: 3px 10px;
   }
 
   .regime-grid {
     grid-template-columns: 1fr;
     gap: 14px;
-    margin: 20px 0 16px 0;
+    margin: 14px 0 12px 0;
   }
 
   .regime-card {
-    padding: 20px 14px;
+    padding: 18px 14px;
+    border-radius: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .regime-price-box {
+    padding: 8px 6px;
+    margin: 6px 0 10px 0;
+  }
+
+  .regime-unit-price {
+    font-size: 1.18rem;
+  }
+
+  .regime-total-price {
+    font-size: 0.82rem;
+    padding: 3px 10px;
+  }
+
+  .regime-durations-box {
+    padding: 6px 8px;
+    font-size: 0.76rem;
   }
 
   .regime-info-banner {
-    padding: 14px 14px;
+    padding: 14px 12px;
+    border-radius: 12px;
+    gap: 10px;
   }
 
   .regime-info-item {
-    font-size: 0.88rem;
+    font-size: 0.86rem;
+    gap: 8px;
+    line-height: 1.45;
+  }
+
+  .regime-info-item i {
+    min-width: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Schedule Grid on Mobile */
+  .schedule-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .day-card {
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+  }
+
+  .time-slots {
+    gap: 6px !important;
+  }
+
+  .time-badge {
+    padding: 9px 12px !important;
+    font-size: 0.88rem !important;
+    min-height: 38px;
+  }
+
+  .booking-interactive-box {
+    padding: 22px 14px !important;
+    border-radius: 16px !important;
+  }
+
+  .btn-whatsapp-large {
+    width: 100% !important;
+    font-size: 0.95rem !important;
+    padding: 14px 16px !important;
+    min-height: 48px;
   }
 
   /* Conditions / Policy */
   .policy-section-main {
-    padding: 40px 0 !important;
+    padding: 35px 0 !important;
   }
 
   .policy-card-wrapper {
-    padding: 22px 16px !important;
-    border-radius: 20px !important;
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
   }
 
   /* Footer */
   .footer {
-    padding: 45px 0 25px 0;
+    padding: 40px 0 25px 0;
   }
 
   .footer-cta h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     line-height: 1.25;
     margin-bottom: 10px;
   }
 
   .footer-cta p {
-    font-size: 0.95rem;
-    margin-bottom: 22px;
+    font-size: 0.92rem;
+    margin-bottom: 20px;
   }
 
   .footer-bottom {
     flex-direction: column;
     gap: 12px;
     text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
+    margin-top: 26px;
+    padding-top: 18px;
   }
 
   /* Floating WhatsApp */
   .floating-whatsapp {
-    width: 54px;
-    height: 54px;
-    font-size: 1.7rem;
-    bottom: 18px;
-    right: 18px;
+    width: 52px;
+    height: 52px;
+    font-size: 1.6rem;
+    bottom: 16px;
+    right: 16px;
   }
 }
 
