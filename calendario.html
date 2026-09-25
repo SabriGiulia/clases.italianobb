@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=20260925_4">
+  <link rel="stylesheet" href="style.css?v=20260925_5">
   <style>
     .calendar-page-container {
       padding: 50px 0 80px 0;
@@ -214,13 +214,25 @@
         </div>
       </div>
 
-      <!-- 3 Frequency Plans -->
+      <!-- Advance Payment Notice Banner -->
+      <div style="background: #fff8f3; border: 1.5px solid #fed7aa; border-radius: 12px; padding: 10px 16px; margin: 16px auto 0 auto; max-width: 540px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.88rem; color: #9a3412; font-weight: 700;">
+        <i class="fa-solid fa-credit-card"></i>
+        <span>En modalidad 1 a 1 las clases se abonan por adelantado</span>
+      </div>
+
+      <!-- 3 Frequency Plans with Prices -->
       <div class="regime-grid">
         <!-- Plan 1: 4 clases -->
         <div class="regime-card">
           <div class="regime-classes-num">4</div>
           <span class="regime-freq-tag">Clases al mes</span>
           <p class="regime-desc-text"><strong>1 vez por semana</strong>. Ideal para mantener continuidad constante y avanzar paso a paso.</p>
+          
+          <div class="regime-price-box">
+            <span class="regime-unit-price">$19.000 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price">Total: $76.000 / mes</span>
+          </div>
+
           <div class="regime-durations-box">
             <span>⏱️ Duración: <strong>1 hora</strong> o <strong>1h 30m</strong></span>
           </div>
@@ -232,6 +244,12 @@
           <div class="regime-classes-num">8</div>
           <span class="regime-freq-tag">Clases al mes</span>
           <p class="regime-desc-text"><strong>2 veces por semana</strong>. Excelente frecuencia para soltarte a hablar rápido y fijar contenidos.</p>
+          
+          <div class="regime-price-box" style="border-color: var(--primary); background: #fffcf9;">
+            <span class="regime-unit-price">$18.000 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price" style="background: var(--primary); color: #ffffff; border-color: var(--primary);">Total: $144.000 / mes</span>
+          </div>
+
           <div class="regime-durations-box">
             <span>⏱️ Duración: <strong>1 hora</strong> o <strong>1h 30m</strong></span>
           </div>
@@ -242,24 +260,34 @@
           <div class="regime-classes-num">12</div>
           <span class="regime-freq-tag">Clases al mes</span>
           <p class="regime-desc-text"><strong>3 veces por semana</strong>. Modo intensivo para viajes próximos, exámenes o trámites urgentes.</p>
+          
+          <div class="regime-price-box">
+            <span class="regime-unit-price">$17.000 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price">Total: $204.000 / mes</span>
+          </div>
+
           <div class="regime-durations-box">
             <span>⏱️ Duración: <strong>1 hora</strong> o <strong>1h 30m</strong></span>
           </div>
         </div>
       </div>
 
-      <!-- Regime Highlights & Attendance Policy Banner -->
+      <!-- Regime Highlights, Trial Class & Payment Rules Banner -->
       <div class="regime-info-banner">
         <div class="regime-info-item">
-          <i class="fa-solid fa-clock" style="color:var(--primary);"></i>
-          <span><strong>Duración a elección:</strong> Podés elegir clases de <strong>1 hora (60 min)</strong> o de <strong>1 hora y media (90 min)</strong> según la intensidad deseada.</span>
+          <i class="fa-solid fa-sparkles" style="color:var(--accent-gold);"></i>
+          <span><strong>Clase individual de prueba:</strong> Si preferís probar la dinámica antes de contratar un pack mensual, podés abonar <strong>solo una clase (la primera)</strong>.</span>
         </div>
         <div class="regime-info-item">
           <i class="fa-solid fa-arrows-rotate" style="color:var(--secondary);"></i>
-          <span><strong>Política de inasistencias:</strong> En caso de avisar con tiempo, la clase se recupera <strong>DENTRO DEL MISMO MES</strong>. De modo contrario (sin previo aviso), la clase se pierde.</span>
+          <span><strong>Política de inasistencias 1 a 1:</strong> En caso de avisar con tiempo, la clase se recupera <strong>DENTRO DEL MISMO MES</strong>. De modo contrario (sin previo aviso), la clase se pierde.</span>
         </div>
         <div class="regime-info-item">
-          <i class="fa-solid fa-location-dot" style="color:#ca8a04;"></i>
+          <i class="fa-solid fa-users" style="color:#0284c7;"></i>
+          <span><strong>Grupos Reducidos:</strong> Para la modalidad de grupos reducidos, el arancel mensual se abona <strong>hasta el día 10 de cada mes</strong>.</span>
+        </div>
+        <div class="regime-info-item">
+          <i class="fa-solid fa-location-dot" style="color:var(--primary);"></i>
           <span><strong>Modalidad:</strong> 100% Online en vivo por Google Meet / Zoom, o Presencial en Bahía Blanca.</span>
         </div>
       </div>
