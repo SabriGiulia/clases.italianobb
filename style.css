@@ -2832,66 +2832,99 @@ input, select, textarea, button {
 
   /* About Me Section Mobile */
   .about-me-section {
-    padding: 36px 0;
+    padding: 34px 0;
   }
 
   .about-compact-card {
-    padding: 20px 16px;
-    border-radius: 18px;
+    padding: 22px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(70, 45, 30, 0.05);
   }
 
   .about-card-header {
-    gap: 14px;
+    flex-direction: column;
+    text-align: center;
     align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
   }
 
   .about-avatar-wrapper {
-    width: 76px;
-    height: 76px;
-    min-width: 76px;
+    width: 86px;
+    height: 86px;
+    min-width: 86px;
+    margin: 0 auto;
+  }
+
+  .about-header-info {
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    width: 100%;
   }
 
   .about-title-name {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   }
 
   .about-pills-row {
-    gap: 4px;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
   }
 
   .about-pill {
-    font-size: 0.72rem;
-    padding: 2px 8px;
+    font-size: 0.74rem;
+    padding: 3px 10px;
   }
 
   .about-summary-text {
-    font-size: 0.92rem;
-    line-height: 1.55;
-    margin-bottom: 14px;
+    font-size: 0.94rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #4b5563;
+  }
+
+  .about-toggle-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   .btn-toggle-about {
     width: 100%;
+    max-width: 320px;
     justify-content: center;
-    font-size: 0.85rem;
-    padding: 9px 16px;
+    font-size: 0.88rem;
+    padding: 10px 18px;
+    min-height: 44px;
+  }
+
+  .about-expandable-box {
+    margin-top: 14px;
+    padding-top: 14px;
   }
 
   .about-story-inner {
-    font-size: 0.91rem;
-    line-height: 1.55;
-    gap: 10px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    gap: 12px;
+    text-align: left;
   }
 
   .about-actions-row {
     flex-direction: column;
     gap: 10px;
     width: 100%;
+    margin-top: 12px;
   }
 
   .about-actions-row .btn {
     width: 100%;
+    min-height: 46px;
     justify-content: center;
+    font-size: 0.92rem;
   }
 
   /* Reviews & Testimonials */
