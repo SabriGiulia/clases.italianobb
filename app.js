@@ -1069,5 +1069,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Sobre Mí Collapsible / Expandable Bio Toggle
+  const btnToggleAbout = document.getElementById('btn-toggle-about');
+  const aboutFullStory = document.getElementById('about-full-story');
+  const aboutToggleText = document.getElementById('about-toggle-text');
+
+  if (btnToggleAbout && aboutFullStory) {
+    btnToggleAbout.addEventListener('click', () => {
+      const isCurrentlyHidden = aboutFullStory.style.display === 'none' || !aboutFullStory.style.display;
+      if (isCurrentlyHidden) {
+        aboutFullStory.style.display = 'block';
+        btnToggleAbout.classList.add('active');
+        btnToggleAbout.setAttribute('aria-expanded', 'true');
+        if (aboutToggleText) aboutToggleText.textContent = 'Ocultar historia';
+      } else {
+        aboutFullStory.style.display = 'none';
+        btnToggleAbout.classList.remove('active');
+        btnToggleAbout.setAttribute('aria-expanded', 'false');
+        if (aboutToggleText) aboutToggleText.textContent = 'Leer mi historia completa';
+      }
+    });
+  }
+
   fetchCloudReviews();
 });

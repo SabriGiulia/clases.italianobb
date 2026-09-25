@@ -1030,188 +1030,127 @@ input, select, textarea, button {
 }
 
 /* ==========================================================
-   ABOUT ME SECTION ("Sobre Mí")
+   ABOUT ME SECTION ("Sobre Mí") - Compact & Collapsible
    ========================================================== */
 .about-me-section {
-  padding: 80px 0;
+  padding: 50px 0;
   background: var(--bg-main);
   position: relative;
 }
 
-.about-me-card-wrapper {
+.about-compact-card {
   background: #ffffff;
   border: 1.5px solid var(--border-color);
-  border-radius: var(--border-radius-lg);
-  padding: 44px 40px;
-  box-shadow: var(--shadow-md);
+  border-radius: 20px;
+  padding: 26px 28px;
+  box-shadow: 0 8px 24px rgba(70, 45, 30, 0.06);
   position: relative;
   overflow: hidden;
+  margin: 0 auto;
 }
 
-.about-me-card-wrapper::before {
+.about-compact-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 6px;
+  height: 5px;
   background: linear-gradient(90deg, var(--primary) 0%, var(--accent-gold) 50%, var(--secondary) 100%);
 }
 
-.about-me-grid {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 45px;
-  align-items: center;
-}
-
-/* Left Column: Portrait */
-.about-photo-col {
+.about-card-header {
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
 }
 
-.about-photo-frame {
+.about-avatar-wrapper {
   position: relative;
-  border-radius: 22px;
+  width: 96px;
+  height: 96px;
+  min-width: 96px;
+  border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 12px 32px rgba(70, 45, 30, 0.14);
-  border: 4px solid #ffffff;
-  aspect-ratio: 9 / 16;
-  max-height: 460px;
+  border: 3px solid #ffffff;
+  outline: 2.5px solid var(--primary);
+  box-shadow: 0 6px 18px rgba(200, 90, 50, 0.22);
   background: #ede5de;
 }
 
-.about-photo-img {
+.about-avatar-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 20%;
   display: block;
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
 }
 
-.about-photo-frame:hover .about-photo-img {
-  transform: scale(1.03);
+.about-avatar-wrapper:hover .about-avatar-img {
+  transform: scale(1.05);
 }
 
-.about-photo-badge {
+.about-avatar-status {
   position: absolute;
-  bottom: 14px;
-  left: 14px;
-  right: 14px;
-  background: rgba(34, 37, 42, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  bottom: 2px;
+  right: 2px;
+  background: #16a34a;
   color: #ffffff;
-  border-radius: 14px;
-  padding: 10px 14px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
   display: flex;
   align-items: center;
-  gap: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  justify-content: center;
+  font-size: 0.65rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
 }
 
-.about-photo-badge i {
-  color: var(--accent-gold);
-  font-size: 1.25rem;
-}
-
-.about-photo-badge strong {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.about-photo-badge span {
-  font-size: 0.78rem;
-  color: #d1d5db;
-}
-
-/* Mini Stats under photo */
-.about-stats-mini {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.about-stat-mini-card {
-  background: #fdfbf9;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 10px 6px;
-  text-align: center;
+.about-header-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.stat-mini-num {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--primary);
-  line-height: 1.2;
-}
-
-.stat-mini-txt {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-/* Right Column: Bio Story */
-.about-story-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.about-greeting-box {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .about-badge-tag {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   color: var(--secondary);
 }
 
-.about-greeting-title {
-  font-size: 2rem;
+.about-title-name {
+  font-size: 1.45rem;
   font-weight: 800;
   color: var(--text-dark);
+  margin: 0;
   line-height: 1.2;
 }
 
 .about-pills-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 6px;
+  gap: 6px;
+  margin-top: 4px;
 }
 
 .about-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   background: #fcf8f4;
   border: 1px solid #eddcd1;
   color: #92400e;
-  padding: 5px 12px;
+  padding: 3px 10px;
   border-radius: var(--border-radius-pill);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
 }
 
@@ -1219,20 +1158,89 @@ input, select, textarea, button {
   color: var(--primary);
 }
 
-.about-bio-text {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.about-summary-text {
+  font-size: 0.98rem;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
 }
 
-.about-bio-text p {
-  font-size: 1.02rem;
-  color: #3b424d;
-  line-height: 1.7;
+.about-toggle-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-toggle-about {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 50px;
+  background: #fff8f3;
+  border: 1.5px solid #e8c4b0;
+  color: var(--primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(200, 90, 50, 0.08);
+}
+
+.btn-toggle-about:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 14px rgba(200, 90, 50, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-toggle-about .about-chevron {
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.btn-toggle-about.active .about-chevron {
+  transform: rotate(180deg);
+}
+
+.btn-toggle-about.active {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  color: #4b5563;
+}
+
+.about-expandable-box {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px dashed #e5e7eb;
+  animation: fadeInAbout 0.3s ease-in-out;
+}
+
+@keyframes fadeInAbout {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-story-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.96rem;
+  color: #374151;
+  line-height: 1.65;
+}
+
+.about-story-inner p {
   margin: 0;
 }
 
-.about-bio-text strong {
+.about-story-inner strong {
   color: var(--text-dark);
   font-weight: 700;
 }
@@ -1240,9 +1248,9 @@ input, select, textarea, button {
 .about-actions-row {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 /* ==========================================================
@@ -2824,33 +2832,55 @@ input, select, textarea, button {
 
   /* About Me Section Mobile */
   .about-me-section {
-    padding: 42px 0;
+    padding: 36px 0;
   }
 
-  .about-me-card-wrapper {
-    padding: 24px 16px;
-    border-radius: 20px;
-  }
-
-  .about-me-grid {
-    grid-template-columns: 1fr;
-    gap: 26px;
-  }
-
-  .about-photo-frame {
-    max-height: 380px;
-    max-width: 280px;
-    margin: 0 auto;
+  .about-compact-card {
+    padding: 20px 16px;
     border-radius: 18px;
   }
 
-  .about-greeting-title {
-    font-size: 1.6rem;
+  .about-card-header {
+    gap: 14px;
+    align-items: center;
   }
 
-  .about-bio-text p {
-    font-size: 0.96rem;
-    line-height: 1.6;
+  .about-avatar-wrapper {
+    width: 76px;
+    height: 76px;
+    min-width: 76px;
+  }
+
+  .about-title-name {
+    font-size: 1.25rem;
+  }
+
+  .about-pills-row {
+    gap: 4px;
+  }
+
+  .about-pill {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+  }
+
+  .about-summary-text {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+
+  .btn-toggle-about {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.85rem;
+    padding: 9px 16px;
+  }
+
+  .about-story-inner {
+    font-size: 0.91rem;
+    line-height: 1.55;
+    gap: 10px;
   }
 
   .about-actions-row {
