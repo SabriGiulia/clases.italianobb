@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=20260925_2">
+  <link rel="stylesheet" href="style.css?v=20260925_3">
   <style>
     .calendar-page-container {
       padding: 50px 0 80px 0;
@@ -181,18 +181,81 @@
       </a>
     </div>
   </header>
-
   <main class="container calendar-page-container">
     <a href="index.html" class="back-home-link">
       <i class="fa-solid fa-arrow-left"></i> Volver a la página principal
     </a>
 
-    <div class="section-header" style="margin-bottom: 20px;">
-      <span class="subheading">Agenda de Clases</span>
-      <h1 class="section-title">Horarios & Disponibilidad 🇮🇹</h1>
+    <!-- Section Header -->
+    <div class="section-header" style="margin-bottom: 24px;">
+      <span class="subheading">Modalidad & Horarios</span>
+      <h1 class="section-title">Clases 1 a 1 & Horarios Disponibles 🇮🇹</h1>
       <p class="section-desc">
-        Seleccioná tu día y horario preferido para coordinar tu clase particular, apoyo escolar o grupal por WhatsApp (presencial en Bahía Blanca o virtual).
+        Clases particulares personalizadas 1 a 1, diseñadas a medida de tus objetivos individuales (viaje, ciudadanía, trabajo, conversación o apoyo escolar).
       </p>
+    </div>
+
+    <!-- Regime 1 a 1 Plan Cards & Structure -->
+    <div class="regime-section-box">
+      <div style="text-align: center;">
+        <span class="regime-header-badge"><i class="fa-solid fa-bullseye"></i> 100% Personalizado</span>
+        <h2 class="regime-title">Régimen de Clases 1 a 1</h2>
+        <p class="regime-subtitle">
+          Elegí la frecuencia mensual y la duración que mejor se adapte a tu meta y disponibilidad:
+        </p>
+      </div>
+
+      <div class="regime-grid">
+        <!-- Plan 1: 4 clases -->
+        <div class="regime-card">
+          <div class="regime-classes-num">4</div>
+          <span class="regime-freq-tag">Clases al mes</span>
+          <p class="regime-desc-text"><strong>1 vez por semana</strong>. Ideal para mantener continuidad y avanzar a tu ritmo paso a paso.</p>
+          <div class="regime-durations-box">
+            <span>⏱️ Duración: <strong>1 hora</strong> o <strong>1h 30m</strong></span>
+          </div>
+        </div>
+
+        <!-- Plan 2: 8 clases (Featured) -->
+        <div class="regime-card featured-plan">
+          <span class="regime-top-tag">⭐ Más Elegido</span>
+          <div class="regime-classes-num">8</div>
+          <span class="regime-freq-tag">Clases al mes</span>
+          <p class="regime-desc-text"><strong>2 veces por semana</strong>. Excelente frecuencia para soltarte a hablar rápido y afianzar vocabulario.</p>
+          <div class="regime-durations-box">
+            <span>⏱️ Duración: <strong>1 hora</strong> o <strong>1h 30m</strong></span>
+          </div>
+        </div>
+
+        <!-- Plan 3: 12 clases -->
+        <div class="regime-card">
+          <div class="regime-classes-num">12</div>
+          <span class="regime-freq-tag">Clases al mes</span>
+          <p class="regime-desc-text"><strong>3 veces por semana</strong>. Modo intensivo para viajes próximos, exámenes o trámites urgentes.</p>
+          <div class="regime-durations-box">
+            <span>⏱️ Duración: <strong>1 hora</strong> o <strong>1h 30m</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Regime Highlights Banner -->
+      <div class="regime-info-banner">
+        <div class="regime-info-item">
+          <i class="fa-solid fa-compass" style="color:var(--primary);"></i>
+          <span><strong>Orientadas a tu objetivo:</strong> El contenido, los temas y la dinámica se adaptan exclusivamente a lo que vos necesitás lograr.</span>
+        </div>
+        <div class="regime-info-item">
+          <i class="fa-solid fa-arrows-rotate" style="color:var(--secondary);"></i>
+          <span><strong>Política de recuperación:</strong> En caso de avisar con tiempo, la clase se recupera <strong>DENTRO DEL MISMO MES</strong>. De modo contrario, la clase se pierde.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Header for Schedule -->
+    <div class="section-header" style="margin: 35px 0 20px 0;">
+      <span class="subheading">Agenda Semanal</span>
+      <h2 class="section-title" style="font-size: 1.8rem;">Días & Franjas Horarias Disponibles 🗓️</h2>
+      <p class="section-desc">Seleccioná el día y horario que te quede cómodo para coordinar por WhatsApp:</p>
     </div>
 
     <!-- Schedule Grid -->
@@ -290,8 +353,8 @@
 
     <!-- Interactive Selection & WhatsApp Booking Box -->
     <div class="booking-interactive-box" id="booking-box">
-      <h3 style="font-size:1.5rem; color:var(--text-dark);">Reservar o Consultar Horario</h3>
-      <p style="color:var(--text-muted);">Tocá un horario en los días de arriba para generar tu mensaje directo.</p>
+      <h3 style="font-size:1.45rem; color:var(--text-dark); margin-bottom: 6px;">Reservar o Consultar Horario</h3>
+      <p style="color:var(--text-muted); font-size: 0.95rem;">Tocá un horario en los días de arriba para armar tu mensaje automático.</p>
       
       <div class="booking-summary-text" id="booking-summary">
         👉 Horario seleccionado: Ninguno (Seleccioná uno arriba)
@@ -299,10 +362,10 @@
 
       <div style="max-width:420px; margin:0 auto 20px auto; text-align:left;">
         <label for="book-name" style="font-size:0.9rem; font-weight:600; display:block; margin-bottom:6px;">Tu Nombre:</label>
-        <input type="text" id="book-name" placeholder="Ej: Martina Gómez" style="width:100%; padding:12px 16px; border-radius:50px; border:1.5px solid var(--border-color); outline:none; font-family:inherit;">
+        <input type="text" id="book-name" placeholder="Ej: Martina Gómez" style="width:100%; padding:12px 16px; border-radius:50px; border:1.5px solid var(--border-color); outline:none; font-family:inherit; box-sizing: border-box;">
       </div>
 
-      <a id="whatsapp-book-btn" href="https://wa.me/5492914485405?text=%C2%A1Ciao!%20Quisiera%20consultar%20por%20los%20horarios%20disponibles%20para%20comenzar%20clases%20de%20italiano%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-whatsapp-large" style="display:inline-flex; width:auto;">
+      <a id="whatsapp-book-btn" href="https://wa.me/5492914485405?text=%C2%A1Ciao!%20Quisiera%20consultar%20por%20los%20horarios%20disponibles%20para%20comenzar%20clases%20de%20italiano%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" class="btn btn-whatsapp-large" style="display:inline-flex; width:auto; justify-content:center;">
         <i class="fa-brands fa-whatsapp"></i> Enviar Consulta / Reserva por WhatsApp
       </a>
     </div>
@@ -314,9 +377,9 @@
           <i class="fa-solid fa-clock-rotate-left"></i>
         </div>
         <div class="alt-schedule-text">
-          <h4>¿Tenés horarios diferentes a los publicados?</h4>
+          <h4>¿Tenés otros horarios disponibles o diferentes a los publicados?</h4>
           <p>
-            Si tu disponibilidad no coincide con los días u horarios de la grilla, <strong>escribime por privado por WhatsApp</strong> y coordinamos un horario alternativo que se adapte a tu rutina.
+            Si tu disponibilidad no coincide con los días u horarios de la grilla, <strong>escribime por privado a WhatsApp</strong> y coordinamos un horario alternativo que se adapte perfectamente a tu rutina.
           </p>
         </div>
       </div>
@@ -325,60 +388,52 @@
       </a>
     </div>
 
-    <!-- Dedicated Policy Section: Condiciones de Reserva y Asistencia -->
-    <section class="policy-section" id="condiciones" style="margin-top:50px;">
+    <!-- Dedicated Policy Section: Inasistencias y Condiciones -->
+    <section class="policy-section" id="condiciones" style="margin-top:45px;">
       <div class="policy-ornament-card">
         <div class="policy-header">
           <i class="fa-solid fa-scroll policy-icon"></i>
-          <h2 style="font-size:1.8rem; color:var(--text-dark); margin-bottom:6px;">Condiciones de Reserva y Asistencia</h2>
-          <p style="color:var(--text-muted); font-size:0.95rem;">Pautas para una organización clara y el cuidado mutuo del tiempo</p>
+          <h2 style="font-size:1.75rem; color:var(--text-dark); margin-bottom:6px;">Inasistencias & Condiciones de Clases</h2>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Pautas claras para una organización ordenada y el cuidado de nuestro tiempo</p>
         </div>
 
-        <div class="policy-items-grid" style="display:flex; flex-direction:column; gap:18px; margin:28px 0; text-align:left;">
-          <!-- Item 1: Reprogramaciones -->
-          <div class="policy-item-box" style="background:#fdfbf9; border:1.5px solid var(--border-color); border-radius:12px; padding:20px 22px;">
+        <div class="policy-items-grid" style="display:flex; flex-direction:column; gap:16px; margin:24px 0; text-align:left;">
+          <!-- Item 1: Recuperación con aviso en el mismo mes -->
+          <div class="policy-item-box" style="background:#fcf9f6; border-left:4px solid var(--secondary); border-radius:12px; padding:20px 20px;">
             <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-              <i class="fa-regular fa-clock" style="color:var(--secondary); font-size:1.2rem;"></i>
-              <h3 style="font-size:1.15rem; color:var(--text-dark);">Reprogramaciones con aviso (mínimo 12 hs):</h3>
+              <i class="fa-regular fa-calendar-check" style="color:var(--secondary); font-size:1.25rem;"></i>
+              <h3 style="font-size:1.12rem; color:var(--text-dark); margin:0;">Recuperación con aviso previo:</h3>
             </div>
-            <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:10px;">
-              Se solicita evitar mover las clases salvo en casos estrictamente necesarios. De requerirlo, podés elegir entre dos opciones:
-            </p>
-            <ul style="list-style:none; padding-left:0; font-size:0.93rem; color:var(--text-dark); display:flex; flex-direction:column; gap:6px;">
-              <li style="display:flex; align-items:center; gap:8px;">
-                <i class="fa-regular fa-calendar-check" style="color:var(--secondary);"></i> <strong>Opción 1:</strong> Recuperar el encuentro completo dentro de la misma semana.
-              </li>
-              <li style="display:flex; align-items:center; gap:8px;">
-                <i class="fa-solid fa-stopwatch" style="color:var(--primary);"></i> <strong>Opción 2:</strong> Sumar 30 minutos adicionales a tus dos clases siguientes.
-              </li>
-            </ul>
-          </div>
-
-          <!-- Item 2: Feriados -->
-          <div class="policy-item-box" style="background:#fdfbf9; border:1.5px solid var(--border-color); border-radius:12px; padding:20px 22px;">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-              <i class="fa-solid fa-sun" style="color:#ca8a04; font-size:1.2rem;"></i>
-              <h3 style="font-size:1.15rem; color:var(--text-dark);">Feriados:</h3>
-            </div>
-            <p style="font-size:0.95rem; color:var(--text-dark);">
-              Los días festivos <strong>no se pierden</strong>; se coordinan y reprograman de común acuerdo dentro del mes.
+            <p style="font-size:0.95rem; color:#374151; line-height:1.55; margin:0;">
+              En caso de avisar con la debida anticipación, la clase <strong>se recupera DENTRO DEL MISMO MES</strong> coordinando un nuevo horario disponible.
             </p>
           </div>
 
-          <!-- Item 3: Cancelaciones < 12hs -->
-          <div class="policy-item-box" style="background:#fff8f5; border:1.5px solid #fecaca; border-radius:12px; padding:20px 22px;">
+          <!-- Item 2: Inasistencia sin aviso -->
+          <div class="policy-item-box" style="background:#fff8f6; border-left:4px solid #ef4444; border-radius:12px; padding:20px 20px;">
             <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
-              <i class="fa-solid fa-triangle-exclamation" style="color:#dc2626; font-size:1.2rem;"></i>
-              <h3 style="font-size:1.15rem; color:#991b1b;">Cancelaciones con menos de 12 hs o inasistencias:</h3>
+              <i class="fa-solid fa-triangle-exclamation" style="color:#ef4444; font-size:1.25rem;"></i>
+              <h3 style="font-size:1.12rem; color:#991b1b; margin:0;">Cancelaciones sin aviso o fuera de término:</h3>
             </div>
-            <p style="font-size:0.95rem; color:#451a1a; line-height:1.5;">
-              La clase <strong>se considera dictada, no se recupera y se abona en su totalidad</strong>, ya que el espacio queda reservado exclusivamente para vos.
+            <p style="font-size:0.95rem; color:#451a1a; line-height:1.55; margin:0;">
+              De modo contrario (sin previo aviso o sobre la hora), <strong>se pierde la clase</strong> sin posibilidad de recuperación, ya que el espacio queda reservado exclusivamente para vos.
+            </p>
+          </div>
+
+          <!-- Item 3: Feriados -->
+          <div class="policy-item-box" style="background:#fcf9f6; border-left:4px solid #ca8a04; border-radius:12px; padding:20px 20px;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+              <i class="fa-solid fa-sun" style="color:#ca8a04; font-size:1.25rem;"></i>
+              <h3 style="font-size:1.12rem; color:var(--text-dark); margin:0;">Feriados:</h3>
+            </div>
+            <p style="font-size:0.95rem; color:#374151; line-height:1.55; margin:0;">
+              Los feriados <strong>no se pierden</strong>; se coordinan y reprograman de común acuerdo dentro del mes.
             </p>
           </div>
         </div>
 
         <!-- Mutual commitment note -->
-        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:50px; padding:12px 24px; display:inline-flex; align-items:center; gap:10px; color:var(--secondary); font-weight:600; font-size:0.95rem;">
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:50px; padding:12px 24px; display:inline-flex; align-items:center; gap:10px; color:var(--secondary); font-weight:600; font-size:0.92rem;">
           <i class="fa-solid fa-handshake"></i>
           <span>¡Gracias por cuidar nuestro tiempo y compromiso mutuo!</span>
         </div>
