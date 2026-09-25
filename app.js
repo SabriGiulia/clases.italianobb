@@ -866,6 +866,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Ensure success message is hidden on page load
+  if (reviewSuccessMsg) {
+    reviewSuccessMsg.style.display = 'none';
+    reviewSuccessMsg.classList.add('hidden');
+  }
+
   if (reviewForm) {
     reviewForm.addEventListener('submit', async e => {
       e.preventDefault();
@@ -888,8 +894,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Hide previous success message and show loading state
-      if (reviewSuccessMsg) reviewSuccessMsg.classList.add('hidden');
+      // Hide previous success message and show loading state on button
+      if (reviewSuccessMsg) {
+        reviewSuccessMsg.style.display = 'none';
+        reviewSuccessMsg.classList.add('hidden');
+      }
+
       const originalBtnContent = submitBtn ? submitBtn.innerHTML : 'Publicar mi Opinión';
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -928,8 +938,9 @@ document.addEventListener('DOMContentLoaded', () => {
           appendReviewCard(reviewData, true);
         }
 
-        // Show success confirmation only after confirmed published
+        // Show success confirmation ONLY AFTER confirmed published
         if (reviewSuccessMsg) {
+          reviewSuccessMsg.style.display = 'flex';
           reviewSuccessMsg.classList.remove('hidden');
           setTimeout(() => {
             reviewSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

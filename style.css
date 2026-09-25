@@ -1343,6 +1343,10 @@ input, select, textarea, button {
   margin-top: 6px;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .review-success-msg {
   background: #f0fdf4;
   border: 1.5px solid #86efac;
