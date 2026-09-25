@@ -2492,11 +2492,58 @@ input, select, textarea, button {
   margin: 0 auto;
 }
 
+/* Duration Category Headers */
+.duration-category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #fdfbf9;
+  border: 1.5px solid #ece4dc;
+  border-left: 4.5px solid var(--primary);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-top: 26px;
+}
+
+.duration-category-header.duration-90min {
+  border-left-color: var(--secondary);
+  background: #f8faf9;
+  margin-top: 32px;
+}
+
+.duration-category-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.duration-badge-pill {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: #fdf2e9;
+  color: var(--primary);
+  border: 1px solid #fed7aa;
+}
+
+.duration-badge-pill.pill-green {
+  background: #f0fdf4;
+  color: #15803d;
+  border-color: #bbf7d0;
+}
+
 .regime-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
-  margin: 26px 0 22px 0;
+  margin: 18px 0 10px 0;
 }
 
 .regime-card {

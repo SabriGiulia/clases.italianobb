@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=20260925_6">
+  <link rel="stylesheet" href="style.css?v=20260925_7">
   <style>
     .calendar-page-container {
       padding: 50px 0 80px 0;
@@ -220,13 +220,18 @@
         <span>En modalidad 1 a 1 las clases se abonan por adelantado</span>
       </div>
 
-      <!-- 3 Frequency Plans with Prices -->
+      <!-- Section 1: Clases de 1 Hora (60 min) -->
+      <div class="duration-category-header">
+        <h3 class="duration-category-title"><i class="fa-solid fa-clock" style="color:var(--primary);"></i> Clases de 1 Hora (60 min)</h3>
+        <span class="duration-badge-pill">Dinámica & Ágil</span>
+      </div>
+
       <div class="regime-grid">
-        <!-- Plan 1: 4 clases -->
+        <!-- Plan 1: 4 clases (60 min) -->
         <div class="regime-card">
           <div class="regime-classes-num">4</div>
           <span class="regime-freq-tag">Clases al mes</span>
-          <p class="regime-desc-text"><strong>1 vez por semana</strong>. Ideal para mantener continuidad constante y avanzar paso a paso.</p>
+          <p class="regime-desc-text"><strong>1 vez por semana</strong> (60 min). Ideal para mantener continuidad constante y avanzar paso a paso.</p>
           
           <div class="regime-price-box">
             <span class="regime-unit-price">$19.000 <span class="regime-unit-label">c/u</span></span>
@@ -234,16 +239,16 @@
           </div>
 
           <div class="regime-durations-box">
-            <span>⏱️ Duración: <strong>1 hora</strong> o <strong>1h 30m</strong></span>
+            <span>⏱️ Duración: <strong>1 hora (60 min)</strong></span>
           </div>
         </div>
 
-        <!-- Plan 2: 8 clases (Featured) -->
+        <!-- Plan 2: 8 clases (60 min - Featured) -->
         <div class="regime-card featured-plan">
           <span class="regime-top-tag">⭐ Más Elegido</span>
           <div class="regime-classes-num">8</div>
           <span class="regime-freq-tag">Clases al mes</span>
-          <p class="regime-desc-text"><strong>2 veces por semana</strong>. Excelente frecuencia para soltarte a hablar rápido y fijar contenidos.</p>
+          <p class="regime-desc-text"><strong>2 veces por semana</strong> (60 min). Excelente frecuencia para soltarte a hablar rápido y fijar contenidos.</p>
           
           <div class="regime-price-box" style="border-color: var(--primary); background: #fffcf9;">
             <span class="regime-unit-price">$18.000 <span class="regime-unit-label">c/u</span></span>
@@ -251,15 +256,15 @@
           </div>
 
           <div class="regime-durations-box">
-            <span>⏱️ Duración: <strong>1 hora</strong> o <strong>1h 30m</strong></span>
+            <span>⏱️ Duración: <strong>1 hora (60 min)</strong></span>
           </div>
         </div>
 
-        <!-- Plan 3: 12 clases -->
+        <!-- Plan 3: 12 clases (60 min) -->
         <div class="regime-card">
           <div class="regime-classes-num">12</div>
           <span class="regime-freq-tag">Clases al mes</span>
-          <p class="regime-desc-text"><strong>3 veces por semana</strong>. Modo intensivo para viajes próximos, exámenes o trámites urgentes.</p>
+          <p class="regime-desc-text"><strong>3 veces por semana</strong> (60 min). Modo intensivo para viajes próximos, exámenes o trámites urgentes.</p>
           
           <div class="regime-price-box">
             <span class="regime-unit-price">$17.000 <span class="regime-unit-label">c/u</span></span>
@@ -267,7 +272,64 @@
           </div>
 
           <div class="regime-durations-box">
-            <span>⏱️ Duración: <strong>1 hora</strong> o <strong>1h 30m</strong></span>
+            <span>⏱️ Duración: <strong>1 hora (60 min)</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Clases de 1 Hora y Media (90 min) -->
+      <div class="duration-category-header duration-90min">
+        <h3 class="duration-category-title"><i class="fa-solid fa-stopwatch" style="color:var(--secondary);"></i> Clases de 1 Hora y Media (90 min)</h3>
+        <span class="duration-badge-pill pill-green">Inmersión & Práctica Profunda</span>
+      </div>
+
+      <div class="regime-grid">
+        <!-- Plan 1: 4 clases (90 min) -->
+        <div class="regime-card">
+          <div class="regime-classes-num" style="color:var(--secondary);">4</div>
+          <span class="regime-freq-tag">Clases al mes</span>
+          <p class="regime-desc-text"><strong>1 vez por semana</strong> (90 min). Mayor tiempo por encuentro para ejercitar conversación y dudas.</p>
+          
+          <div class="regime-price-box">
+            <span class="regime-unit-price" style="color:var(--secondary);">$26.000 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price">Total: $104.000 / mes</span>
+          </div>
+
+          <div class="regime-durations-box">
+            <span>⏱️ Duración: <strong>1h 30m (90 min)</strong></span>
+          </div>
+        </div>
+
+        <!-- Plan 2: 8 clases (90 min - Featured) -->
+        <div class="regime-card featured-plan" style="border-color:var(--secondary);">
+          <span class="regime-top-tag" style="background:var(--secondary);">⭐ Recomendado</span>
+          <div class="regime-classes-num" style="color:var(--secondary);">8</div>
+          <span class="regime-freq-tag">Clases al mes</span>
+          <p class="regime-desc-text"><strong>2 veces por semana</strong> (90 min). Inmersión total con práctica oral extendida y avance acelerado.</p>
+          
+          <div class="regime-price-box" style="border-color: var(--secondary); background: #f6fbf8;">
+            <span class="regime-unit-price" style="color:var(--secondary);">$24.500 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price" style="background: var(--secondary); color: #ffffff; border-color: var(--secondary);">Total: $196.000 / mes</span>
+          </div>
+
+          <div class="regime-durations-box">
+            <span>⏱️ Duración: <strong>1h 30m (90 min)</strong></span>
+          </div>
+        </div>
+
+        <!-- Plan 3: 12 clases (90 min) -->
+        <div class="regime-card">
+          <div class="regime-classes-num" style="color:var(--secondary);">12</div>
+          <span class="regime-freq-tag">Clases al mes</span>
+          <p class="regime-desc-text"><strong>3 veces por semana</strong> (90 min). Máxima intensidad horaria para dominar el idioma en tiempo récord.</p>
+          
+          <div class="regime-price-box">
+            <span class="regime-unit-price" style="color:var(--secondary);">$23.000 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price">Total: $276.000 / mes</span>
+          </div>
+
+          <div class="regime-durations-box">
+            <span>⏱️ Duración: <strong>1h 30m (90 min)</strong></span>
           </div>
         </div>
       </div>
