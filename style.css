@@ -898,23 +898,88 @@ input, select, textarea, button {
 
 .feature-list {
   list-style: none;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .feature-list li {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-dark);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
+  line-height: 1.45;
+  text-align: left;
 }
 
 .feature-list li i {
   color: var(--secondary);
   font-size: 0.95rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* Structured Course Specs Box */
+.course-specs-box {
+  background: #ffffff;
+  border: 1.5px solid #ece4dc;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  text-align: left;
+}
+
+.spec-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 7px;
+  border-bottom: 1px dashed #f0e6dd;
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.spec-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.spec-label i {
+  font-size: 0.82rem;
+}
+
+.spec-value {
+  font-size: 0.86rem;
+  color: #374151;
+  line-height: 1.4;
+  padding-left: 18px;
+}
+
+.spec-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #854d0e;
+  background: #fefce8;
+  border: 1px solid #fde047;
+  padding: 1px 7px;
+  border-radius: 50px;
+  margin-left: 4px;
+  white-space: nowrap;
 }
 
 .btn-course {
