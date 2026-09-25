@@ -1066,6 +1066,61 @@ input, select, textarea, button {
   color: var(--text-dark);
 }
 
+.reviews-toggle-wrapper {
+  text-align: center;
+  margin: 10px auto 30px auto;
+}
+
+.btn-toggle-reviews {
+  background: #ffffff;
+  color: var(--secondary);
+  border: 1.5px solid var(--border-color);
+  padding: 12px 28px;
+  border-radius: var(--border-radius-pill);
+  font-size: 0.98rem;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(70, 45, 30, 0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-body);
+}
+
+.btn-toggle-reviews:hover {
+  background: #fdfbf8;
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(200, 90, 50, 0.15);
+}
+
+.btn-toggle-reviews .toggle-chevron {
+  font-size: 0.82rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-toggle-reviews.active {
+  background: var(--secondary);
+  color: #ffffff;
+  border-color: var(--secondary);
+  box-shadow: 0 4px 16px rgba(59, 90, 69, 0.3);
+}
+
+.btn-toggle-reviews.active .toggle-chevron {
+  transform: rotate(180deg);
+}
+
+.reviews-collapsible-box {
+  display: none;
+}
+
+.reviews-collapsible-box.open {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

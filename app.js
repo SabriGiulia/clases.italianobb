@@ -782,6 +782,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Reviews Collapsible Toggle Elements
+  const btnToggleReviews = document.getElementById('btn-toggle-reviews');
+  const reviewsCollapsibleContent = document.getElementById('reviews-collapsible-content');
+  const reviewsToggleText = document.getElementById('reviews-toggle-text');
+
+  if (btnToggleReviews && reviewsCollapsibleContent) {
+    btnToggleReviews.addEventListener('click', () => {
+      const isOpen = reviewsCollapsibleContent.classList.contains('open');
+      if (isOpen) {
+        reviewsCollapsibleContent.classList.remove('open');
+        reviewsCollapsibleContent.style.display = 'none';
+        btnToggleReviews.classList.remove('active');
+        btnToggleReviews.setAttribute('aria-expanded', 'false');
+        const count = reviewsContainer ? reviewsContainer.querySelectorAll('.review-card').length : 0;
+        if (reviewsToggleText) {
+          reviewsToggleText.textContent = count > 0 ? `Ver comentarios (${count})` : 'Ver comentarios';
+        }
+      } else {
+        reviewsCollapsibleContent.classList.add('open');
+        reviewsCollapsibleContent.style.display = 'block';
+        btnToggleReviews.classList.add('active');
+        btnToggleReviews.setAttribute('aria-expanded', 'true');
+        if (reviewsToggleText) reviewsToggleText.textContent = 'Ocultar comentarios';
+      }
+    });
+  }
+
   // Render only real student reviews from cloud data
   function renderReviewsFromCloud(cloudVal) {
     if (!reviewsContainer) return;
@@ -800,8 +827,14 @@ document.addEventListener('DOMContentLoaded', () => {
           <p>Todavía no hay opiniones publicadas. <strong>¡Sé el primero en compartir tu experiencia de aprendizaje!</strong></p>
         </div>
       `;
+      if (reviewsToggleText && (!reviewsCollapsibleContent || !reviewsCollapsibleContent.classList.contains('open'))) {
+        reviewsToggleText.textContent = 'Ver comentarios';
+      }
     } else {
       list.forEach(rev => appendReviewCard(rev, false));
+      if (reviewsToggleText && (!reviewsCollapsibleContent || !reviewsCollapsibleContent.classList.contains('open'))) {
+        reviewsToggleText.textContent = `Ver comentarios (${list.length})`;
+      }
     }
   }
 
@@ -936,6 +969,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Append card dynamically for instant feedback if not handled by SDK
         if (!reviewsDbRef) {
           appendReviewCard(reviewData, true);
+        }
+
+        // Auto-expand reviews collapsible box so user sees their new review
+        if (reviewsCollapsibleContent && !reviewsCollapsibleContent.classList.contains('open')) {
+          reviewsCollapsibleContent.classList.add('open');
+          reviewsCollapsibleContent.style.display = 'block';
+          if (btnToggleReviews) {
+            btnToggleReviews.classList.add('active');
+            btnToggleReviews.setAttribute('aria-expanded', 'true');
+          }
+          if (reviewsToggleText) reviewsToggleText.textContent = 'Ocultar comentarios';
         }
 
         // Show success confirmation ONLY AFTER confirmed published

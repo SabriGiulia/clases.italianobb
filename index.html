@@ -416,9 +416,20 @@
         </div>
       </div>
 
-      <!-- Reviews Grid (Populated with genuine reviews) -->
-      <div class="reviews-grid" id="reviews-container">
-        <!-- Genuine student reviews are rendered here -->
+      <!-- Toggle Reviews Collapsible Button -->
+      <div class="reviews-toggle-wrapper">
+        <button id="btn-toggle-reviews" class="btn btn-toggle-reviews" type="button" aria-expanded="false">
+          <i class="fa-solid fa-comments"></i>
+          <span id="reviews-toggle-text">Ver comentarios</span>
+          <i class="fa-solid fa-chevron-down toggle-chevron"></i>
+        </button>
+      </div>
+
+      <!-- Collapsible Reviews Grid Container (Hidden by default to keep page compact) -->
+      <div id="reviews-collapsible-content" class="reviews-collapsible-box" style="display: none;">
+        <div class="reviews-grid" id="reviews-container">
+          <!-- Genuine student reviews are rendered here -->
+        </div>
       </div>
 
       <!-- Leave Review Interactive Card -->
