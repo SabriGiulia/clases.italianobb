@@ -17,7 +17,7 @@
   <!-- Favicon & Icons -->
   <link rel="icon" type="image/jpeg" href="logo.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=20260925_3">
+  <link rel="stylesheet" href="style.css?v=20260925_4">
 </head>
 <body>
 
@@ -234,20 +234,41 @@
 
       <div class="courses-grid">
         <!-- Card 1: Clases Particulares 1 a 1 & Apoyo Escolar -->
-        <div class="course-card">
-          <div class="card-badge highlight-badge">1 a 1 • A tu Objetivo</div>
+        <div class="course-card featured" style="border: 2px solid var(--primary); background: #fffcf9;">
+          <div class="card-badge" style="background: var(--primary); color: #ffffff;">⭐ 100% Personalizado</div>
           <div class="course-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
-          <h3 class="course-title">Clases 1 a 1 & Apoyo Escolar</h3>
-          <p class="course-desc">Modalidad particular personalizada, 100% orientada al objetivo de cada alumno (viajes, ciudadanía, trabajo, conversación o apoyo escolar).</p>
-          <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Frecuencias:</strong> 4 (1x sem), 8 (2x sem) o 12 (3x sem) clases al mes</li>
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Duración:</strong> 1 hora (60 min) o 1 hora y media (90 min)</li>
-            <li><i class="fa-solid fa-circle-check"></i> <strong>Recuperación:</strong> Con aviso previo se recupera en el mismo mes</li>
-            <li><i class="fa-solid fa-circle-check"></i> Presenciales en Bahía Blanca o 100% Online</li>
+          <h3 class="course-title">Clases 1 a 1 (Particulares)</h3>
+          <p class="course-desc">Modalidad personalizada orientada al objetivo específico de cada alumno (viajes, ciudadanía, trabajo, conversación o apoyo escolar).</p>
+          
+          <!-- Visual Frequency Pills Grid -->
+          <div class="card-frequency-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 12px 0 16px 0;">
+            <div style="background: #ffffff; border: 1.5px solid #eddcd1; border-radius: 10px; padding: 8px 4px; text-align: center;">
+              <span style="display: block; font-size: 1.25rem; font-weight: 800; color: var(--primary); line-height: 1;">4</span>
+              <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-dark); display: block;">clases/mes</span>
+              <span style="font-size: 0.68rem; color: var(--text-muted); display: block; margin-top: 2px;">1x semana</span>
+            </div>
+            <div style="background: #fff5ee; border: 1.5px solid var(--primary); border-radius: 10px; padding: 8px 4px; text-align: center; box-shadow: 0 2px 8px rgba(200,90,50,0.12);">
+              <span style="display: block; font-size: 1.25rem; font-weight: 800; color: var(--primary); line-height: 1;">8</span>
+              <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-dark); display: block;">clases/mes</span>
+              <span style="font-size: 0.68rem; color: var(--primary); font-weight: 700; display: block; margin-top: 2px;">2x semana</span>
+            </div>
+            <div style="background: #ffffff; border: 1.5px solid #eddcd1; border-radius: 10px; padding: 8px 4px; text-align: center;">
+              <span style="display: block; font-size: 1.25rem; font-weight: 800; color: var(--primary); line-height: 1;">12</span>
+              <span style="font-size: 0.72rem; font-weight: 700; color: var(--text-dark); display: block;">clases/mes</span>
+              <span style="font-size: 0.68rem; color: var(--text-muted); display: block; margin-top: 2px;">3x semana</span>
+            </div>
+          </div>
+
+          <ul class="feature-list" style="margin-bottom: 18px;">
+            <li><i class="fa-solid fa-clock" style="color:var(--primary);"></i> <strong>Duración:</strong> 1 hora (60 min) o 1 hora y media (90 min)</li>
+            <li><i class="fa-solid fa-bullseye" style="color:var(--secondary);"></i> <strong>A tu objetivo:</strong> Viaje, ciudadanía, trabajo o estudio</li>
+            <li><i class="fa-solid fa-arrows-rotate" style="color:#ca8a04;"></i> <strong>Recuperación:</strong> Con aviso previo se recupera en el mismo mes</li>
+            <li><i class="fa-solid fa-location-dot" style="color:var(--primary);"></i> <strong>Formato:</strong> 100% Online o Presencial en Bahía Blanca</li>
           </ul>
+
           <div style="display:flex; flex-direction:column; gap:8px; margin-top:auto;">
-            <a href="calendario.html" class="btn btn-course"><i class="fa-regular fa-calendar-days"></i> Ver Régimen & Horarios</a>
-            <a href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Quisiera%20consultar%20por%20las%20Clases%20Particulares%201%20a%201%20de%20italiano%20(presencial%20en%20Bah%C3%ADa%20Blanca%20o%20virtual)%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" style="font-size:0.82rem; color:var(--text-muted); text-decoration:none; text-align:center; font-weight:600;"><i class="fa-brands fa-whatsapp"></i> Consultar directamente</a>
+            <a href="calendario.html" class="btn btn-primary btn-glow" style="justify-content: center;"><i class="fa-regular fa-calendar-days"></i> Ver Régimen & Horarios</a>
+            <a href="https://wa.me/5492914485405?text=%C2%A1Hola!%20Quisiera%20consultar%20por%20las%20Clases%20Particulares%201%20a%201%20de%20italiano%20(presencial%20en%20Bah%C3%ADa%20Blanca%20o%20virtual)%20%F0%9F%87%AE%F0%9F%87%B9" target="_blank" style="font-size:0.84rem; color:var(--text-muted); text-decoration:none; text-align:center; font-weight:600; padding: 4px 0;"><i class="fa-brands fa-whatsapp"></i> Consultar directamente</a>
           </div>
         </div>
 
