@@ -1030,6 +1030,222 @@ input, select, textarea, button {
 }
 
 /* ==========================================================
+   ABOUT ME SECTION ("Sobre Mí")
+   ========================================================== */
+.about-me-section {
+  padding: 80px 0;
+  background: var(--bg-main);
+  position: relative;
+}
+
+.about-me-card-wrapper {
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 44px 40px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-me-card-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent-gold) 50%, var(--secondary) 100%);
+}
+
+.about-me-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 45px;
+  align-items: center;
+}
+
+/* Left Column: Portrait */
+.about-photo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-photo-frame {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(70, 45, 30, 0.14);
+  border: 4px solid #ffffff;
+  aspect-ratio: 9 / 16;
+  max-height: 460px;
+  background: #ede5de;
+}
+
+.about-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.about-photo-frame:hover .about-photo-img {
+  transform: scale(1.03);
+}
+
+.about-photo-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  background: rgba(34, 37, 42, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.about-photo-badge i {
+  color: var(--accent-gold);
+  font-size: 1.25rem;
+}
+
+.about-photo-badge strong {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.about-photo-badge span {
+  font-size: 0.78rem;
+  color: #d1d5db;
+}
+
+/* Mini Stats under photo */
+.about-stats-mini {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.about-stat-mini-card {
+  background: #fdfbf9;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 10px 6px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-mini-num {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.2;
+}
+
+.stat-mini-txt {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Right Column: Bio Story */
+.about-story-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-greeting-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--secondary);
+}
+
+.about-greeting-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.about-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.about-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fcf8f4;
+  border: 1px solid #eddcd1;
+  color: #92400e;
+  padding: 5px 12px;
+  border-radius: var(--border-radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.about-pill i {
+  color: var(--primary);
+}
+
+.about-bio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-bio-text p {
+  font-size: 1.02rem;
+  color: #3b424d;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.about-bio-text strong {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.about-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* ==========================================================
    REVIEWS & TESTIMONIALS SECTION
    ========================================================== */
 
@@ -2604,6 +2820,48 @@ input, select, textarea, button {
 
   .method-quote-banner .quote-author {
     font-size: 0.82rem;
+  }
+
+  /* About Me Section Mobile */
+  .about-me-section {
+    padding: 42px 0;
+  }
+
+  .about-me-card-wrapper {
+    padding: 24px 16px;
+    border-radius: 20px;
+  }
+
+  .about-me-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .about-photo-frame {
+    max-height: 380px;
+    max-width: 280px;
+    margin: 0 auto;
+    border-radius: 18px;
+  }
+
+  .about-greeting-title {
+    font-size: 1.6rem;
+  }
+
+  .about-bio-text p {
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  .about-actions-row {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .about-actions-row .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   /* Reviews & Testimonials */
