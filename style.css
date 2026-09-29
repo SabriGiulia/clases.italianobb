@@ -3,34 +3,51 @@
    ========================================================== */
 
 :root {
-  --primary: #c85a32;
-  --primary-hover: #b04b25;
-  --primary-glow: rgba(200, 90, 50, 0.35);
+  /* Colores Italianos Icónicos (Il Tricolore & Estilo Italiano) */
+  --primary: #cd212a; /* Rosso Italiano ufficiale (Bandiera Italiana) */
+  --primary-hover: #aa1820;
+  --primary-glow: rgba(205, 33, 42, 0.35);
   
-  --secondary: #3b5a45;
-  --secondary-light: #527c60;
+  --secondary: #008c45; /* Verde Bandiera Italiana ufficiale */
+  --secondary-hover: #007037;
+  --secondary-light: #0ea254;
+  --secondary-glow: rgba(0, 140, 69, 0.30);
   
-  --bg-main: #fbf8f5;
+  --italian-green: #008c45;
+  --italian-white: #ffffff;
+  --italian-red: #cd212a;
+  --italian-tricolor: linear-gradient(90deg, #008c45 0%, #008c45 33.33%, #ffffff 33.33%, #ffffff 66.66%, #cd212a 66.66%, #cd212a 100%);
+  --italian-tricolor-soft: linear-gradient(90deg, rgba(0, 140, 69, 0.12) 0%, rgba(0, 140, 69, 0.04) 33.33%, rgba(255, 255, 255, 0.8) 33.33%, rgba(255, 255, 255, 0.8) 66.66%, rgba(205, 33, 42, 0.04) 66.66%, rgba(205, 33, 42, 0.12) 100%);
+  
+  --azzurro-italia: #0066b2; /* Azzurro Italia / Mediterraneo */
+  --azzurro-hover: #00508c;
+  --azzurro-glow: rgba(0, 102, 178, 0.32);
+  
+  --accent-gold: #d97706; /* Oro toscano cálido */
+  --accent-gold-hover: #b45309;
+  --accent-terracotta: #c2410c;
+  
+  --bg-main: #fbf9f4; /* Tono cálido marfil y travertino italiano */
   --bg-surface: #ffffff;
-  --bg-surface-trans: rgba(255, 255, 255, 0.9);
+  --bg-surface-warm: #f6f1e8;
+  --bg-surface-trans: rgba(255, 255, 255, 0.96);
   
-  --text-dark: #22252a;
-  --text-muted: #5e646e;
+  --text-dark: #1b2024;
+  --text-muted: #525b64;
   --text-light: #ffffff;
   
-  --accent-gold: #d4a373;
   --whatsapp-green: #25d366;
   --whatsapp-hover: #20ba59;
   
-  --border-color: #ede5de;
+  --border-color: #e6ded4;
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
   --border-radius-lg: 24px;
   --border-radius-pill: 50px;
   
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 10px 30px rgba(70, 45, 30, 0.08);
-  --shadow-lg: 0 20px 40px rgba(70, 45, 30, 0.12);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 30px rgba(40, 50, 40, 0.08);
+  --shadow-lg: 0 20px 40px rgba(40, 50, 40, 0.12);
   
   --font-body: 'Outfit', sans-serif;
   --font-serif: 'Playfair Display', serif;
@@ -89,7 +106,7 @@ input, select, textarea, button {
 .shape-1 {
   width: 400px;
   height: 400px;
-  background: rgba(200, 90, 50, 0.12);
+  background: rgba(201, 42, 42, 0.08); /* Rosso */
   top: -100px;
   right: -50px;
 }
@@ -97,7 +114,7 @@ input, select, textarea, button {
 .shape-2 {
   width: 450px;
   height: 450px;
-  background: rgba(59, 90, 69, 0.1);
+  background: rgba(0, 135, 68, 0.09); /* Verde */
   top: 600px;
   left: -80px;
 }
@@ -105,7 +122,7 @@ input, select, textarea, button {
 .shape-3 {
   width: 350px;
   height: 350px;
-  background: rgba(212, 163, 115, 0.15);
+  background: rgba(201, 147, 32, 0.08); /* Oro */
   bottom: 300px;
   right: -30px;
 }
@@ -187,7 +204,7 @@ input, select, textarea, button {
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(200, 90, 50, 0.45);
+  box-shadow: 0 10px 25px rgba(205, 33, 42, 0.45);
 }
 
 .btn-primary:disabled {
@@ -200,20 +217,22 @@ input, select, textarea, button {
 }
 
 @keyframes pulse-glow {
-  0% { box-shadow: 0 0 0 0 rgba(200, 90, 50, 0.5); }
-  70% { box-shadow: 0 0 0 14px rgba(200, 90, 50, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(200, 90, 50, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(205, 33, 42, 0.5); }
+  70% { box-shadow: 0 0 0 14px rgba(205, 33, 42, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(205, 33, 42, 0); }
 }
 
 .btn-secondary {
   background: var(--bg-surface);
   color: var(--text-dark);
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
   box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
-  background: #f4ede6;
+  background: #f5efe8;
+  border-color: var(--secondary);
+  color: var(--secondary);
   transform: translateY(-2px);
 }
 
@@ -225,7 +244,8 @@ input, select, textarea, button {
 
 .btn-outline:hover:not(:disabled) {
   background: var(--bg-surface);
-  border-color: var(--text-dark);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .btn-outline:disabled {
@@ -246,13 +266,25 @@ input, select, textarea, button {
 
 /* Header */
 .header {
-  padding: 18px 0;
+  padding: 16px 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(251, 248, 245, 0.92);
+  background: rgba(251, 249, 244, 0.95);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(237, 229, 222, 0.7);
+  border-bottom: 1px solid rgba(230, 222, 212, 0.85);
+  position: relative;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #008c45 0%, #008c45 33.33%, #ffffff 33.33%, #ffffff 66.66%, #cd212a 66.66%, #cd212a 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .nav-container {
@@ -285,9 +317,9 @@ input, select, textarea, button {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(70, 45, 30, 0.12);
-  border: 2px solid var(--primary);
-  background: #fdfaf6;
+  box-shadow: 0 2px 10px rgba(0, 135, 68, 0.15);
+  border: 2px solid var(--secondary);
+  background: #ffffff;
   flex-shrink: 0;
 }
 
@@ -322,21 +354,32 @@ input, select, textarea, button {
   white-space: nowrap;
 }
 
+.nav-btn-about {
+  background: rgba(217, 119, 6, 0.09);
+  color: var(--accent-gold-hover);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+}
+
+.nav-btn-about:hover {
+  background: var(--accent-gold);
+  color: #ffffff;
+}
+
 .nav-btn-immersion {
-  background: rgba(202, 138, 4, 0.12);
-  color: #b45309;
-  border: 1px solid rgba(202, 138, 4, 0.35);
+  background: rgba(0, 102, 178, 0.09);
+  color: var(--azzurro-italia);
+  border: 1px solid rgba(0, 102, 178, 0.28);
 }
 
 .nav-btn-immersion:hover {
-  background: #ca8a04;
+  background: var(--azzurro-italia);
   color: #ffffff;
 }
 
 .nav-btn-schedule {
-  background: rgba(200, 90, 50, 0.1);
+  background: rgba(205, 33, 42, 0.08);
   color: var(--primary);
-  border: 1px solid rgba(200, 90, 50, 0.25);
+  border: 1px solid rgba(205, 33, 42, 0.25);
 }
 
 .nav-btn-schedule:hover {
@@ -345,9 +388,9 @@ input, select, textarea, button {
 }
 
 .nav-btn-test {
-  background: rgba(59, 90, 69, 0.1);
+  background: rgba(0, 140, 69, 0.09);
   color: var(--secondary);
-  border: 1px solid rgba(59, 90, 69, 0.25);
+  border: 1px solid rgba(0, 140, 69, 0.28);
 }
 
 .nav-btn-test:hover {
@@ -356,13 +399,13 @@ input, select, textarea, button {
 }
 
 .nav-btn-community {
-  background: rgba(99, 102, 241, 0.1);
-  color: #4f46e5;
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: rgba(205, 33, 42, 0.08);
+  color: var(--primary);
+  border: 1px solid rgba(205, 33, 42, 0.22);
 }
 
 .nav-btn-community:hover {
-  background: #4f46e5;
+  background: var(--primary);
   color: #ffffff;
 }
 
@@ -376,14 +419,14 @@ input, select, textarea, button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #fff;
-  padding: 8px 20px;
+  background: #ffffff;
+  padding: 8px 22px;
   border-radius: var(--border-radius-pill);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.92rem;
+  font-weight: 700;
   color: var(--secondary);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
+  box-shadow: 0 3px 12px rgba(0, 140, 69, 0.1);
+  border: 1.5px solid rgba(0, 140, 69, 0.25);
   margin-bottom: 24px;
 }
 
@@ -562,7 +605,7 @@ input, select, textarea, button {
 .input-group input:focus {
   border-color: var(--primary);
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(200, 90, 50, 0.15);
+  box-shadow: 0 0 0 3px rgba(205, 33, 42, 0.18);
 }
 
 /* Screen 2: Question Stepper */
@@ -578,8 +621,9 @@ input, select, textarea, button {
 }
 
 .stage-tag {
-  background: rgba(59, 90, 69, 0.1);
+  background: rgba(0, 140, 69, 0.1);
   color: var(--secondary);
+  border: 1px solid rgba(0, 140, 69, 0.25);
   padding: 4px 14px;
   border-radius: var(--border-radius-pill);
   font-size: 0.82rem;
@@ -596,20 +640,21 @@ input, select, textarea, button {
 
 .stepper-bar-bg {
   width: 100%;
-  height: 8px;
-  background: #eee5dc;
-  border-radius: 4px;
+  height: 9px;
+  background: #eee6db;
+  border-radius: 6px;
   overflow: hidden;
 }
 
 .stepper-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  background: linear-gradient(90deg, #008c45 0%, #008c45 40%, #e5a93c 70%, #cd212a 100%);
   transition: width 0.35s ease;
+  border-radius: 6px;
 }
 
 .question-display-card {
-  background: #faf6f1;
+  background: #fbf8f3;
   border: 1.5px solid var(--border-color);
   border-radius: var(--border-radius-md);
   padding: 28px 24px;
@@ -618,7 +663,7 @@ input, select, textarea, button {
 
 .q-context {
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   color: var(--secondary);
   letter-spacing: 1px;
@@ -657,13 +702,13 @@ input, select, textarea, button {
 }
 
 .q-opt-btn:hover {
-  background: #f7ece3;
+  background: #fdf5ef;
   border-color: var(--primary);
   transform: translateX(4px);
 }
 
 .q-opt-btn.selected {
-  background: #fff2eb;
+  background: rgba(205, 33, 42, 0.07);
   border-color: var(--primary);
   color: var(--primary-hover);
   font-weight: 700;
@@ -2014,10 +2059,21 @@ input, select, textarea, button {
 
 /* Footer */
 .footer {
-  background: #1e2225;
+  background: #171c20;
   color: white;
   padding: 70px 0 30px 0;
   margin-top: 60px;
+  position: relative;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #008c45 0%, #008c45 33.33%, #ffffff 33.33%, #ffffff 66.66%, #cd212a 66.66%, #cd212a 100%);
 }
 
 .footer-cta {
@@ -2044,7 +2100,7 @@ input, select, textarea, button {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 24px;
   font-size: 0.9rem;
-  color: #7d848f;
+  color: #94a3b8;
 }
 
 .social-links a {
