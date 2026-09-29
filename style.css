@@ -3,43 +3,43 @@
    ========================================================== */
 
 :root {
-  /* Colores Italianos Icónicos (Il Tricolore & Estilo Italiano) */
-  --primary: #cd212a; /* Rosso Italiano ufficiale (Bandiera Italiana) */
-  --primary-hover: #aa1820;
-  --primary-glow: rgba(205, 33, 42, 0.35);
+  /* Paleta Mediterránea Italiana (Terracota Cálido, Verde Oliva y Azzurro Costiero) */
+  --primary: #b84736; /* Terracota / Rosso Cotto Cálido (suave, acogedor y mediterráneo) */
+  --primary-hover: #993526;
+  --primary-glow: rgba(184, 71, 54, 0.28);
   
-  --secondary: #008c45; /* Verde Bandiera Italiana ufficiale */
-  --secondary-hover: #007037;
-  --secondary-light: #0ea254;
-  --secondary-glow: rgba(0, 140, 69, 0.30);
+  --secondary: #2e6b42; /* Verde Oliva & Salvia Toscana */
+  --secondary-hover: #225332;
+  --secondary-light: #438859;
+  --secondary-glow: rgba(46, 107, 66, 0.22);
   
-  --italian-green: #008c45;
-  --italian-white: #ffffff;
-  --italian-red: #cd212a;
-  --italian-tricolor: linear-gradient(90deg, #008c45 0%, #008c45 33.33%, #ffffff 33.33%, #ffffff 66.66%, #cd212a 66.66%, #cd212a 100%);
-  --italian-tricolor-soft: linear-gradient(90deg, rgba(0, 140, 69, 0.12) 0%, rgba(0, 140, 69, 0.04) 33.33%, rgba(255, 255, 255, 0.8) 33.33%, rgba(255, 255, 255, 0.8) 66.66%, rgba(205, 33, 42, 0.04) 66.66%, rgba(205, 33, 42, 0.12) 100%);
+  --italian-green: #2e6b42;
+  --italian-white: #faf8f5;
+  --italian-red: #b84736;
+  --italian-tricolor: linear-gradient(90deg, #2e6b42 0%, #2e6b42 33.33%, #ffffff 33.33%, #ffffff 66.66%, #b84736 66.66%, #b84736 100%);
+  --italian-tricolor-soft: linear-gradient(90deg, rgba(46, 107, 66, 0.12) 0%, rgba(46, 107, 66, 0.04) 33.33%, rgba(255, 255, 255, 0.8) 33.33%, rgba(255, 255, 255, 0.8) 66.66%, rgba(184, 71, 54, 0.04) 66.66%, rgba(184, 71, 54, 0.12) 100%);
   
-  --azzurro-italia: #0066b2; /* Azzurro Italia / Mediterraneo */
-  --azzurro-hover: #00508c;
-  --azzurro-glow: rgba(0, 102, 178, 0.32);
+  --azzurro-italia: #1b6fa8; /* Azzurro Mediterraneo / Costiera */
+  --azzurro-hover: #145785;
+  --azzurro-glow: rgba(27, 111, 168, 0.25);
   
-  --accent-gold: #d97706; /* Oro toscano cálido */
-  --accent-gold-hover: #b45309;
-  --accent-terracotta: #c2410c;
+  --accent-gold: #c57e0a; /* Ámbar y oro toscano cálido */
+  --accent-gold-hover: #a36504;
+  --accent-terracotta: #b84736;
   
-  --bg-main: #fbf9f4; /* Tono cálido marfil y travertino italiano */
+  --bg-main: #faf8f4; /* Arena y travertino italiano cálido */
   --bg-surface: #ffffff;
-  --bg-surface-warm: #f6f1e8;
+  --bg-surface-warm: #f5f0e6;
   --bg-surface-trans: rgba(255, 255, 255, 0.96);
   
-  --text-dark: #1b2024;
-  --text-muted: #525b64;
+  --text-dark: #24292e;
+  --text-muted: #57606a;
   --text-light: #ffffff;
   
   --whatsapp-green: #25d366;
   --whatsapp-hover: #20ba59;
   
-  --border-color: #e6ded4;
+  --border-color: #e8dfd3;
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
   --border-radius-lg: 24px;
@@ -106,7 +106,7 @@ input, select, textarea, button {
 .shape-1 {
   width: 400px;
   height: 400px;
-  background: rgba(201, 42, 42, 0.08); /* Rosso */
+  background: rgba(184, 71, 54, 0.07); /* Terracota cálido */
   top: -100px;
   right: -50px;
 }
@@ -114,7 +114,7 @@ input, select, textarea, button {
 .shape-2 {
   width: 450px;
   height: 450px;
-  background: rgba(0, 135, 68, 0.09); /* Verde */
+  background: rgba(46, 107, 66, 0.08); /* Verde oliva */
   top: 600px;
   left: -80px;
 }
@@ -122,7 +122,7 @@ input, select, textarea, button {
 .shape-3 {
   width: 350px;
   height: 350px;
-  background: rgba(201, 147, 32, 0.08); /* Oro */
+  background: rgba(27, 111, 168, 0.06); /* Azzurro mediterraneo */
   bottom: 300px;
   right: -30px;
 }
@@ -204,7 +204,7 @@ input, select, textarea, button {
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(205, 33, 42, 0.45);
+  box-shadow: 0 10px 25px rgba(184, 71, 54, 0.35);
 }
 
 .btn-primary:disabled {
@@ -217,9 +217,9 @@ input, select, textarea, button {
 }
 
 @keyframes pulse-glow {
-  0% { box-shadow: 0 0 0 0 rgba(205, 33, 42, 0.5); }
-  70% { box-shadow: 0 0 0 14px rgba(205, 33, 42, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(205, 33, 42, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(184, 71, 54, 0.45); }
+  70% { box-shadow: 0 0 0 14px rgba(184, 71, 54, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(184, 71, 54, 0); }
 }
 
 .btn-secondary {
@@ -254,9 +254,9 @@ input, select, textarea, button {
 }
 
 .btn-stop {
-  background: #fff0eb;
+  background: #fdf5f2;
   color: var(--primary);
-  border: 1px solid #ffd4c4;
+  border: 1px solid #f2d8d2;
 }
 
 .btn-stop:hover {
@@ -270,9 +270,9 @@ input, select, textarea, button {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(251, 249, 244, 0.95);
+  background: rgba(250, 248, 244, 0.95);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(230, 222, 212, 0.85);
+  border-bottom: 1px solid rgba(232, 223, 211, 0.85);
   position: relative;
 }
 
@@ -283,8 +283,8 @@ input, select, textarea, button {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #008c45 0%, #008c45 33.33%, #ffffff 33.33%, #ffffff 66.66%, #cd212a 66.66%, #cd212a 100%);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(90deg, #2e6b42 0%, #2e6b42 33.33%, #faf8f5 33.33%, #faf8f5 66.66%, #b84736 66.66%, #b84736 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .nav-container {
@@ -368,7 +368,7 @@ input, select, textarea, button {
 .nav-btn-immersion {
   background: rgba(0, 102, 178, 0.09);
   color: var(--azzurro-italia);
-  border: 1px solid rgba(0, 102, 178, 0.28);
+  border: 1px solid rgba(27, 111, 168, 0.28);
 }
 
 .nav-btn-immersion:hover {
@@ -377,9 +377,9 @@ input, select, textarea, button {
 }
 
 .nav-btn-schedule {
-  background: rgba(205, 33, 42, 0.08);
+  background: rgba(184, 71, 54, 0.08);
   color: var(--primary);
-  border: 1px solid rgba(205, 33, 42, 0.25);
+  border: 1px solid rgba(184, 71, 54, 0.25);
 }
 
 .nav-btn-schedule:hover {
@@ -388,9 +388,9 @@ input, select, textarea, button {
 }
 
 .nav-btn-test {
-  background: rgba(0, 140, 69, 0.09);
+  background: rgba(46, 107, 66, 0.09);
   color: var(--secondary);
-  border: 1px solid rgba(0, 140, 69, 0.28);
+  border: 1px solid rgba(46, 107, 66, 0.25);
 }
 
 .nav-btn-test:hover {
@@ -399,9 +399,9 @@ input, select, textarea, button {
 }
 
 .nav-btn-community {
-  background: rgba(205, 33, 42, 0.08);
+  background: rgba(184, 71, 54, 0.08);
   color: var(--primary);
-  border: 1px solid rgba(205, 33, 42, 0.22);
+  border: 1px solid rgba(184, 71, 54, 0.22);
 }
 
 .nav-btn-community:hover {
@@ -425,8 +425,8 @@ input, select, textarea, button {
   font-size: 0.92rem;
   font-weight: 700;
   color: var(--secondary);
-  box-shadow: 0 3px 12px rgba(0, 140, 69, 0.1);
-  border: 1.5px solid rgba(0, 140, 69, 0.25);
+  box-shadow: 0 3px 12px rgba(46, 107, 66, 0.1);
+  border: 1.5px solid rgba(46, 107, 66, 0.25);
   margin-bottom: 24px;
 }
 
@@ -605,7 +605,7 @@ input, select, textarea, button {
 .input-group input:focus {
   border-color: var(--primary);
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(205, 33, 42, 0.18);
+  box-shadow: 0 0 0 3px rgba(184, 71, 54, 0.18);
 }
 
 /* Screen 2: Question Stepper */
@@ -621,9 +621,9 @@ input, select, textarea, button {
 }
 
 .stage-tag {
-  background: rgba(0, 140, 69, 0.1);
+  background: rgba(46, 107, 66, 0.1);
   color: var(--secondary);
-  border: 1px solid rgba(0, 140, 69, 0.25);
+  border: 1px solid rgba(46, 107, 66, 0.25);
   padding: 4px 14px;
   border-radius: var(--border-radius-pill);
   font-size: 0.82rem;
@@ -648,7 +648,7 @@ input, select, textarea, button {
 
 .stepper-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #008c45 0%, #008c45 40%, #e5a93c 70%, #cd212a 100%);
+  background: linear-gradient(90deg, #2e6b42 0%, #2e6b42 40%, #c57e0a 70%, #b84736 100%);
   transition: width 0.35s ease;
   border-radius: 6px;
 }
@@ -708,7 +708,7 @@ input, select, textarea, button {
 }
 
 .q-opt-btn.selected {
-  background: rgba(205, 33, 42, 0.07);
+  background: rgba(184, 71, 54, 0.08);
   border-color: var(--primary);
   color: var(--primary-hover);
   font-weight: 700;
@@ -2073,7 +2073,7 @@ input, select, textarea, button {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #008c45 0%, #008c45 33.33%, #ffffff 33.33%, #ffffff 66.66%, #cd212a 66.66%, #cd212a 100%);
+  background: linear-gradient(90deg, #2e6b42 0%, #2e6b42 33.33%, #faf8f5 33.33%, #faf8f5 66.66%, #b84736 66.66%, #b84736 100%);
 }
 
 .footer-cta {
