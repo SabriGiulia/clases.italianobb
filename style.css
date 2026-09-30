@@ -989,13 +989,14 @@ input, select, textarea, button {
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  margin-bottom: 18px;
+  margin: 0 auto 18px auto;
 }
 
 .course-title {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 12px;
+  text-align: center;
 }
 
 .course-desc {
@@ -1003,6 +1004,7 @@ input, select, textarea, button {
   color: var(--text-muted);
   margin-bottom: 16px;
   line-height: 1.5;
+  text-align: center;
 }
 
 .course-highlight-banner {
@@ -3260,50 +3262,73 @@ input, select, textarea, button {
     padding: 24px 18px;
     border-radius: 20px;
     box-shadow: 0 4px 14px rgba(70, 45, 30, 0.05);
+    text-align: center;
   }
 
   .card-badge {
     position: static;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     width: fit-content;
-    margin-bottom: 14px;
-    padding: 4px 12px;
+    margin: 0 auto 14px auto;
+    transform: none;
+    left: auto;
+    padding: 5px 14px;
     border-radius: 50px;
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     font-weight: 800;
     letter-spacing: 0.8px;
+    text-align: center;
   }
 
   .course-icon {
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
     border-radius: 12px;
     font-size: 1.25rem;
-    margin-bottom: 14px;
+    margin: 0 auto 14px auto;
   }
 
   .course-title {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 800;
     line-height: 1.25;
     margin-bottom: 8px;
+    text-align: center;
+    width: 100%;
   }
 
   .course-desc {
     font-size: 0.92rem;
     line-height: 1.45;
     margin-bottom: 16px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .course-highlight-banner {
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto 14px auto;
+    width: 100%;
+  }
+
+  .course-accordion {
+    width: 100%;
+    text-align: left;
   }
 
   .feature-list {
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    text-align: left;
   }
 
   .feature-list li {
     font-size: 0.88rem;
     gap: 8px;
+    text-align: left;
   }
 
   .btn-course {
