@@ -1044,12 +1044,66 @@ input, select, textarea, button {
   font-weight: 600;
 }
 
+/* Course Card Accordion / Collapsible Details */
+.course-accordion {
+  margin: 10px 0 16px 0;
+  border-top: 1px dashed #e8ded2;
+  padding-top: 10px;
+}
+
+.course-accordion-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--secondary);
+  padding: 8px 12px;
+  background: #fbf9f6;
+  border: 1px solid #ebdcd0;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.course-accordion-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.course-accordion-toggle:hover {
+  background: #f4ede4;
+  color: var(--primary);
+  border-color: #dfcdbd;
+}
+
+.course-accordion-toggle .toggle-icon {
+  font-size: 0.78rem;
+  transition: transform 0.3s ease;
+}
+
+.course-accordion[open] .course-accordion-toggle .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.course-accordion[open] .course-accordion-toggle {
+  background: #fdf5ef;
+  border-color: #e2c0ae;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.course-accordion-content {
+  animation: fadeIn 0.25s ease;
+}
+
 .feature-list {
   list-style: none;
-  margin-bottom: 22px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 9px;
   flex-grow: 1;
 }
 
