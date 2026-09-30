@@ -247,6 +247,23 @@ input, select, textarea, button {
   100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0); }
 }
 
+/* Botón con Bandera de Italia Oficial */
+.btn-flag-italy {
+  background: linear-gradient(90deg, #008c45 0%, #008c45 33.33%, #ffffff 33.33%, #ffffff 66.66%, #cd212a 66.66%, #cd212a 100%) !important;
+  color: #111827 !important;
+  font-weight: 800;
+  border: 1.5px solid #d1d5db !important;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 255, 255, 0.95);
+  position: relative;
+}
+
+.btn-flag-italy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 25px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.05);
+}
+
 .btn-secondary {
   background: var(--bg-surface);
   color: var(--text-dark);
@@ -391,14 +408,19 @@ input, select, textarea, button {
 }
 
 .nav-btn-immersion {
-  background: rgba(0, 102, 178, 0.09);
-  color: var(--azzurro-italia);
-  border: 1px solid rgba(27, 111, 168, 0.28);
+  background: linear-gradient(90deg, #008c45 0%, #008c45 33.33%, #ffffff 33.33%, #ffffff 66.66%, #cd212a 66.66%, #cd212a 100%);
+  color: #111827;
+  border: 1.5px solid #d1d5db;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 6px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .nav-btn-immersion:hover {
-  background: var(--azzurro-italia);
-  color: #ffffff;
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #000000;
 }
 
 .nav-btn-schedule {
