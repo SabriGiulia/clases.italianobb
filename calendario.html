@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=20261002_ig_link">
+  <link rel="stylesheet" href="style.css?v=20261003_group_pricing_v1">
   <style>
     .calendar-page-container {
       padding: 50px 0 80px 0;
@@ -156,6 +156,121 @@
       color: var(--secondary);
       margin: 14px 0 20px 0;
     }
+
+    /* Interactive Group Pricing Selector */
+    .group-pricing-selector-container {
+      background: #fdfbf7;
+      border: 1.5px solid #ecd8c6;
+      border-radius: 18px;
+      padding: 22px 24px 18px 24px;
+      margin: 22px auto 26px auto;
+      max-width: 780px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(184, 71, 54, 0.06);
+    }
+    .group-pricing-label {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 14px;
+      letter-spacing: -0.2px;
+    }
+    .people-selector-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .people-btn {
+      background: #ffffff;
+      border: 1.5px solid #e5d5c5;
+      border-radius: 14px;
+      padding: 14px 8px 10px 8px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      position: relative;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .people-btn:hover {
+      border-color: var(--primary);
+      background: #fff8f3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(184, 71, 54, 0.12);
+    }
+    .people-btn.active {
+      background: #fff3ea;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(184, 71, 54, 0.25), 0 4px 14px rgba(184, 71, 54, 0.15);
+    }
+    .people-btn-icon {
+      font-size: 1.25rem;
+      color: var(--secondary);
+    }
+    .people-btn.active .people-btn-icon {
+      color: var(--primary);
+    }
+    .people-btn-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+    .people-btn.active .people-btn-title {
+      color: var(--primary);
+    }
+    .people-btn-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .people-btn-discount-badge {
+      position: absolute;
+      top: -10px;
+      right: 50%;
+      transform: translateX(50%);
+      background: linear-gradient(135deg, #ea580c, #c2410c);
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 50px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 2px 6px rgba(194, 65, 12, 0.3);
+      white-space: nowrap;
+    }
+    .savings-alert-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.86rem;
+      color: #166534;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      animation: fadeIn 0.3s ease;
+    }
+    .regime-group-hint {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+    .price-original-crossed {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      text-decoration: line-through;
+      margin-right: 4px;
+      font-weight: normal;
+    }
+
     @media (max-width: 768px) {
       .calendar-page-container {
         padding: 24px 0 50px 0;
@@ -164,6 +279,13 @@
         padding: 22px 16px;
         border-radius: 20px;
         margin-top: 28px;
+      }
+      .people-selector-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .group-pricing-selector-container {
+        padding: 16px 12px;
       }
     }
   </style>
@@ -224,6 +346,42 @@
         <span>En modalidad 1 a 1 las clases se abonan por adelantado</span>
       </div>
 
+      <!-- Interactive People / Group Selector -->
+      <div class="group-pricing-selector-container">
+        <span class="group-pricing-label"><i class="fa-solid fa-users"></i> ¿Querés cursar individual o con alguien más?</span>
+        <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:12px;">Seleccioná la cantidad de personas para ver los aranceles con descuento grupal:</p>
+        <div class="people-selector-buttons" id="people-selector-group">
+          <button type="button" class="people-btn active" data-people="1">
+            <span class="people-btn-icon"><i class="fa-solid fa-user"></i></span>
+            <span class="people-btn-title">1 Persona</span>
+            <span class="people-btn-sub">Individual</span>
+          </button>
+          <button type="button" class="people-btn" data-people="2">
+            <span class="people-btn-discount-badge">-25% OFF</span>
+            <span class="people-btn-icon"><i class="fa-solid fa-user-group"></i></span>
+            <span class="people-btn-title">2 Personas</span>
+            <span class="people-btn-sub">Parejas / Amigos</span>
+          </button>
+          <button type="button" class="people-btn" data-people="3">
+            <span class="people-btn-discount-badge">-35% OFF</span>
+            <span class="people-btn-icon"><i class="fa-solid fa-users"></i></span>
+            <span class="people-btn-title">3 Personas</span>
+            <span class="people-btn-sub">Grupo de 3</span>
+          </button>
+          <button type="button" class="people-btn" data-people="4">
+            <span class="people-btn-discount-badge">-45% OFF</span>
+            <span class="people-btn-icon"><i class="fa-solid fa-users-rectangle"></i></span>
+            <span class="people-btn-title">4 Personas</span>
+            <span class="people-btn-sub">Grupo de 4</span>
+          </button>
+        </div>
+
+        <div class="savings-alert-box" id="savings-banner" style="display: none;">
+          <i class="fa-solid fa-gift" style="color:#15803d; font-size:1.1rem;"></i>
+          <span id="savings-banner-text">¡Descuento grupal aplicado! Los valores mostrados son <strong>por persona</strong>.</span>
+        </div>
+      </div>
+
       <!-- Section 1: Clases de 1 Hora (60 min) -->
       <div class="duration-category-header">
         <h3 class="duration-category-title"><i class="fa-solid fa-clock" style="color:var(--primary);"></i> Clases de 1 Hora (60 min)</h3>
@@ -238,8 +396,9 @@
           <p class="regime-desc-text"><strong>1 vez por semana</strong> (60 min). Ideal para mantener continuidad constante y avanzar paso a paso.</p>
           
           <div class="regime-price-box">
-            <span class="regime-unit-price">$19.000 <span class="regime-unit-label">c/u</span></span>
-            <span class="regime-total-price">Total: $76.000 / mes</span>
+            <span class="regime-unit-price" id="p60-4-unit">$19.000 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price" id="p60-4-total">Total: $76.000 / mes</span>
+            <span class="regime-group-hint" id="p60-4-group" style="display:none;"></span>
           </div>
 
           <div class="regime-durations-box">
@@ -255,8 +414,9 @@
           <p class="regime-desc-text"><strong>2 veces por semana</strong> (60 min). Excelente frecuencia para soltarte a hablar rápido y fijar contenidos.</p>
           
           <div class="regime-price-box" style="border-color: var(--primary); background: #fffcf9;">
-            <span class="regime-unit-price">$18.000 <span class="regime-unit-label">c/u</span></span>
-            <span class="regime-total-price" style="background: var(--primary); color: #ffffff; border-color: var(--primary);">Total: $144.000 / mes</span>
+            <span class="regime-unit-price" id="p60-8-unit">$18.000 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price" id="p60-8-total" style="background: var(--primary); color: #ffffff; border-color: var(--primary);">Total: $144.000 / mes</span>
+            <span class="regime-group-hint" id="p60-8-group" style="display:none;"></span>
           </div>
 
           <div class="regime-durations-box">
@@ -271,8 +431,9 @@
           <p class="regime-desc-text"><strong>3 veces por semana</strong> (60 min). Modo intensivo para viajes próximos, exámenes o trámites urgentes.</p>
           
           <div class="regime-price-box">
-            <span class="regime-unit-price">$17.000 <span class="regime-unit-label">c/u</span></span>
-            <span class="regime-total-price">Total: $204.000 / mes</span>
+            <span class="regime-unit-price" id="p60-12-unit">$17.000 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price" id="p60-12-total">Total: $204.000 / mes</span>
+            <span class="regime-group-hint" id="p60-12-group" style="display:none;"></span>
           </div>
 
           <div class="regime-durations-box">
@@ -295,8 +456,9 @@
           <p class="regime-desc-text"><strong>1 vez por semana</strong> (90 min). Mayor tiempo por encuentro para ejercitar conversación y dudas.</p>
           
           <div class="regime-price-box">
-            <span class="regime-unit-price" style="color:var(--secondary);">$26.000 <span class="regime-unit-label">c/u</span></span>
-            <span class="regime-total-price">Total: $104.000 / mes</span>
+            <span class="regime-unit-price" id="p90-4-unit" style="color:var(--secondary);">$26.000 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price" id="p90-4-total">Total: $104.000 / mes</span>
+            <span class="regime-group-hint" id="p90-4-group" style="display:none;"></span>
           </div>
 
           <div class="regime-durations-box">
@@ -312,8 +474,9 @@
           <p class="regime-desc-text"><strong>2 veces por semana</strong> (90 min). Inmersión total con práctica oral extendida y avance acelerado.</p>
           
           <div class="regime-price-box" style="border-color: var(--secondary); background: #f6fbf8;">
-            <span class="regime-unit-price" style="color:var(--secondary);">$24.500 <span class="regime-unit-label">c/u</span></span>
-            <span class="regime-total-price" style="background: var(--secondary); color: #ffffff; border-color: var(--secondary);">Total: $196.000 / mes</span>
+            <span class="regime-unit-price" id="p90-8-unit" style="color:var(--secondary);">$24.500 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price" id="p90-8-total" style="background: var(--secondary); color: #ffffff; border-color: var(--secondary);">Total: $196.000 / mes</span>
+            <span class="regime-group-hint" id="p90-8-group" style="display:none;"></span>
           </div>
 
           <div class="regime-durations-box">
@@ -328,8 +491,9 @@
           <p class="regime-desc-text"><strong>3 veces por semana</strong> (90 min). Máxima intensidad horaria para dominar el idioma en tiempo récord.</p>
           
           <div class="regime-price-box">
-            <span class="regime-unit-price" style="color:var(--secondary);">$23.000 <span class="regime-unit-label">c/u</span></span>
-            <span class="regime-total-price">Total: $276.000 / mes</span>
+            <span class="regime-unit-price" id="p90-12-unit" style="color:var(--secondary);">$23.000 <span class="regime-unit-label">c/u</span></span>
+            <span class="regime-total-price" id="p90-12-total">Total: $276.000 / mes</span>
+            <span class="regime-group-hint" id="p90-12-group" style="display:none;"></span>
           </div>
 
           <div class="regime-durations-box">
@@ -563,6 +727,118 @@
   </footer>
 
   <script>
+    // Group Pricing Data & Logic
+    const pricingData = {
+      1: {
+        label: 'Individual (1 persona)',
+        discountText: '',
+        p60_4: { unit: 19000, total: 76000, groupTotal: 76000, origUnit: null },
+        p60_8: { unit: 18000, total: 144000, groupTotal: 144000, origUnit: null },
+        p60_12: { unit: 17000, total: 204000, groupTotal: 204000, origUnit: null },
+        p90_4: { unit: 26000, total: 104000, groupTotal: 104000, origUnit: null },
+        p90_8: { unit: 24500, total: 196000, groupTotal: 196000, origUnit: null },
+        p90_12: { unit: 23000, total: 276000, groupTotal: 276000, origUnit: null }
+      },
+      2: {
+        label: '2 Personas (25% OFF)',
+        discountText: '¡25% OFF por persona aplicado! Aranceles para 2 alumnos juntos:',
+        p60_4: { unit: 14250, total: 57000, groupTotal: 114000, origUnit: 19000 },
+        p60_8: { unit: 13750, total: 110000, groupTotal: 220000, origUnit: 18000 }, // Redondeado a $220.000 para 2
+        p60_12: { unit: 12750, total: 153000, groupTotal: 306000, origUnit: 17000 },
+        p90_4: { unit: 19500, total: 78000, groupTotal: 156000, origUnit: 26000 },
+        p90_8: { unit: 18375, total: 147000, groupTotal: 294000, origUnit: 24500 },
+        p90_12: { unit: 17250, total: 207000, groupTotal: 414000, origUnit: 23000 }
+      },
+      3: {
+        label: '3 Personas (35% OFF)',
+        discountText: '¡35% OFF por persona aplicado! Aranceles para 3 alumnos juntos:',
+        p60_4: { unit: 12350, total: 49400, groupTotal: 148200, origUnit: 19000 },
+        p60_8: { unit: 11700, total: 93600, groupTotal: 280800, origUnit: 18000 },
+        p60_12: { unit: 11050, total: 132600, groupTotal: 397800, origUnit: 17000 },
+        p90_4: { unit: 16900, total: 67600, groupTotal: 202800, origUnit: 26000 },
+        p90_8: { unit: 15925, total: 127400, groupTotal: 382200, origUnit: 24500 },
+        p90_12: { unit: 14950, total: 179400, groupTotal: 538200, origUnit: 23000 }
+      },
+      4: {
+        label: '4 Personas (45% OFF)',
+        discountText: '¡45% OFF por persona aplicado! Aranceles para 4 alumnos juntos:',
+        p60_4: { unit: 10450, total: 41800, groupTotal: 167200, origUnit: 19000 },
+        p60_8: { unit: 9900, total: 79200, groupTotal: 316800, origUnit: 18000 },
+        p60_12: { unit: 9350, total: 112200, groupTotal: 448800, origUnit: 17000 },
+        p90_4: { unit: 14300, total: 57200, groupTotal: 228800, origUnit: 26000 },
+        p90_8: { unit: 13475, total: 107800, groupTotal: 431200, origUnit: 24500 },
+        p90_12: { unit: 12650, total: 151800, groupTotal: 607200, origUnit: 23000 }
+      }
+    };
+
+    let selectedPeopleCount = 1;
+
+    function formatMoney(num) {
+      return '$' + num.toLocaleString('es-AR');
+    }
+
+    function renderPricing(people) {
+      selectedPeopleCount = people;
+      const data = pricingData[people];
+      if (!data) return;
+
+      const savingsBanner = document.getElementById('savings-banner');
+      const savingsText = document.getElementById('savings-banner-text');
+
+      if (people > 1) {
+        savingsBanner.style.display = 'inline-flex';
+        savingsText.innerHTML = `${data.discountText} El valor mostrado es <strong>por persona</strong>.`;
+      } else {
+        savingsBanner.style.display = 'none';
+      }
+
+      const keys = ['p60_4', 'p60_8', 'p60_12', 'p90_4', 'p90_8', 'p90_12'];
+      keys.forEach(key => {
+        const idPrefix = key.replace('_', '-');
+        const unitEl = document.getElementById(`${idPrefix}-unit`);
+        const totalEl = document.getElementById(`${idPrefix}-total`);
+        const groupEl = document.getElementById(`${idPrefix}-group`);
+        const item = data[key];
+
+        if (unitEl && item) {
+          if (item.origUnit) {
+            unitEl.innerHTML = `<span class="price-original-crossed">${formatMoney(item.origUnit)}</span> ${formatMoney(item.unit)} <span class="regime-unit-label">c/u</span>`;
+          } else {
+            unitEl.innerHTML = `${formatMoney(item.unit)} <span class="regime-unit-label">c/u</span>`;
+          }
+        }
+
+        if (totalEl && item) {
+          if (people > 1) {
+            totalEl.innerHTML = `Por persona: <strong>${formatMoney(item.total)}</strong> / mes`;
+          } else {
+            totalEl.innerHTML = `Total: ${formatMoney(item.total)} / mes`;
+          }
+        }
+
+        if (groupEl && item) {
+          if (people > 1) {
+            groupEl.style.display = 'block';
+            groupEl.innerHTML = `Total grupo (${people} personas): <strong>${formatMoney(item.groupTotal)}</strong>`;
+          } else {
+            groupEl.style.display = 'none';
+          }
+        }
+      });
+      updateWhatsappLink();
+    }
+
+    const peopleButtons = document.querySelectorAll('.people-btn');
+    peopleButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        peopleButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const count = parseInt(btn.getAttribute('data-people'), 10) || 1;
+        renderPricing(count);
+      });
+    });
+
+    // Schedule selection & WhatsApp link builder
     const timeBadges = document.querySelectorAll('.time-badge');
     const bookingSummary = document.getElementById('booking-summary');
     const bookName = document.getElementById('book-name');
@@ -574,11 +850,13 @@
 
     function updateWhatsappLink() {
       const name = bookName.value.trim() || 'un futuro alumno/a';
+      const groupInfo = selectedPeopleCount > 1 ? ` para *${selectedPeopleCount} personas* (con descuento grupal)` : '';
       let message = '';
+
       if (selectedDay && selectedTime) {
-        message = `¡Ciao! Soy ${name} y vi en la web que tenés disponibilidad los días *${selectedDay} a las ${selectedTime}*. Quisiera reservar ese horario para mis clases de italiano 🇮🇹`;
+        message = `¡Ciao! Soy ${name} y vi en la web que tenés disponibilidad los días *${selectedDay} a las ${selectedTime}*. Quisiera reservar ese horario para clases de italiano${groupInfo} 🇮🇹`;
       } else {
-        message = `¡Ciao! Soy ${name} y quisiera consultar por los horarios disponibles para comenzar clases de italiano 🇮🇹`;
+        message = `¡Ciao! Soy ${name} y quisiera consultar por los horarios disponibles para comenzar clases de italiano${groupInfo} 🇮🇹`;
       }
       whatsappBookBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     }
