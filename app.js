@@ -1091,5 +1091,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Direct Instagram navigation on Logo click
+  const headerLogos = document.querySelectorAll('.logo');
+  headerLogos.forEach(logo => {
+    logo.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open('https://www.instagram.com/clases.italianobb/', '_blank', 'noopener,noreferrer');
+    });
+  });
+
   fetchCloudReviews();
 });
