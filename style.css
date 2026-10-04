@@ -915,6 +915,249 @@ input, select, textarea, button {
   box-shadow: 0 8px 22px rgba(46, 155, 95, 0.32);
 }
 
+/* Detailed Test Review (Correct & Wrong Breakdown) */
+.test-review-container {
+  margin-top: 36px;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid #e8e2d9;
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.test-review-header {
+  border-bottom: 1px solid #f0ebe1;
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+}
+
+.test-review-title-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.test-review-title-box i {
+  font-size: 1.6rem;
+  color: var(--primary);
+  background: rgba(184, 71, 54, 0.1);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.test-review-title-box h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 4px 0;
+}
+
+.test-review-title-box p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.test-review-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.review-filter-btn {
+  background: #f7f5f0;
+  border: 1px solid #e4decb;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.review-filter-btn:hover {
+  background: #ede7da;
+  color: var(--text-dark);
+}
+
+.review-filter-btn.active {
+  background: var(--text-dark);
+  color: #ffffff;
+  border-color: var(--text-dark);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.review-filter-btn.filter-correct.active {
+  background: #15803d;
+  border-color: #15803d;
+  color: #fff;
+}
+
+.review-filter-btn.filter-wrong.active {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #fff;
+}
+
+.review-filter-btn.filter-skipped.active {
+  background: #64748b;
+  border-color: #64748b;
+  color: #fff;
+}
+
+.test-review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.review-card {
+  background: #fdfcf9;
+  border: 1px solid #e7dfd4;
+  border-radius: 12px;
+  padding: 16px 18px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.review-card.is-correct {
+  border-left: 4px solid #16a34a;
+  background: #fafdfa;
+}
+
+.review-card.is-wrong {
+  border-left: 4px solid #dc2626;
+  background: #fffafa;
+}
+
+.review-card.is-skipped {
+  border-left: 4px solid #94a3b8;
+  background: #f8fafc;
+}
+
+.review-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.review-card-meta {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #6c757d;
+}
+
+.review-stage-tag {
+  background: #eee8de;
+  color: #4a453f;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  margin-left: 6px;
+}
+
+.review-status-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.review-status-badge.correct {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.review-status-badge.wrong {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.review-status-badge.skipped {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.review-q-context {
+  font-size: 0.84rem;
+  font-style: italic;
+  color: #736b63;
+  margin-bottom: 4px;
+}
+
+.review-q-text {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.review-answers-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ans-line {
+  font-size: 0.88rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.35;
+}
+
+.ans-line.user-correct {
+  background: #dcfce7;
+  color: #14532d;
+  border: 1px solid #bbf7d0;
+}
+
+.ans-line.user-wrong {
+  background: #fee2e2;
+  color: #7f1d1d;
+  border: 1px solid #fecaca;
+}
+
+.ans-line.correct-answer {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.ans-line.skipped-note {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+@media (max-width: 600px) {
+  .test-review-container {
+    padding: 16px 12px;
+  }
+  .test-review-filters {
+    gap: 6px;
+  }
+  .review-filter-btn {
+    font-size: 0.78rem;
+    padding: 5px 10px;
+  }
+}
+
 /* Courses Grid */
 .courses-section {
   padding: 70px 0;

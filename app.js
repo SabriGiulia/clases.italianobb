@@ -701,6 +701,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }).catch(err => console.warn('Cloud test save warning:', err));
     } catch (e) {}
 
+    // Render detailed answer-by-answer review
+    renderTestReview();
+
     // Build WhatsApp message to send privately to teacher
     const waText = 
 `¡Ciao! Soy ${studentName} y completé el Test de Nivelación en la web.
@@ -712,10 +715,138 @@ document.addEventListener('DOMContentLoaded', () => {
     btnSendWhatsappFinal.href = waUrl;
     screenResults.scrollIntoView({ behavior: 'smooth' });
 
-    // Automatic direct redirect to WhatsApp without requiring user to click:
+    // Open WhatsApp in new tab so the student can still view their test breakdown
     setTimeout(() => {
-      window.location.href = waUrl;
-    }, 800);
+      window.open(waUrl, '_blank');
+    }, 1200);
+  }
+
+  // Render Detailed Question-by-Question Review (Correct vs Incorrect)
+  function renderTestReview() {
+    const listContainer = document.getElementById('test-review-list');
+    const countAllEl = document.getElementById('count-all');
+    const countCorrectEl = document.getElementById('count-correct');
+    const countWrongEl = document.getElementById('count-wrong');
+    const countSkippedEl = document.getElementById('count-skipped');
+    const btnFilterSkipped = document.getElementById('btn-filter-skipped');
+    const filterButtons = document.querySelectorAll('.review-filter-btn');
+
+    if (!listContainer) return;
+    listContainer.innerHTML = '';
+
+    let correctTotal = 0;
+    let wrongTotal = 0;
+    let skippedTotal = 0;
+
+    questionBank.forEach((q, idx) => {
+      const isAnswered = userAnswers[idx] !== undefined;
+      const userChoiceIdx = userAnswers[idx];
+      const isCorrect = isAnswered && userChoiceIdx === q.correct;
+      const isWrong = isAnswered && userChoiceIdx !== q.correct;
+      const isSkipped = !isAnswered;
+
+      let statusType = 'skipped';
+      if (isCorrect) {
+        correctTotal++;
+        statusType = 'correct';
+      } else if (isWrong) {
+        wrongTotal++;
+        statusType = 'wrong';
+      } else {
+        skippedTotal++;
+      }
+
+      const card = document.createElement('div');
+      card.className = `review-card is-${statusType}`;
+      card.dataset.status = statusType;
+
+      const userAnsText = isAnswered ? q.options[userChoiceIdx] : '';
+      const correctAnsText = q.options[q.correct];
+
+      let statusBadgeHtml = '';
+      let answersHtml = '';
+
+      if (isCorrect) {
+        statusBadgeHtml = `<span class="review-status-badge correct"><i class="fa-solid fa-circle-check"></i> Correcta</span>`;
+        answersHtml = `
+          <div class="ans-line user-correct">
+            <i class="fa-solid fa-check" style="margin-top:2px;"></i>
+            <div><strong>Tu respuesta:</strong> ${userAnsText}</div>
+          </div>
+        `;
+      } else if (isWrong) {
+        statusBadgeHtml = `<span class="review-status-badge wrong"><i class="fa-solid fa-circle-xmark"></i> Para repasar</span>`;
+        answersHtml = `
+          <div class="ans-line user-wrong">
+            <i class="fa-solid fa-xmark" style="margin-top:2px;"></i>
+            <div><strong>Tu respuesta:</strong> <span style="text-decoration: line-through; opacity:0.9;">${userAnsText}</span></div>
+          </div>
+          <div class="ans-line correct-answer">
+            <i class="fa-solid fa-lightbulb" style="margin-top:2px; color:#16a34a;"></i>
+            <div><strong>Respuesta correcta:</strong> <span>${correctAnsText}</span></div>
+          </div>
+        `;
+      } else {
+        statusBadgeHtml = `<span class="review-status-badge skipped"><i class="fa-solid fa-forward"></i> No respondida</span>`;
+        answersHtml = `
+          <div class="ans-line skipped-note">
+            <i class="fa-solid fa-info-circle" style="margin-top:2px;"></i>
+            <div>No llegaste a responder esta pregunta antes de finalizar.</div>
+          </div>
+          <div class="ans-line correct-answer">
+            <i class="fa-solid fa-lightbulb" style="margin-top:2px; color:#16a34a;"></i>
+            <div><strong>Respuesta correcta:</strong> <span>${correctAnsText}</span></div>
+          </div>
+        `;
+      }
+
+      card.innerHTML = `
+        <div class="review-card-top">
+          <div class="review-card-meta">
+            <span>Pregunta ${idx + 1} de ${questionBank.length}</span>
+            <span class="review-stage-tag">${q.stage}</span>
+          </div>
+          ${statusBadgeHtml}
+        </div>
+        ${q.context ? `<div class="review-q-context">${q.context}</div>` : ''}
+        <div class="review-q-text">${q.question}</div>
+        <div class="review-answers-box">
+          ${answersHtml}
+        </div>
+      `;
+
+      listContainer.appendChild(card);
+    });
+
+    // Update Counter Badges
+    if (countAllEl) countAllEl.textContent = questionBank.length;
+    if (countCorrectEl) countCorrectEl.textContent = correctTotal;
+    if (countWrongEl) countWrongEl.textContent = wrongTotal;
+    if (countSkippedEl) countSkippedEl.textContent = skippedTotal;
+
+    if (btnFilterSkipped) {
+      btnFilterSkipped.style.display = skippedTotal > 0 ? 'inline-block' : 'none';
+    }
+
+    // Interactive Filter Logic
+    filterButtons.forEach(btn => {
+      btn.onclick = () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        const allCards = listContainer.querySelectorAll('.review-card');
+        allCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'block';
+          } else if (card.dataset.status === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      };
+    });
   }
 
   // Restart

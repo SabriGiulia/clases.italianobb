@@ -43,7 +43,7 @@
   <!-- Favicon & Icons -->
   <link rel="icon" type="image/jpeg" href="logo.jpg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css?v=20261003_group_pricing_v1">
+  <link rel="stylesheet" href="style.css?v=20261004_test_breakdown">
 
   <!-- JSON-LD Structured Data Schema.org -->
   <script type="application/ld+json">
@@ -287,6 +287,30 @@
               <button id="btn-restart-all" class="btn btn-outline">
                 <i class="fa-solid fa-rotate-right"></i> Reiniciar Test
               </button>
+            </div>
+
+            <!-- Detailed Answers Review Section -->
+            <div class="test-review-container">
+              <div class="test-review-header">
+                <div class="test-review-title-box">
+                  <i class="fa-solid fa-square-poll-vertical"></i>
+                  <div>
+                    <h4>Revisión de tus Respuestas</h4>
+                    <p>Consultá qué preguntas respondiste bien y cuáles son las correcciones para seguir aprendiendo.</p>
+                  </div>
+                </div>
+
+                <div class="test-review-filters" id="test-review-filters">
+                  <button class="review-filter-btn active" data-filter="all">Todas (<span id="count-all">0</span>)</button>
+                  <button class="review-filter-btn filter-correct" data-filter="correct">✅ Correctas (<span id="count-correct">0</span>)</button>
+                  <button class="review-filter-btn filter-wrong" data-filter="wrong">❌ Para repasar (<span id="count-wrong">0</span>)</button>
+                  <button class="review-filter-btn filter-skipped" data-filter="skipped" id="btn-filter-skipped" style="display:none;">⏭️ No respondidas (<span id="count-skipped">0</span>)</button>
+                </div>
+              </div>
+
+              <div class="test-review-list" id="test-review-list">
+                <!-- Dynamically generated question cards -->
+              </div>
             </div>
           </div>
         </div>
@@ -932,6 +956,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
-  <script src="app.js?v=20261004_autowa"></script>
+  <script src="app.js?v=20261004_test_breakdown"></script>
 </body>
 </html>
