@@ -635,6 +635,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Calculate & Display Results
+  const FIREBASE_TEST_ENDPOINT = 'https://clases-italiano-bb-default-rtdb.firebaseio.com/test_results.json';
+
   function finishAndShowResults() {
     screenQuiz.classList.add('hidden');
     screenResults.classList.remove('hidden');
@@ -683,6 +685,22 @@ document.addEventListener('DOMContentLoaded', () => {
     resLevelName.textContent = levelTitle;
     resLevelDescription.textContent = levelDesc;
 
+    // Save test result to Firebase Cloud Database in background
+    try {
+      fetch(FIREBASE_TEST_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          studentName,
+          totalScore,
+          maxScore: questionBank.length,
+          answeredCount,
+          levelTitle,
+          date: new Date().toISOString()
+        })
+      }).catch(err => console.warn('Cloud test save warning:', err));
+    } catch (e) {}
+
     // Build WhatsApp message to send privately to teacher
     const waText = 
 `¡Ciao! Soy ${studentName} y completé el Test de Nivelación en la web.
@@ -690,8 +708,14 @@ document.addEventListener('DOMContentLoaded', () => {
 🎯 *Nivel diagnosticado:* ${levelTitle}
 👉 Quisiera coordinar mis clases de italiano 🇮🇹`;
 
-    btnSendWhatsappFinal.href = `https://wa.me/5492914485405?text=${encodeURIComponent(waText)}`;
+    const waUrl = `https://wa.me/5492914485405?text=${encodeURIComponent(waText)}`;
+    btnSendWhatsappFinal.href = waUrl;
     screenResults.scrollIntoView({ behavior: 'smooth' });
+
+    // Automatic direct redirect to WhatsApp without requiring user to click:
+    setTimeout(() => {
+      window.location.href = waUrl;
+    }, 800);
   }
 
   // Restart
@@ -996,13 +1020,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const waMsg = `¡Hola! Dejé una nueva reseña en la web de @clases.italianobb 🇮🇹✨\n\n👤 *Nombre:* ${reviewData.name}\n📚 *Modalidad:* ${reviewData.course}\n⭐ *Calificación:* ${starsString} (${reviewData.rating}/5)\n💬 *Comentario:* "${reviewData.comment}"`;
         const waUrl = `https://wa.me/5492914485405?text=${encodeURIComponent(waMsg)}`;
 
-        // Open WhatsApp to notify teacher
-        window.open(waUrl, '_blank');
-
         // Reset form
         reviewForm.reset();
         selectedRating = 5;
         updateStars(5);
+
+        // Automatic redirect to WhatsApp to notify teacher
+        setTimeout(() => {
+          window.location.href = waUrl;
+        }, 600);
       } else {
         alert('Hubo un problema de conexión al publicar tu reseña. Por favor verificá tu conexión e intentalo de nuevo.');
       }
@@ -1061,11 +1087,13 @@ document.addEventListener('DOMContentLoaded', () => {
         communitySuccessMsg.classList.remove('hidden');
       }
 
-      // Open WhatsApp in new tab
-      window.open(waUrl, '_blank');
-
       // Reset form
       communityForm.reset();
+
+      // Open WhatsApp automatically
+      setTimeout(() => {
+        window.location.href = waUrl;
+      }, 600);
     });
   }
 
