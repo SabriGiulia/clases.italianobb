@@ -48,6 +48,8 @@ Este documento define la identidad de marca, el tono de voz y las reglas de gene
 
 ---
 
-## 🔒 Seguridad y Privacidad
+## 🔒 Seguridad, Contacto Oficial y Privacidad
+* **WhatsApp Oficial Empresa ÚNICO:** `+54 9 2914 48-5405` (formato URL: `5492914485405` / `https://wa.me/5492914485405`).
+* **Regla Estricta de Privacidad:** NUNCA mostrar, enlazar ni redirigir al número de WhatsApp personal ni a ningún otro teléfono en ningún archivo, botón, gráfica o código. Absolutamente todos los puntos de contacto deben apuntar exclusivamente a la cuenta empresa `+54 9 2914 48-5405`.
 * **Jamás solicitar ni almacenar contraseñas** personales o credenciales de la usuaria.
 * **Control de Versiones:** Mantener los cambios de código sincronizados en la rama `main` del repositorio `sabrigiulia/clases.italianobb`.
